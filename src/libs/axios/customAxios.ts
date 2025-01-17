@@ -1,24 +1,36 @@
-import CONFIG from "src/config/config.json";
 import axios, { AxiosRequestConfig } from "axios";
-import requestInterceptor from "./requestInterceptor";
-import ResponseHandler from "./responseInterceptor";
-import Token from "../token/token";
-import { REQUEST_TOKEN_KEY, ACCESS_TOKEN_KEY } from "src/constants/token.constants";
-const axiosRequestConfig: AxiosRequestConfig = {
-  baseURL: CONFIG.server,
+import config from "@src/config/config.json";
+import {
+  ACCESS_TOKEN_KEY,
+  REQUEST_TOKEN_KEY,
+} from "@src/constants/token/token.constant";
+import token from "../token/token";
+import errorResponseHandler from "./errorResponseHandler";
+import requestHandler from "./requestHandler";
+
+const createAxiosInstance = (config?: AxiosRequestConfig) => {
+  const baseConfig: AxiosRequestConfig = {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
+  };
+  return axios.create({
+    ...baseConfig,
+    ...config,
+  });
+};
+
+export const dodamAxios = createAxiosInstance({
+  baseURL: config.DODAM_SERVER,
   headers: {
-    [REQUEST_TOKEN_KEY]: `Bearer ${Token.getToken(ACCESS_TOKEN_KEY)}`,
+    [REQUEST_TOKEN_KEY]: `Bearer ${token.getToken(ACCESS_TOKEN_KEY)}`!,
   },
+});
+
+export const dodamAxiosSetAccessToken = (token: string) => {
+  dodamAxios.defaults.headers.common[REQUEST_TOKEN_KEY] = `Bearer ${token}`;
 };
 
-const dodamAxios = axios.create(axiosRequestConfig);
+dodamAxios.interceptors.request.use(requestHandler , (res) => res);
 
-dodamAxios.interceptors.request.use(requestInterceptor as any, (err) => Promise.reject(err));
-
-dodamAxios.interceptors.response.use((res) => res, ResponseHandler);
-
-export default dodamAxios;
-
-export const setAccessToken = (token: string) => {
-  dodamAxios.defaults.headers[REQUEST_TOKEN_KEY] = `Bearer ${token}`;
-};
+dodamAxios.interceptors.response.use((res) => res, errorResponseHandler);
