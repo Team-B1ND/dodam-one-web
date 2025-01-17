@@ -2,9 +2,11 @@ import React,{StrictMode} from 'react';
 import {
   QueryClient,
   QueryClientProvider,
-} from '@tanstack/react-query'
+} from 'react-query'
+import { RecoilRoot } from "recoil";
 import { BrowserRouter } from "react-router-dom";
 import Routes from './components/Router/router';
+import { B1ndToastContainer } from '@b1nd/b1nd-toastify';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -16,11 +18,14 @@ const queryClient = new QueryClient({
 function Root() {
   return (
     <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-            <Routes/>
-      </BrowserRouter>
-    </QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <RecoilRoot>
+          <B1ndToastContainer autoClose={1000} limit={1} />
+            <BrowserRouter>
+              <Routes/>
+            </BrowserRouter>
+          </RecoilRoot>
+      </QueryClientProvider>
     </StrictMode>
   );
 }
