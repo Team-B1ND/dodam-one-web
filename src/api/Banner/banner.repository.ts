@@ -1,5 +1,5 @@
-import { dodamAxios } from "@src/libs/axios/customAxios";
-import { BannersResponse } from "@src/types/banner/banner.type";
+import { dodamAxios } from "src/libs/axios/customAxios";
+import { BannersResponse } from "src/types/banner/banner.type";
 
 class BannerRepository {
   public async getBanners(): Promise<BannersResponse> {

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@b1nd/b1nd-toastify": "^2.0.1",
+    "@b1nd/dds-web": "^0.1.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -35,14 +36,18 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "@types/js-cookie": "^3.0.2",
-    "crypto-browserify": "^3.12.0",
-    "css-loader": "^7.1.2",
-    "css-minimizer-webpack-plugin": "^7.0.0",
-    "esbuild-loader": "^4.2.2",
-    "webpack": "^5.94.0",
-    "webpack-bundle-analyzer": "^4.10.2",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.1.0"
+    "@types/js-cookie": "^3.0.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
