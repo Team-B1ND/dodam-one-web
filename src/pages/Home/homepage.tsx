@@ -8,6 +8,9 @@ const HomePage = ()=>{
         <S.main>
             <S.mainDataVeiw>
                 <Banner/>
+                <S.mainDataGridBox>
+                    
+                </S.mainDataGridBox>
             </S.mainDataVeiw>
             <S.sideProfile>
                 

@@ -13,10 +13,9 @@ export const mainDataVeiw = styled.div`
     display: flex;
     flex-direction: column;
     width: 70%;
-    
 `
 
-export const mainDataVeiwVox = styled.div`
+export const mainDataGridBox = styled.div`
   width:100%;
   height:100%;
   background-color:#fff;
