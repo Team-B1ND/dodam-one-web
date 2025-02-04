@@ -2,10 +2,8 @@ import styled from "styled-components";
 
 export const main = styled.div`
     display: flex;
-    width: 100vw;
     height: 100vh;
     padding: 58px 0px 58px 32px ;
-    background-color: ${({ theme }) => theme.backgroundNormal};
 `
 
 
