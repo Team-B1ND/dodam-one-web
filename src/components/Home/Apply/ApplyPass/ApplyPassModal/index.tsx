@@ -69,12 +69,15 @@ const ApplyPassModal = ({
                     <span>저녁 급식 수요 조사를 위해 설문 조사를 합니다. <br/> 응답해 주시기 바랍니다.</span>
                     <S.ButtonContainer>
                 <DodamFilledButton 
-                onClick={()=>submitPassData(1)}
-                >아니요</DodamFilledButton>
+                    size="Large"
+                    onClick={() => submitPassData(1)} >
+                      아니요
+                    </DodamFilledButton>
                 <DodamFilledButton 
-                onClick={()=>submitPassData(2)}
-            
-                >네 먹습니다</DodamFilledButton>
+                size="Large"
+                onClick={()=>submitPassData(2)}>
+                  네 먹습니다.
+                </DodamFilledButton>
                 </S.ButtonContainer>
                    
                 </S.Content>

@@ -104,6 +104,7 @@ const ApplyPassForm = () => {
 
       {!(notApprovedPasses.length === 0 && !isFold) && (
         <DodamFilledButton
+          size="Large"
           onClick={submitPassData}
         >
           {isFold ? "신청" : "수정"}

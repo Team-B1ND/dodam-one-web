@@ -38,10 +38,8 @@ const ApplyBusForm = () => {
               ))}
             </S.ApplyBusFormItemWrap>
           </S.ApplyBusFormItemContainer>
-          <DodamFilledButton
-            onClick={submitMyBus}
-          >
-            신청
+          <DodamFilledButton onClick={submitMyBus}size="Large" >
+                신청
           </DodamFilledButton>
         </>
       )}

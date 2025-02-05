@@ -86,9 +86,8 @@ const ApplyLeaveForm = () => {
       </S.ApplyLeaveFormContainer>
       {!(notApprovedLeaves?.length === 0 && !isFold) && (
         <DodamFilledButton
-         
-          onClick={submitLeaveData}
-         
+          size="Large"
+          onClick={submitLeaveData}        
         >
           {isFold ? "신청" : "수정"}
         </DodamFilledButton>
