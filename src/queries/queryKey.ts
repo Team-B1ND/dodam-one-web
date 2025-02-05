@@ -1,4 +1,4 @@
-import { PointType } from "@src/types/point/point.type";
+import { PointType } from "src/types/point/point.type";
 
 export const QUERY_KEYS = {
   banner: {
