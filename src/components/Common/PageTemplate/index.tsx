@@ -1,4 +1,4 @@
-import {DodamSidebar} from "../Sidebar/index";
+import {DodamSidebar} from "../Nav/index";
 import { LayoutContainer, Layout } from "./style";
 import { Outlet } from "react-router-dom";
 import useExceptionHandling from "src/utils/exceptionHandling/exceptionHandling";

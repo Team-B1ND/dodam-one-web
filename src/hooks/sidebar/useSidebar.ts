@@ -6,12 +6,11 @@ export const useSidebar = () => {
     const handleMenuItemClick = (path: string) => {
         navigate(path);
     };
+    
     const [modalOpen, setModalOpen] = useState(false);
+
     const hahdleOpenSidebar = () =>{
-        
-        
         setModalOpen((prev) => !prev);
-        console.log(modalOpen);
     }
 
     return{

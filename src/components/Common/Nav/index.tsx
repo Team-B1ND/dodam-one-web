@@ -2,11 +2,11 @@ import React from "react";
 import * as S from "./style";
 import {Menu} from "@b1nd/dds-web";
 import { useLocation } from "react-router-dom";
-import { SIDEBAR_LINKS } from "src/constants/sidebar/sidebar.constant";
+import { SIDEBAR_LINKS } from "src/constants/nav/nav.constant";
 import { useSidebar } from "src/hooks/sidebar/useSidebar";
 import DodamLogo from "src/assets/logo/Dodam_Logo.svg";
 import { useTheme } from "styled-components";
-import SideBarModal from "./sidebarModal";
+import SideBarModal from "./navModal";
 
 export const DodamSidebar = () => {
   const {...sidebar} = useSidebar();
@@ -37,7 +37,7 @@ export const DodamSidebar = () => {
            
         </S.DodamContent>
         <S.AddButton onClick={sidebar.hahdleOpenSidebar}>
-            <Menu/>
+            <Menu color={theme.labelStrong}/>
             <span>더보기</span>
           </S.AddButton>
       </S.DodamSidebar>
