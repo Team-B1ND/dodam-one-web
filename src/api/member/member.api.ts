@@ -1,7 +1,7 @@
 import config from "src/config/config.json";
 import { MyMemberResponse } from "src/types/member/member.type";
 import { dodamAxios } from "src/libs/axios/customAxios";
-import { SignupParam } from "./member.param";
+import { SignupParam } from "src/types/signup/signup.type";
 import axios from "axios";
 
 class MemberRepository {
