@@ -16,13 +16,11 @@ import ErrorHandler from "src/utils/error/ErrorHandler";
 import { useRecoilValue } from "recoil";
 import { pointViewTypeAtom } from "src/store/point/pointStore";
 // import { PasswordParm } from "src/types/login/login.type";
-import usePasswordCheck from "src/utils/check/passwordCheck";
 
 export const useSignIn = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const type = useRecoilValue(pointViewTypeAtom);
-  const { passwordType, handlePasswordView } = usePasswordCheck();
 
   const [loginData, setLoginData] = useState<Login>({
     id: "",
@@ -86,8 +84,6 @@ export const useSignIn = () => {
     loginData,
     handleLoginData,
     submitLoginData,
-    handlePasswordView,
-    passwordType,
   };
 };
 

@@ -13,7 +13,4 @@ export interface LoginResponse extends Response {
   };
 }
 
-export interface PasswordParm {
-  type: string;
-  visible: boolean;
-}
+
