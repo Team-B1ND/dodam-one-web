@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@b1nd/b1nd-toastify": "^2.0.1",
-    "@b1nd/dds-web": "^0.1.9",
+    "@b1nd/dds-web": "^0.1.17",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
