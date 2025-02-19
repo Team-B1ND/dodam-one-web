@@ -19,4 +19,5 @@ export const InputBox = styled.div`
 export const SignTitle = styled.p`
     display: flex;
     ${DodamTypography.Title2.Bold};
+    color:${({theme})=>theme.labelNormal};
 `

@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
-import { useQuery, UseQueryOptions, UseQueryResult } from "react-query";
-import { MyMemberResponse } from "src/types/member/member.type";
-import profileRepository from "src/api/member/member.api";
+import { useQuery, UseQueryOptions, UseQueryResult, useMutation } from "react-query";
+import { MyMemberResponse,AuthCodeReqProps,AuthCodeSendProps } from "src/types/member/member.type";
+import MemberRepository from "src/api/member/member.api";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
 import token from "src/libs/token/token";
 import { QUERY_KEYS } from "../queryKey";
@@ -14,7 +14,7 @@ export const useGetMyMemberQuery = (
     string
   >
 ): UseQueryResult<MyMemberResponse, AxiosError> =>
-  useQuery(QUERY_KEYS.member.getMy, () => profileRepository.getMyMember(), {
+  useQuery(QUERY_KEYS.member.getMy, () => MemberRepository.getMyMember(), {
     ...options,
     onError: () => {
       B1ndToast.showError("토큰이 위조 됐습니다");
@@ -22,3 +22,19 @@ export const useGetMyMemberQuery = (
       window.location.href = "/sign";
     },
   });
+
+
+export const useReqAuthCode = () => {
+  const mutation = useMutation((AuthCodeReq: AuthCodeReqProps) => 
+    MemberRepository.reqAuthCode(AuthCodeReq)
+  );
+  return mutation;
+}
+
+
+export const useSendAuthCode = () => {
+  const mutation = useMutation((AuthCodeSend:AuthCodeSendProps) => 
+    MemberRepository.authCodeVerify(AuthCodeSend)
+  )
+  return mutation;
+}

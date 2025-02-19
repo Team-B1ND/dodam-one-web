@@ -12,6 +12,16 @@ const SignUp = () => {
             signupData={SignUp.signupData}
             handleSignupData={SignUp.handleSignupData}
             submitSignupDataFirst={SignUp.submitSignupDataFirst}
+            isEmailVerified={SignUp.isEmailVerified}
+            isPhoneVerified={SignUp.isPhoneVerified}
+            isModal={SignUp.isModal}
+            setModal={SignUp.setModal}
+            isAuthCode={SignUp.isAuthCode}
+            setAuthCode={SignUp.setAuthCode}
+            emailVerification={SignUp.emailVerification}
+            phoneVerification={SignUp.phoneVerification}
+            sendLoading={SignUp.sendLoading}
+            reqLoading={SignUp.reqLoading}
         />,
         <SignUpSecond
             checkAllRequired={SignUp.checkAllRequired}

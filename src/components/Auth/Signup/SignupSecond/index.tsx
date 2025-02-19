@@ -18,7 +18,7 @@ interface Props {
 const SignUpSecond = ({
     checkAllRequired,
     agrees,
-    // setSection,
+    setSection,
     signupData,
     handleSignupData,
     handleSignupAgree,
@@ -40,6 +40,9 @@ const SignUpSecond = ({
                 label="아이디"
                 onChange={handleSignupData}   
                 supportingText="아이디는 영문과 숫자로 5 ~ 20글자 이내여야 해요." 
+                customStyle={{
+                    marginBottom:"10px"
+                }}
             />
             <DodamTextField
                 id="pw"
@@ -53,21 +56,23 @@ const SignUpSecond = ({
                 id="checkPw"
                 name="checkPw" 
                 type="password"
-                value={signupData.checkPw} 
+                value={signupData.checkPw!} 
                 label="비밀번호 확인"
                 onChange={handleSignupData}    
                 isError={signupData.pw !== signupData.checkPw}
                 
             />
-             <DodamFilledButton
+            <DodamFilledButton
                 backgroundColorType="Assisitive"
                 onClick={checkAllRequired}
                 size="Large"
                 textTheme="labelNetural"
                 typography={['Body1', 'Bold']}
                 text="필수 항목 모두 체크하기"
-                customStyle={{justifyContent:"flex-start"}}
+                icon={<Checkmark size={16} color={agrees.first && agrees.second ? '#0083F0' : '#808080'} />}
+                customStyle={{ justifyContent: "flex-start" }}
             />
+
         </S.InputBox>
         <S.CheckWrap>
             {SIGNUP_AGREE.map((agree,idx)=>(
@@ -81,14 +86,25 @@ const SignUpSecond = ({
                 </S.CheckmarkWrap>
             ))}
         </S.CheckWrap>
+        <S.ButtonBox>
+        <DodamFilledButton
+         size="Large"
+         onClick={()=>setSection("first")} 
+         enabled={true} 
+         backgroundColorType="Assisitive"
+         typography={["Body1","Bold"]}
+        >
+            이전
+        </DodamFilledButton>
         <DodamFilledButton 
             size="Large"
             onClick={submitSignupDataSecond} 
             enabled={true} 
             typography={["Body1","Bold"]}
             textTheme="staticWhite">
-                로그인
+                회원가입
             </DodamFilledButton>
+            </S.ButtonBox>
         </>
     )
 }

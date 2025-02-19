@@ -1,15 +1,24 @@
 import React, { useCallback, useState } from "react";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
-import { Signup, SignupAgree } from "src/types/signup/signup.type";
+import { Signup, SignupAgree, SignUpModal } from "src/types/signup/signup.type";
 import patternCheck from "src/utils/check/patternCheck";
 // import * as Sentry from "sentry/react"
 import memberRepository from "src/api/member/member.api";
 import ErrorHandler from "src/utils/error/ErrorHandler";
 import { AxiosError } from "axios";
 import { DodamDialog } from "@b1nd/dds-web";
+import { useReqAuthCode,useSendAuthCode } from "src/queries/member/member.query";
 
 const useSignup = () => {
-const [section, setSection] = useState("first");
+  //내디바이스 종류 
+  const userAgent = navigator.userAgent;
+
+  const [section, setSection] = useState("first");
+  const {mutate:reqAuthCode,isLoading:reqLoading} = useReqAuthCode(); //인증 코드를 요청
+  const {mutate:sendAuthCode, isLoading:sendLoading} = useSendAuthCode(); //인증코드를 보냄
+  const [isEmailVerified,setIsEmailVerified ] = useState(false);
+  const [isPhoneVerified, setIsPhoneVerified] = useState(false);
+  const [isAuthCode,setAuthCode] = useState<string>("");
 
   const [signupData, setSignupData] = useState<Signup>({
     id: "",
@@ -31,6 +40,94 @@ const [section, setSection] = useState("first");
     second: false,
   });
 
+  const [isModal, setModal] = useState<SignUpModal>({
+    email:false, 
+    phone: false
+  });
+
+  //이메일 인증 요청
+  const sendEmailVerification = async () => {
+    setModal((prev) => ({ ...prev, email: true })); 
+    try {
+      reqAuthCode({
+        identifier: signupData.email, 
+        AuthType: "EMAIL",
+      },{
+      onSuccess:()=>{
+      B1ndToast.showInfo("인증 코드가 발송되었습니다.");
+      }
+    }
+    );
+      
+    } catch (error) {
+      B1ndToast.showError("이메일 인증 요청에 실패했습니다.");
+      setModal((prev) => ({ ...prev, email: false })); 
+    }
+  };
+
+  //전화번호 인증코드 요청
+  const sendPhoneVerification = async () => {
+    setModal((prev) => ({ ...prev, phone: true })); 
+    try {
+      reqAuthCode({
+        identifier: signupData.phone!, 
+        AuthType: "PHONE",
+      },{
+      onSuccess:()=>{
+        B1ndToast.showSuccess("인증 코드가 발송되었습니다.");
+      }
+    }
+    );
+    } catch (error) {
+      B1ndToast.showError("전화번호 인증 요청에 실패했습니다.");
+      setModal((prev) => ({ ...prev, email: false })); 
+    }
+  };
+
+  //이메일 인증코드 인증
+  const emailVerification = ()=>{
+    try{
+      sendAuthCode({
+        identifier:signupData.email,
+        AuthType:"EMAIL",
+        authCode:Number(isAuthCode),
+        UserAgent:userAgent,
+      },{
+        onSuccess:()=>{
+          setIsEmailVerified(true);
+          setModal((prev) => ({ ...prev, email: false })); 
+          B1ndToast.showSuccess("인증이 완료 되었습니다.");
+          setAuthCode("");
+          
+        }
+      })
+    }
+    catch (error) {
+      B1ndToast.showError("이메일 인증에 실패했습니다.");
+    }
+  }
+  //전화번호 인증
+  const phoneVerification = ()=>{
+    try{
+      sendAuthCode({
+        identifier:signupData.phone,
+        AuthType:"PHONE",
+        authCode:Number(isAuthCode),
+        UserAgent:userAgent,
+      },{
+        onSuccess:()=>{
+          setIsPhoneVerified(true);
+          setModal((prev) => ({ ...prev, phone: false })); 
+          B1ndToast.showSuccess("인증이 완료 되었습니다.;");
+          setAuthCode("");
+        }
+      })
+    }
+    catch (error) {
+      B1ndToast.showError("이메일 인증에 실패했습니다.");
+    }
+  }
+
 
   const handleSignupData = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +147,6 @@ const [section, setSection] = useState("first");
           data += formattedValue.slice(2) + "번";
         }
   
-        console.log(data);
         setSignupData((prev) => ({
           ...prev,
           studentInformation: data,
@@ -69,6 +165,17 @@ const [section, setSection] = useState("first");
 
   const submitSignupDataFirst = useCallback(async () => {
     const { email, phone, grade, room, number, name } = signupData;
+    console.log(isEmailVerified);
+    
+    if(isEmailVerified == false){
+      sendEmailVerification();
+      return
+    }
+    
+    if(isPhoneVerified == false){
+     sendPhoneVerification();
+     return 
+    }
 
     if (email === "" || phone === "" || grade === 0 || room === 0 || number === 0 || name === "") {
       B1ndToast.showInfo("양식이 비어있습니다");
@@ -89,7 +196,7 @@ const [section, setSection] = useState("first");
       B1ndToast.showInfo("올바른 학급정보, 기수를 입력해주세요");
       return;
     }
-
+   
     setSection("second");
   }, [signupData]);
 
@@ -132,10 +239,9 @@ const [section, setSection] = useState("first");
       return;
     }
 
-    const { checkPw, ...SignData } = signupData;
 
     const validSignupData = {
-      ...SignData,
+      ...signupData,
       grade: Number(grade),
       room: Number(room),
       number: Number(number),
@@ -159,6 +265,13 @@ const [section, setSection] = useState("first");
   }, []);
 
   return {
+    reqLoading,
+    isModal,
+    isPhoneVerified,
+    isEmailVerified,
+    isAuthCode,
+    sendLoading,
+    setAuthCode,
     checkAllRequired,
     section,
     setSection,
@@ -168,6 +281,9 @@ const [section, setSection] = useState("first");
     agrees,
     handleSignupAgree,
     submitSignupDataSecond,
+    emailVerification,
+    phoneVerification,
+    setModal,
   };
 };
 

@@ -1,20 +1,46 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { DodamFilledButton, DodamTextField } from "@b1nd/dds-web";
 import * as S from "../style";
 import { Signup } from "src/types/signup/signup.type";
+import { SignUpModal } from "src/types/signup/signup.type";
+import VerifieModal from "../../SignModal/verifyModal";
 
 interface Props {    
     signupData: Signup;
     handleSignupData: (e: React.ChangeEvent<HTMLInputElement>) => void;
     submitSignupDataFirst: () => void;
+    isEmailVerified:boolean;
+    isPhoneVerified:boolean;
+    isModal:SignUpModal;
+    setModal:Dispatch<SetStateAction<SignUpModal>>;
+    isAuthCode: string;
+    setAuthCode: Dispatch<SetStateAction<string>>;
+    emailVerification: () => void;
+    phoneVerification: () => void;
+    sendLoading:boolean;
+    reqLoading:boolean;
 }
 
 const SignUpFirst = ({
+    isEmailVerified,
     signupData,
+    isPhoneVerified,
+    isModal,
+    isAuthCode,
+    sendLoading,
+    reqLoading,
     handleSignupData,
     submitSignupDataFirst,
+    setAuthCode,
+    emailVerification,
+    phoneVerification,
+    setModal,
+
   }: Props) => {
-    
+
+    const handleClose = (type:string)=>{
+        setModal((prev) => ({ ...prev, [type]: false })); 
+    }
     
     return(
         <>
@@ -46,7 +72,7 @@ const SignUpFirst = ({
                 id="studentInformation"
                 name="studentInformation"
                 type="text"
-                value={signupData.studentInformation} 
+                value={signupData.studentInformation!} 
                 label="학생정보" 
                 isError={false} 
                 onChange={handleSignupData}
@@ -69,10 +95,39 @@ const SignUpFirst = ({
                 onClick={submitSignupDataFirst}
                 enabled={true} 
                 typography={["Body1","Bold"]}
-                customStyle={{color:"#fff"}}
+                textTheme="staticWhite"
                 >
-                다음
+                  {isEmailVerified && isPhoneVerified
+                    ? "다음"
+                    : !isEmailVerified
+                    ? "이메일 인증"
+                    : !isPhoneVerified
+                    ? "전화번호 인증"
+                    : ""}
                 </DodamFilledButton>
+                {isModal.email && (
+                <VerifieModal 
+                    isOpen={isModal.email}
+                    handleClose={() => handleClose("email")}                   
+                    isAuthCode={isAuthCode}
+                    setAuthCode={setAuthCode}
+                    onSubmit={emailVerification}
+                    sendLoading={sendLoading}
+                    reqLoading={reqLoading}
+                    />
+                )}
+
+                {isModal.phone && (
+                    <VerifieModal 
+                        isOpen={isModal.phone} 
+                        handleClose={() => handleClose("phone")}   
+                        isAuthCode={isAuthCode}
+                        setAuthCode={setAuthCode}
+                        onSubmit={phoneVerification}
+                        sendLoading={sendLoading}
+                        reqLoading={reqLoading}
+                    />
+                )}
             </>
     )
 }

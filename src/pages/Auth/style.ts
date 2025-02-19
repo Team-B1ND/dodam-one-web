@@ -39,7 +39,7 @@ export const AuthOppositePartText = styled.p`
     position: absolute;
     bottom: 5%;
     ${DodamTypography.Label.Medium}
-      color: ${({theme})=>theme.labelAssisitive};
+      color: ${({theme})=>theme.labelAssistive};
       span{
         text-decoration: underline;
         margin-left: 5px;
