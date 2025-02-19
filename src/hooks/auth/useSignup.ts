@@ -48,45 +48,45 @@ const useSignup = () => {
   //이메일 인증 요청
   const sendEmailVerification = async () => {
     setModal((prev) => ({ ...prev, email: true })); 
-    try {
+
       reqAuthCode({
         identifier: signupData.email, 
         AuthType: "EMAIL",
       },{
       onSuccess:()=>{
       B1ndToast.showInfo("인증 코드가 발송되었습니다.");
+      },
+      onError:()=>{
+        B1ndToast.showError("이메일 인증 요청에 실패했습니다.");
+        setModal((prev) => ({ ...prev, email: false })); 
       }
     }
     );
-      
-    } catch (error) {
-      B1ndToast.showError("이메일 인증 요청에 실패했습니다.");
-      setModal((prev) => ({ ...prev, email: false })); 
-    }
+   
   };
 
   //전화번호 인증코드 요청
   const sendPhoneVerification = async () => {
     setModal((prev) => ({ ...prev, phone: true })); 
-    try {
       reqAuthCode({
         identifier: signupData.phone!, 
         AuthType: "PHONE",
       },{
       onSuccess:()=>{
         B1ndToast.showSuccess("인증 코드가 발송되었습니다.");
+      },
+      onError:()=>{
+        B1ndToast.showError("전화번호 인증 요청에 실패했습니다.");
+        setModal((prev) => ({ ...prev, email: false })); 
       }
     }
     );
-    } catch (error) {
-      B1ndToast.showError("전화번호 인증 요청에 실패했습니다.");
-      setModal((prev) => ({ ...prev, email: false })); 
-    }
+  
   };
 
   //이메일 인증코드 인증
   const emailVerification = ()=>{
-    try{
+ 
       sendAuthCode({
         identifier:signupData.email,
         AuthType:"EMAIL",
@@ -98,17 +98,16 @@ const useSignup = () => {
           setModal((prev) => ({ ...prev, email: false })); 
           B1ndToast.showSuccess("인증이 완료 되었습니다.");
           setAuthCode("");
-          
+        },
+        onError:()=>{
+          B1ndToast.showError("이메일 인증에 실패했습니다.");
         }
       })
-    }
-    catch (error) {
-      B1ndToast.showError("이메일 인증에 실패했습니다.");
-    }
+   
   }
   //전화번호 인증
   const phoneVerification = ()=>{
-    try{
+    
       sendAuthCode({
         identifier:signupData.phone,
         AuthType:"PHONE",
@@ -120,12 +119,12 @@ const useSignup = () => {
           setModal((prev) => ({ ...prev, phone: false })); 
           B1ndToast.showSuccess("인증이 완료 되었습니다.;");
           setAuthCode("");
+        },
+        onError:()=>{
+          B1ndToast.showError("이메일 인증에 실패했습니다.");
         }
       })
-    }
-    catch (error) {
-      B1ndToast.showError("이메일 인증에 실패했습니다.");
-    }
+    
   }
 
 
