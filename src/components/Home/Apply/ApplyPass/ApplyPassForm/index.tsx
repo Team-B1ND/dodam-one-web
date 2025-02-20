@@ -47,7 +47,7 @@ const ApplyPassForm = () => {
                       onChange={handlePassDataDate}
                       value={passDataDate} 
                       title={"외출일시"} 
-                      color={""}                 
+                                
                       />
                 </S.ApplyPassFormDatePickerWrap>
               </S.ApplyPassFormInputWrap>

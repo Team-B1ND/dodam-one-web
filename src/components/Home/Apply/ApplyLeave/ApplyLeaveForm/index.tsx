@@ -46,7 +46,7 @@ const ApplyLeaveForm = () => {
                       onChange={(e) => handleLeaveDataDate(e, "start")}
                       value={leaveData.startTimeDate} 
                       title={"출발일자"} 
-                      color={""}
+            
                   />
                 </S.ApplyLeaveFormDatePickerWrap>
               </S.ApplyLeaveFormInputWrap>
@@ -67,7 +67,7 @@ const ApplyLeaveForm = () => {
                       onChange={(e) => handleLeaveDataDate(e, "end")}
                       value={leaveData.endTimeDate} 
                       title={"도착일자"} 
-                      color={""}            
+                        
                   />
                 </S.ApplyLeaveFormDatePickerWrap>
               </S.ApplyLeaveFormInputWrap>

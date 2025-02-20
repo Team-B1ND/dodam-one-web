@@ -1,6 +1,8 @@
-export interface Signup {
+
+export interface Signup{
   id: string;
   pw: string;
+  checkPw?:string;
   email: string;
   name: string;
   phone: string;
@@ -9,10 +11,14 @@ export interface Signup {
   grade: number;
   room: number;
   number: number;
-  tel?: string;
+  studentInformation?:string;
 }
-
 export interface SignupAgree {
   first: boolean;
   second: boolean;
+}
+
+export interface SignUpModal {
+  email: boolean;
+  phone: boolean
 }

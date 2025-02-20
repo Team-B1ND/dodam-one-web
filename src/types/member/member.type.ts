@@ -34,3 +34,17 @@ export interface StudentAndTeacher extends Member {
 export interface MyMemberResponse extends Response {
   data: StudentAndTeacher;
 }
+
+type AuthType = "EMAIL" | "PHONE";
+
+export interface AuthCodeReqProps {
+  identifier:string;
+  AuthType:AuthType
+}
+
+export interface AuthCodeSendProps {
+  identifier:string;
+  AuthType:AuthType
+  authCode:number;
+  UserAgent:string;
+}
