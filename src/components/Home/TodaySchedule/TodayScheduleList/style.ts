@@ -1,3 +1,4 @@
+import { DodamTypography } from "@b1nd/dds-web";
 import styled from "styled-components";
 
 export const TodayScheduleListContainer = styled.div`
@@ -10,7 +11,7 @@ export const TodayScheduleListContainer = styled.div`
 `;
 
 export const TodayScheduleListVoidText = styled.p`
-  font-size: 14px;
-  color: ${({ theme }) => theme.contrast};
+  ${DodamTypography.Body1.Bold}
+  color: ${({ theme }) => theme.labelNormal};
   margin: auto 0px; ;
 `;

@@ -5,18 +5,14 @@ import * as S from "./style";
 import { TodayScheduleListVoidText } from "./style";
 
 const TodayScheduleList = () => {
-  const { data: serverTodayScheduleData } = useGetTodayScheduleQuery({
-    suspense: true,
-    staleTime: 1000 * 60 * 5,
-    cacheTime: 1000 * 60 * 10,
-  });
+  const { data: serverTodayScheduleData } = useGetTodayScheduleQuery();
 
   return (
     <>
       {serverTodayScheduleData &&
       dataCheck.voidCheck(serverTodayScheduleData.data) ? (
         <TodayScheduleListVoidText>
-          오늘 일정이 없습니다.
+          일정이 없습니다.
         </TodayScheduleListVoidText>
       ) : (
         <S.TodayScheduleListContainer>

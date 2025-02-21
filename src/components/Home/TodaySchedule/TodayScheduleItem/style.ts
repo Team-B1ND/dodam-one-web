@@ -1,3 +1,4 @@
+import { DodamColor, DodamShape } from "@b1nd/dds-web";
 import styled from "styled-components";
 
 export const TodayScheduleItemContainer = styled.div`
@@ -12,7 +13,7 @@ export const TodayScheduleItemTitle = styled.h1`
   font-size: 14px;
   font-weight: bold;
   line-height: 18px;
-  color: ${({ theme }) => theme.contrast};
+  color: ${({ theme }) => theme.labelNormal};
 `;
 
 export const TodayScheduleItemTargetWrap = styled.div`
@@ -24,11 +25,13 @@ export const TodayScheduleItemTargetWrap = styled.div`
 `;
 
 export const TodayScheduleItemTargetCategory = styled.span`
-  font-weight: bold;
-  color: ${({ theme }) => theme.contrast};
-  margin-right: 5px;
+  width: 6px;
+  height: 6px;
+  ${DodamShape.ExtraSmall};
+  background-color: ${DodamColor.red80};
 `;
 
 export const TodayScheduleItemTargetText = styled.span`
-  color: ${({ theme }) => theme.contrast};
+  color: ${({ theme }) => theme.labelNormal};
 `;
+

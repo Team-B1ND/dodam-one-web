@@ -1,22 +1,26 @@
 import React from "react"
 import * as S from "./style";
 import Banner from "src/components/Home/Banner";
+import TodaySchedule from "src/components/Home/TodaySchedule";
 // import Apply from "src/components/Home/Apply";
 
 const HomePage = ()=>{
     return(
-        <S.main>
-            <S.mainDataVeiw>
+        <S.Main>
+            <S.MainDataVeiw>
                 <Banner/>
-                <S.mainDataGridBox>
+                <S.MainDataGridBox>
+        
+                        <TodaySchedule/>
+             
                     
-                </S.mainDataGridBox>
-            </S.mainDataVeiw>
-            <S.sideProfile>
+                </S.MainDataGridBox>
+            </S.MainDataVeiw>
+            <S.SideProfile>
                 
-            </S.sideProfile>    
+            </S.SideProfile>    
             
-        </S.main>
+        </S.Main>
     )
 }
 
