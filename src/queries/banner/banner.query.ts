@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { useQuery, UseQueryOptions, UseQueryResult } from "react-query";
-import bannerApi from "src/api/banners/banner.api";
-import { BannersResponse } from "src/types/banner/banner.type";
+import bannerApi from "@src/repositories/Banner/banner.repository";
+import { BannersResponse } from "@src/types/Banner/banner.type";
 import { QUERY_KEYS } from "../queryKey";
 
 export const useGetBannersQuery = (

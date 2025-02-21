@@ -5,7 +5,7 @@ import { useQueryClient } from "react-query";
 import {
     usePostApplyPassMutation,
   } from "src/queries/pass/pass.query";
-import  {ApplyPass } from "src/types/pass/pass.type";
+import  {ApplyPass } from "src/types/Pass/pass.type";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
 
 interface ApplyPassModalProps {

@@ -1,4 +1,4 @@
-import { PointType } from "src/api/point/point.param";
+import { PointType } from "@src/repositories/Point/point.param";
 
 export const QUERY_KEYS = {
   banner: {

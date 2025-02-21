@@ -8,9 +8,9 @@ import {
 import {
   deleteMyPassParam,
   putMyPassParam,
-} from "src/api/pass/pass.param";
-import passRepository from "src/api/pass/pass.api";
-import { MyPassesResponse, Pass } from "@src/types/pass/pass.type";
+} from "@src/repositories/Pass/pass.param";
+import passRepository from "@src/repositories/Pass/pass.repository";
+import { MyPassesResponse, Pass } from "@src/types/Pass/pass.type";
 import { QUERY_KEYS } from "../queryKey";
 
 export const useGetMyPassesQuery = (

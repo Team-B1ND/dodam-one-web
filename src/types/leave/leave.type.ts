@@ -1,4 +1,4 @@
-import { Student } from "../member/member.type";
+import { Student } from "../Member/member.type";
 import { Response } from "../util/response.type";
 
 export interface Leave {

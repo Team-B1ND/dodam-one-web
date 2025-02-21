@@ -1,11 +1,11 @@
-import { dodamAxios } from "src/libs/axios/customAxios";
-import { MyPassesResponse, Pass } from "@src/types/pass/pass.type";
+import { dodamAxios } from "src/libs/Axios/customAxios";
+import { MyPassesResponse, Pass } from "src/types/Pass/pass.type";
 import {
   deleteMyPassParam,
   putMyPassParam,
 } from "./pass.param";
 
-class PassApi {
+class PassRepository {
   public async getMyPasses(): Promise<MyPassesResponse> {
     const { data } = await dodamAxios.get(`/out-going/my`);
     return data;
@@ -24,4 +24,4 @@ class PassApi {
   }
 }
 
-export default new PassApi();
+export default new PassRepository();

@@ -1,12 +1,12 @@
-import { MyLeavesResponse } from "src/types/leave/leave.type";
-import { dodamAxios } from "src/libs/axios/customAxios";
+import { MyLeavesResponse } from "src/types/Leave/leave.type";
+import { dodamAxios } from "src/libs/Axios/customAxios";
 import {
   deleteMyLeaveParam,
   postApplyLeaveParam,
   putMyLeaveParam,
 } from "./leave.param";
 
-class LeaveApi {
+class LeaveRepository {
   public async getMyLeaves(): Promise<MyLeavesResponse> {
     const { data } = await dodamAxios.get<MyLeavesResponse>("/out-sleeping/my");
     return data;
@@ -25,4 +25,4 @@ class LeaveApi {
   }
 }
 
-export default new LeaveApi();
+export default new LeaveRepository();

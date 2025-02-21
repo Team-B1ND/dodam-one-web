@@ -1,6 +1,6 @@
 import * as S from "./style";
 import { DodamDatePicker,DodamFilledButton } from "@b1nd/dds-web";
-import useApplyPass from "src/hooks/pass/useApplyPass";
+import useApplyPass from "src/hooks/Pass/useApplyPass";
 import ApplyNotApproveList from "../../ApplyNotApproveList";
 import ApplyPassModal from "../ApplyPassModal/";
 

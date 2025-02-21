@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
-import { AppliedLeave } from "src/types/leave/leave.type";
-import { AppliedPass } from "src/types/pass/pass.type";
-import dataCheck from "src/utils/check/dataCheck";
+import { AppliedLeave } from "src/types/Leave/leave.type";
+import { AppliedPass } from "src/types/Pass/pass.type";
+import dataCheck from "src/utils/Check/dataCheck";
 import ApplyNotApproveListItem from "./ApplyNotApproveListItem";
 import { IoOptionsOutline } from "react-icons/io5";
 import * as S from "./style";
