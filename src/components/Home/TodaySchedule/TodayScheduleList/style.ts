@@ -12,6 +12,8 @@ export const TodayScheduleListContainer = styled.div`
 
 export const TodayScheduleListVoidText = styled.p`
   ${DodamTypography.Body1.Bold}
+  width: 100%;
+  text-align: center;
   color: ${({ theme }) => theme.labelNormal};
-  margin: auto 0px; ;
+  
 `;
