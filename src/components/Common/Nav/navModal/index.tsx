@@ -3,9 +3,9 @@ import { DodamModal, ChevronRight, DodamToggleButton } from "@b1nd/dds-web";
 import { SIDE_BAR_MODAL_ITEM,SIDE_BAR_MODAL_DAUTH } from "src/constants/Nav/modal.constant";
 import * as S from "./style";
 import {useThemes} from "src/hooks/Theme/usetheme";
-import { ETheme } from "src/enum/theme/theme.enum";
+import { ETheme } from "src/enum/Theme/theme.enum";
 import { useRecoilValue } from "recoil";
-import { themeModeAtom } from "@src/store/Theme/themeStore";
+import { themeModeAtom } from "src/store/Theme/themeStore";
 
 
 interface modalProps{

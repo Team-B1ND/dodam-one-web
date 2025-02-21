@@ -2,7 +2,7 @@ import { AppliedPass } from "src/types/Pass/pass.type";
 import { AppliedLeave } from "src/types/Leave/leave.type";
 import * as S from "./style";
 import dateTransform from "src/utils/Transform/dateTransform";
-import { CgTrash } from "react-icons/cg";
+// import { CgTrash } from "react-icons/cg";
 import React from "react";
 
 interface Props {
@@ -27,7 +27,7 @@ const ApplyNotApproveListItem = ({
         onClick={() => deleteNotApprovedItem(id)}
       >
         <S.ApplyNotApproveListItemDeleteIcon>
-          <CgTrash />
+          {/* <CgTrash /> */}
         </S.ApplyNotApproveListItemDeleteIcon>
       </S.ApplyNotApproveListItemDeleteButton>
     </S.ApplyNotApproveListItemContainer>

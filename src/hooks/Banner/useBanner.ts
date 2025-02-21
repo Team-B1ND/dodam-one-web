@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useGetBannersQuery } from "src/queries/banner/banner.query";
+import { useGetBannersQuery } from "src/queries/Banner/banner.query";
 import { Banner } from "@src/types/Banner/banner.type";
-import { useGetMyMemberQuery } from "src/queries/member/member.query";
+import { useGetMyMemberQuery } from "src/queries/Member/member.query";
 
 const useBanner = () => {
   const bannersData = useGetBannersQuery({

@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { FiCheck } from "react-icons/fi";
+// import { FiCheck } from "react-icons";
 import { Bus } from "src/types/Bus/bus.type";
 import * as S from "./style";
 
@@ -27,7 +27,7 @@ const ApplyBusItem = ({
         </S.ApplyBusItemLimit>
       </S.ApplyBusItemText>
       <S.ApplyBusItemCheckIcon check={isCheck}>
-        <FiCheck />
+        {/* <FiCheck /> */}
       </S.ApplyBusItemCheckIcon>
       {/* {wasChecked === busData.id && wasChecked === currentSelectBusIdx && (
         <S.ApplyBusItemDeleteButton>

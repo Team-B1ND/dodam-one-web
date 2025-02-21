@@ -15,8 +15,11 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1(react-dom@18.3.1(react@18.3.1))
       '@b1nd/dds-web':
-        specifier: ^0.1.30
-        version: 0.1.31(react-dom@18.3.1(react@18.3.1))(rollup@2.79.2)(typescript@4.9.5)
+        specifier: ^0.1.32
+        version: 0.1.32(react-dom@18.3.1(react@18.3.1))(rollup@2.79.2)(typescript@4.9.5)
+      '@react-icons/all-files':
+        specifier: ^4.1.0
+        version: 4.1.0(react@18.3.1)
       '@testing-library/jest-dom':
         specifier: ^5.17.0
         version: 5.17.0
@@ -62,9 +65,6 @@ importers:
       react-error-boundary:
         specifier: ^5.0.0
         version: 5.0.0(react@18.3.1)
-      react-icons:
-        specifier: ^5.4.0
-        version: 5.5.0(react@18.3.1)
       react-query:
         specifier: ^3.39.2
         version: 3.39.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -131,8 +131,8 @@ packages:
   '@b1nd/b1nd-toastify@2.0.1':
     resolution: {integrity: sha512-V9St3lTefi2vFHCpbkSWbrH9AtjmUcxyR90akFNlchH+AymxTpkdzWRfW2hOEIVgAYjG7VGJqy9pTotfuiaSCQ==}
 
-  '@b1nd/dds-web@0.1.31':
-    resolution: {integrity: sha512-m1N4nc56MmsMJoVEJ9NbBD2F7yrJt6tfktta/nmKYJ+2jwUHgBsJtWo/E025n1qtaGiEwj3Tu5Lnen+7hhZfyg==}
+  '@b1nd/dds-web@0.1.32':
+    resolution: {integrity: sha512-lyNBLi6r0xv7SRyEfl8faj1kkkEt+ubxkSIaerUf7TknsVxhKEvSuL2Ud06n4jLFmm0XWAJn89/FL3Y/9voyrQ==}
 
   '@babel/code-frame@7.26.2':
     resolution: {integrity: sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ==}
@@ -1393,6 +1393,11 @@ packages:
         optional: true
       webpack-plugin-serve:
         optional: true
+
+  '@react-icons/all-files@4.1.0':
+    resolution: {integrity: sha512-hxBI2UOuVaI3O/BhQfhtb4kcGn9ft12RWAFVMUeNjqqhLsHvFtzIkFaptBJpFDANTKoDfdVoHTKZDlwKCACbMQ==}
+    peerDependencies:
+      react: '*'
 
   '@rollup/plugin-babel@5.3.1':
     resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
@@ -5110,11 +5115,6 @@ packages:
   react-error-overlay@6.1.0:
     resolution: {integrity: sha512-SN/U6Ytxf1QGkw/9ve5Y+NxBbZM6Ht95tuXNMKs8EJyFa/Vy/+Co3stop3KBHARfn/giv+Lj1uUnTfOJ3moFEQ==}
 
-  react-icons@5.5.0:
-    resolution: {integrity: sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==}
-    peerDependencies:
-      react: '*'
-
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -6298,7 +6298,7 @@ snapshots:
     transitivePeerDependencies:
       - react-dom
 
-  '@b1nd/dds-web@0.1.31(react-dom@18.3.1(react@18.3.1))(rollup@2.79.2)(typescript@4.9.5)':
+  '@b1nd/dds-web@0.1.32(react-dom@18.3.1(react@18.3.1))(rollup@2.79.2)(typescript@4.9.5)':
     dependencies:
       '@rollup/plugin-image': 3.0.3(rollup@2.79.2)
       '@rollup/plugin-replace': 6.0.2(rollup@2.79.2)
@@ -7708,6 +7708,10 @@ snapshots:
     optionalDependencies:
       type-fest: 0.21.3
       webpack-dev-server: 4.15.2(webpack@5.98.0(esbuild@0.23.1))
+
+  '@react-icons/all-files@4.1.0(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
 
   '@rollup/plugin-babel@5.3.1(@babel/core@7.26.9)(@types/babel__core@7.20.5)(rollup@2.79.2)':
     dependencies:
@@ -12153,10 +12157,6 @@ snapshots:
       react: 18.3.1
 
   react-error-overlay@6.1.0: {}
-
-  react-icons@5.5.0(react@18.3.1):
-    dependencies:
-      react: 18.3.1
 
   react-is@16.13.1: {}
 

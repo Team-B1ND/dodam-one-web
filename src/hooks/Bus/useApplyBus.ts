@@ -6,11 +6,11 @@ import {
   useGetMyBusQuery,
   usePatchMyBusMutation,
   usePostMyBusMutation,
-} from "src/queries/bus/bus.query";
+} from "src/queries/Bus/bus.query";
 import { Bus } from "@src/types/Bus/bus.type";
 // import { captureException, withScope } from "@sentry/react";
 import { AxiosError } from "axios";
-import ErrorHandler from "@src/utils/Error/ErrorHandler";
+import ErrorHandler from "src/utils/Error/ErrorHandler";
 
 const useApplyBus = () => {
   const queryClient = useQueryClient();

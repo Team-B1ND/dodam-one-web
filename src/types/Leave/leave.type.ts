@@ -1,5 +1,5 @@
 import { Student } from "../Member/member.type";
-import { Response } from "../util/response.type";
+import { Response } from "../Util/response.type";
 
 export interface Leave {
   endAt: string;

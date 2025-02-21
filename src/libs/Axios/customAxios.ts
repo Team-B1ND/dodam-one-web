@@ -3,8 +3,8 @@ import config from "src/config/config.json";
 import {
   ACCESS_TOKEN_KEY,
   REQUEST_TOKEN_KEY,
-} from "src/constants/token/token.constant";
-import token from "../token/token";
+} from "src/constants/Token/token.constant";
+import token from "../Token/token";
 import errorResponseHandler from "./errorResponseHandler";
 import requestHandler from "./requestHandler";
 

@@ -4,7 +4,7 @@ import { DodamModal,DodamFilledButton} from "@b1nd/dds-web";
 import { useQueryClient } from "react-query";
 import {
     usePostApplyPassMutation,
-  } from "src/queries/pass/pass.query";
+  } from "src/queries/Pass/pass.query";
 import  {ApplyPass } from "src/types/Pass/pass.type";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
 

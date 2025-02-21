@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { APPLY_ITEMS } from "src/constants/apply/apply.constant";
+import { APPLY_ITEMS } from "src/constants/Apply/apply.constant";
 import ApplyBus from "./ApplyBus";
 import ApplyLeave from "./ApplyLeave";
 import ApplyPass from "./ApplyPass";

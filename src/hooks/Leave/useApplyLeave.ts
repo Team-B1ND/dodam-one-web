@@ -7,9 +7,9 @@ import {
   useGetMyLeavesQuery,
   usePostApplyLeaveMutation,
   usePutApplyLeaveMutation,
-} from "src/queries/leave/leave.query";
-import { AppliedLeave, ApplyLeave } from "@src/types/Leave/leave.type";
-import dateTransform from "@src/utils/Transform/dateTransform";
+} from "src/queries/Leave/leave.query";
+import { AppliedLeave, ApplyLeave } from "src/types/Leave/leave.type";
+import dateTransform from "src/utils/Transform/dateTransform";
 // import { captureException, withScope } from "@sentry/react";
 
 const useApplyLeave = () => {

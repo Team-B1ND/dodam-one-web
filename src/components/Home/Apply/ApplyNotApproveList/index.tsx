@@ -3,9 +3,7 @@ import { AppliedLeave } from "src/types/Leave/leave.type";
 import { AppliedPass } from "src/types/Pass/pass.type";
 import dataCheck from "src/utils/Check/dataCheck";
 import ApplyNotApproveListItem from "./ApplyNotApproveListItem";
-import { IoOptionsOutline } from "react-icons/io5";
 import * as S from "./style";
-import { AiOutlineFolderOpen } from "react-icons/ai"; 
 import React from "react";
 
 interface Props {
@@ -30,7 +28,7 @@ const ApplyNotApproveList = ({
         dataCheck.voidCheck(notApproveItems!) ? (
           <S.ApplyNotApproveListVoidWrap>
             <S.ApplyNotApproveListVoidIcon>
-              <AiOutlineFolderOpen />
+              {/* <AiOutlineFolderOpen /> */}
             </S.ApplyNotApproveListVoidIcon>
           </S.ApplyNotApproveListVoidWrap>
         ) : (
@@ -48,7 +46,7 @@ const ApplyNotApproveList = ({
       </S.ApplyNotApproveListWrap>
       <S.ApplyNotApproveListFoldButton onClick={() => setFold((prev) => !prev)}>
         <S.ApplyNotApproveListFoldIcon>
-          <IoOptionsOutline />
+          {/* <IoOptionsOutline /> */}
         </S.ApplyNotApproveListFoldIcon>
       </S.ApplyNotApproveListFoldButton>
     </S.ApplyNotApproveListContainer>
