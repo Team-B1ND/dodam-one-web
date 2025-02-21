@@ -1,8 +1,8 @@
-import { dodamAxios } from "src/libs/axios/customAxios";
-import { BusesResponse, MyBusResponse } from "src/types/bus/bus.type";
+import { dodamAxios } from "src/libs/Axios/customAxios";
+import { BusesResponse, MyBusResponse } from "@src/types/Bus/bus.type";
 import { patchMyBusParam, postMyBusParam } from "./bus.param";
 
-class BusApi {
+class BusRepository {
   public async getBuses(): Promise<BusesResponse> {
     const { data } = await dodamAxios.get("/bus");
     return data;
@@ -22,4 +22,4 @@ class BusApi {
   }
 }
 
-export default new BusApi();
+export default new BusRepository();

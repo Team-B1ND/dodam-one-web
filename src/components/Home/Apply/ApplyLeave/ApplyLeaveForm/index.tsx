@@ -1,6 +1,6 @@
 import * as S from "./style";
 import { DodamDatePicker,DodamFilledButton } from "@b1nd/dds-web";
-import useApplyLeave from "src/hooks/leave/useApplyLeave";
+import useApplyLeave from "src/hooks/Leave/useApplyLeave";
 import ApplyNotApproveList from "../../ApplyNotApproveList";
 
 const ApplyLeaveForm = () => {

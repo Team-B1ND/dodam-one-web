@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { useQuery, UseQueryOptions, UseQueryResult, useMutation } from "react-query";
-import { MyMemberResponse,AuthCodeReqProps,AuthCodeSendProps } from "src/types/member/member.type";
-import MemberRepository from "src/api/member/member.api";
+import { MyMemberResponse,AuthCodeReqProps,AuthCodeSendProps } from "@src/types/Member/member.type";
+import MemberRepository from "@src/repositories/Member/member.repository";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
 import token from "src/libs/token/token";
 import { QUERY_KEYS } from "../queryKey";

@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from "react";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
-import { Signup, SignupAgree, SignUpModal } from "src/types/signup/signup.type";
-import patternCheck from "src/utils/check/patternCheck";
+import { Signup, SignupAgree, SignUpModal } from "@src/types/Signup/signup.type";
+import patternCheck from "@src/utils/Check/patternCheck";
 // import * as Sentry from "sentry/react"
-import memberRepository from "src/api/member/member.api";
-import ErrorHandler from "src/utils/error/ErrorHandler";
+import memberRepository from "@src/repositories/Member/member.repository";
+import ErrorHandler from "@src/utils/Error/ErrorHandler";
 import { AxiosError } from "axios";
 import { DodamDialog } from "@b1nd/dds-web";
 import { useReqAuthCode,useSendAuthCode } from "src/queries/member/member.query";

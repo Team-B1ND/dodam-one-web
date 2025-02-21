@@ -1,6 +1,6 @@
 import { DodamFilledButton, DodamTextField } from "@b1nd/dds-web";
 import * as S from "./style";
-import {useSignIn} from "src/hooks/auth/useSignIn";
+import {useSignIn} from "src/hooks/Auth/useSignIn";
 
 
 const SignIn = () => {

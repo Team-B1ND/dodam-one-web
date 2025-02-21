@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LoginResponse } from "src/types/login/login.type";
+import { LoginResponse } from "@src/types/Login/login.type";
 import { LoginParam, NewAccessTokenResponse } from "./auth.param";
 import config from "src/config/config.json";
 

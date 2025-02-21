@@ -1,7 +1,7 @@
 import { DodamFilledButton } from "@b1nd/dds-web";
-import useApplyBus from "src/hooks/bus/useApplyBus";
-import dataCheck from "src/utils/check/dataCheck";
-import dateTransform from "src/utils/transform/dateTransform";
+import useApplyBus from "src/hooks/Bus/useApplyBus";
+import dataCheck from "src/utils/Check/dataCheck";
+import dateTransform from "src/utils/Transform/dateTransform";
 import ApplyBusItem from "../ApplyBusItem";
 import * as S from "./style";
 

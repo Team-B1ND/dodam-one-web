@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { DevEventType } from "src/types/devEvent/devEvent.type";
+import { DevEventType } from "@src/types/DevEvent/devEvent.type";
 // import DevEventConferenceImage from "src/assets/images/devEvent/devEventConference.svg";
 // import DevEventCompetitionImage from "src/assets/images/devEvent/devEventCompetition.svg";
 // import DevEventWebinarImage from "src/assets/images/devEvent/devEventWebinar.svg";

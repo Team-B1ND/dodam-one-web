@@ -1,7 +1,7 @@
 import React, { FormEvent, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import authRepository from "src/api/auth/auth.repository";
-import { Login } from "src/types/login/login.type";
+import authRepository from "@src/repositories/Auth/auth.repository";
+import { Login } from "@src/types/Login/login.type";
 import token from "src/libs/token/token";
 import {
   ACCESS_TOKEN_KEY,
@@ -12,9 +12,9 @@ import { useQueryClient } from "react-query";
 // import * as Sentry from "sentry/react";
 import { QUERY_KEYS } from "src/queries/queryKey";
 import { AxiosError } from "axios";
-import ErrorHandler from "src/utils/error/ErrorHandler";
+import ErrorHandler from "@src/utils/Error/ErrorHandler";
 import { useRecoilValue } from "recoil";
-import { pointViewTypeAtom } from "src/store/point/pointStore";
+import { pointViewTypeAtom } from "@src/store/Point/pointStore";
 // import { PasswordParm } from "src/types/login/login.type";
 
 export const useSignIn = () => {

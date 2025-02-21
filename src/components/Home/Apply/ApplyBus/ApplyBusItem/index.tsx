@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { FiCheck } from "react-icons/fi";
-import { Bus } from "src/types/bus/bus.type";
+import { Bus } from "src/types/Bus/bus.type";
 import * as S from "./style";
 
 interface Props {
