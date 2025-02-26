@@ -7,6 +7,6 @@ export interface Schedule {
   targetGrades: string[];
 }
 
-export interface TodayScheduleResponse extends Response {
+export interface ScheduleResponse extends Response {
   data: Schedule[];
 }

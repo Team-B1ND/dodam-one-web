@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { skeletonAnimtaion } from "@b1nd/b1nd-styled-components-util";
 
-const TodayScheduleListFallbackLoader = () => {
+const ScheduleListFallbackLoader = () => {
   return (
     <Container>
-      {Array.from({ length: 4 }).map((_, idx) => (
+      {Array.from({ length: 2 }).map((_, idx) => (
         <ItemBox key={idx} >
           <ItemFrist/>
           <ItemSecond />
@@ -27,7 +27,7 @@ const ItemBox = styled.div`
   flex-direction: column;
   gap: 8px;
   width: 100%;
-  height: 58px;
+  height: 47px;
 `
 
 const ItemFrist = styled.div`
@@ -41,4 +41,4 @@ const ItemSecond = styled.div`
   ${skeletonAnimtaion}
 `
 
-export default TodayScheduleListFallbackLoader;
+export default ScheduleListFallbackLoader;

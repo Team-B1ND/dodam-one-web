@@ -1,19 +1,19 @@
 import { AxiosError } from "axios";
 import { useQuery, UseQueryOptions, UseQueryResult } from "react-query";
 import scheduleRepository from "src/repositories/Schedule/schedule.repository";
-import { TodayScheduleResponse } from "src/types/Schedule/schedule.type";
+import { ScheduleResponse } from "src/types/Schedule/schedule.type";
 import { QUERY_KEYS } from "../queryKey";
 
-export const useGetTodayScheduleQuery = (
+export const useGetScheduleQuery = (
   options?: UseQueryOptions<
-    TodayScheduleResponse,
+    ScheduleResponse,
     AxiosError,
-    TodayScheduleResponse,
+    ScheduleResponse,
     string
   >
-): UseQueryResult<TodayScheduleResponse, AxiosError> =>
+): UseQueryResult<ScheduleResponse, AxiosError> =>
   useQuery(
-    QUERY_KEYS.schedule.getToday,
+    QUERY_KEYS.schedule.get,
     () => scheduleRepository.getTodaySchedules(),
     {
       suspense: true,

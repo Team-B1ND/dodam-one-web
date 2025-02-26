@@ -16,6 +16,7 @@ export const MainDataVeiw = styled.div`
 export const MainDataGridBox = styled.div`
   width: 100%;
   height: 100%;
+  padding-top: 20px;
   display: grid;
   grid-template-rows: repeat(2, auto);
   grid-template-columns: 1fr 1fr ;

@@ -1,9 +1,8 @@
 import { DodamShape } from "@b1nd/dds-web";
 import styled from "styled-components";
 
-export const TodayScheduleContainer = styled.div`
- display: flex;
-  width: 388px;
+export const ScheduleContainer = styled.div`
+  display: flex;
   height: 200px;
   padding: 20px;
   flex-direction: column;

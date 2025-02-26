@@ -1,7 +1,9 @@
 import React from "react"
 import * as S from "./style";
 import Banner from "src/components/Home/Banner";
-import TodaySchedule from "src/components/Home/TodaySchedule";
+import Schedule from "src/components/Home/Schedule";
+import TodayWakeupSong from "src/components/Home/TodayWakeupSong";
+import Meal from "src/components/Home/Meal";
 // import Apply from "src/components/Home/Apply";
 
 const HomePage = ()=>{
@@ -11,9 +13,9 @@ const HomePage = ()=>{
                 <Banner/>
                 <S.MainDataGridBox>
         
-                        <TodaySchedule/>
-             
-                    
+                    <Schedule/>
+                    <TodayWakeupSong/>
+                    <Meal/>
                 </S.MainDataGridBox>
             </S.MainDataVeiw>
             <S.SideProfile>
