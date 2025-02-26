@@ -5,17 +5,23 @@ interface Props {
   wakeupSongData: WakeupSong;
 }
 
-const TodayWakeupSongItem = ({ wakeupSongData }: Props) => (
-  <S.TodayWakeupSongItemContainer>
-    <S.TodayWakeupSongItemBackgroundWrap onClick={()=> window.open(wakeupSongData.videoUrl)}>
+const TodayWakeupSongItem = ({ wakeupSongData }: Props) => {
+  const [title, singer] = wakeupSongData.videoTitle.split(" - ");
+return(
+  <S.TodayWakeupSongItemContainer onClick={()=> window.open(wakeupSongData.videoUrl)}>
+    <S.TodayWakeupSongItemBackgroundWrap>
       <S.TodayWakeupSongItemBackground src={wakeupSongData.thumbnail} />
-      <S.TodayWakeupSongItemTextWrap>
-        <S.TodayWakeupSongItemText>
-          {wakeupSongData.videoTitle}
-        </S.TodayWakeupSongItemText>
-      </S.TodayWakeupSongItemTextWrap>
     </S.TodayWakeupSongItemBackgroundWrap>
+    <S.TodayWakeupSongItemTextWrap>
+        <span>
+          {title}
+        </span>
+        <span>
+          {singer}
+        </span>
+      </S.TodayWakeupSongItemTextWrap>
   </S.TodayWakeupSongItemContainer>
-);
+)
+}
 
 export default TodayWakeupSongItem;

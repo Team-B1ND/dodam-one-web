@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const TodayWakeupSongListContainer = styled.div`
-  width: 246px;
+  width: 100%;
   height: 100%;
   padding: 5px 0px;
   display: flex;

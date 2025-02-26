@@ -4,7 +4,7 @@ import { skeletonAnimtaion } from "@b1nd/b1nd-styled-components-util";
 const TodayWakeupSongListFallback = () => {
   return (
     <Container>
-      {Array.from({ length: 3 }).map((_, idx) => (
+      {Array.from({ length: 2 }).map((_, idx) => (
         <Item key={idx} />
       ))}
     </Container>
@@ -12,7 +12,7 @@ const TodayWakeupSongListFallback = () => {
 };
 
 const Container = styled.div`
-  width: 246px;
+  width: 100%;
   height: 100%;
   padding: 5px 0px;
   display: flex;
