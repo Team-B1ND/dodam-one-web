@@ -2,6 +2,7 @@ import { B1ndToast } from "@b1nd/b1nd-toastify";
 import { useEffect, useState } from "react";
 import { useQueryClient } from "react-query";
 import {
+  useDeleteMyBusMutatuin,
   useGetBusesQuery,
   useGetMyBusQuery,
   usePatchMyBusMutation,
@@ -24,6 +25,7 @@ const useApplyBus = () => {
 
   const postMyBusMutation = usePostMyBusMutation();
   const patchMyBusMutation = usePatchMyBusMutation();
+  const deleteMyBusMutatuin = useDeleteMyBusMutatuin();
 
   //버스 리스트를 담는 상태
   const [busList, setBusList] = useState<Bus[]>([]);
@@ -63,15 +65,36 @@ const useApplyBus = () => {
     setIsChange(false);
   }, [selectBusIdx, wasCheckedIdx]);
 
-  const handleBusData = (idx: number) => setSelectBusIdx(idx);
+  const handleBusData = (idx: number) => {
+    setSelectBusIdx((prev) => (prev === idx ? -1 : idx));
+  };
 
   const submitMyBus = async () => {
-    //원래 신청했었다가 다른 걸 골라서 수정하는 경우
+    if (selectBusIdx === -1) {
+      // 신청 취소 API 호출
+      if (wasCheckedIdx !== -1) {
+        deleteMyBusMutatuin.mutateAsync(
+          { idx: String(selectBusIdx)  }, 
+          {
+            onSuccess: () => {
+              queryClient.invalidateQueries("bus/getMyBus");
+              queryClient.invalidateQueries("bus/getBuses");
+              setWasCheckedIdx(-1);
+              B1ndToast.showSuccess("버스 신청 취소 성공");
+            },
+            onError: (err) => {
+              B1ndToast.showError(ErrorHandler.busError(err as AxiosError)!);
+            },
+          }
+        );
+      }
+      return;
+    }
+  
     if (wasCheckedIdx !== -1 && isChange) {
+      // 신청 수정
       patchMyBusMutation.mutateAsync(
-        {
-          idx: String(selectBusIdx),
-        },
+        { idx: String(selectBusIdx) },
         {
           onSuccess: () => {
             queryClient.invalidateQueries("bus/getMyBus");
@@ -81,14 +104,11 @@ const useApplyBus = () => {
           },
           onError: (err) => {
             B1ndToast.showError(ErrorHandler.busError(err as AxiosError)!);
-            // withScope((scope) => {
-            //   scope.setContext("query", { queryHash: query.idx });
-            //   captureException(`${query.idx}에서  ${err}이유로 버스 신청 실패`);
-            // });
           },
         }
       );
     } else {
+      // 새로운 신청
       postMyBusMutation.mutateAsync(
         { idx: String(selectBusIdx) },
         {
@@ -100,15 +120,12 @@ const useApplyBus = () => {
           },
           onError: (err) => {
             B1ndToast.showError(ErrorHandler.busError(err as AxiosError)!);
-            // withScope((scope) => {
-            //   scope.setContext("query", { queryHash: query.idx });
-            //   captureException(`${query.idx}에서  ${err}이유로 버스 신청 실패`);
-            // });
           },
         }
       );
     }
   };
+  
 
   return {
     selectBusIdx,

@@ -33,3 +33,10 @@ export const usePatchMyBusMutation = () => {
   );
   return mutation;
 };
+
+export const useDeleteMyBusMutatuin = () => {
+  const mutation = useMutation(({ idx }: patchMyBusParam) =>
+    busrepository.deleteMyBus({ idx })
+  );
+  return mutation;
+}

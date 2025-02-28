@@ -1,5 +1,4 @@
-import dayjs from "dayjs";
-// import { FiCheck } from "react-icons";
+import { Checkmark } from "@b1nd/dds-web";
 import { Bus } from "src/types/Bus/bus.type";
 import * as S from "./style";
 
@@ -19,23 +18,17 @@ const ApplyBusItem = ({
   return (
     <S.ApplyBusItemContainer onClick={() => handleBusData(busData.id)}>
       <S.ApplyBusItemText>
-        {busData.busName} ({dayjs(busData.leaveTime).format("HH:mm")}){" "}
-        <S.ApplyBusItemLimit
-          isLimit={busData.applyCount === busData.peopleLimit}
-        >
-          {`${busData.applyCount}/${busData.peopleLimit}`}
-        </S.ApplyBusItemLimit>
+        {busData.busName} 
       </S.ApplyBusItemText>
-      <S.ApplyBusItemCheckIcon check={isCheck}>
-        {/* <FiCheck /> */}
-      </S.ApplyBusItemCheckIcon>
-      {/* {wasChecked === busData.id && wasChecked === currentSelectBusIdx && (
-        <S.ApplyBusItemDeleteButton>
-          <S.ApplyBusItemDeleteIcon>
-            <IoMdTrash />
-          </S.ApplyBusItemDeleteIcon>
-        </S.ApplyBusItemDeleteButton>
-      )} */}
+      <S.ApplyBusItemCheckBox>
+       <S.ApplyBusItemLimit
+          isCheck={isCheck}
+          isLimit={busData.applyCount === busData.peopleLimit}
+          >
+            {`${busData.applyCount}/${busData.peopleLimit}`}
+          </S.ApplyBusItemLimit>
+          {isCheck ? <Checkmark size={16} color="primaryNormal"/>: ""}
+        </S.ApplyBusItemCheckBox>
     </S.ApplyBusItemContainer>
   );
 };

@@ -17,9 +17,8 @@ export const ApplyNotApproveListFoldButton = styled.button`
 
 export const ApplyNotApproveListContainer = styled.div<{ fold: boolean }>`
   top: 0px;
-  position: absolute;
   display: flex;
-  transition: left 0.3s ease 0s;
+
 
   ${({ fold }) =>
     fold
@@ -39,7 +38,7 @@ export const ApplyNotApproveListWrap = styled.div`
   display: flex;
   flex-direction: column;
   width: 124px;
-  height: 265px;
+  height: 100%;
   border-right: 1px solid ${({ theme }) => theme.borderColor};
   background-color: ${({ theme }) => theme.backgroundColor3};
 `;

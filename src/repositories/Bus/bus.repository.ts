@@ -20,6 +20,10 @@ class BusRepository {
   public async patchMyBus({ idx }: patchMyBusParam): Promise<void> {
     await dodamAxios.patch(`/bus/apply/${idx}`);
   }
+  
+  public async deleteMyBus({ idx }: patchMyBusParam): Promise<void> {
+    await dodamAxios.delete(`/bus/apply/${idx}`);
+  }
 }
 
 export default new BusRepository();
