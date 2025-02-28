@@ -7,8 +7,6 @@ export const ApplyPassFormContainer = styled.div<{ isFold: boolean }>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: left 0.3s ease 0s;
-  position: relative;
   color: ${({ theme }) => theme.contrast};
   ${({ isFold }) =>
     isFold

@@ -1,7 +1,7 @@
 import * as S from "./style";
 import { DodamDatePicker,DodamFilledButton } from "@b1nd/dds-web";
 import useApplyPass from "src/hooks/Pass/useApplyPass";
-import ApplyNotApproveList from "../../ApplyNotApproveList";
+
 import ApplyPassModal from "../ApplyPassModal/";
 
 const ApplyPassForm = () => {
@@ -9,10 +9,7 @@ const ApplyPassForm = () => {
     closeModal,
     isOpen,
     isFold,
-    setIsFold,
     notApprovedPasses,
-    loadNotApprovedPass,
-    deleteNotApprovedPass,
     passData,
     handlePassData,
     handlePassDataReason,
@@ -23,13 +20,7 @@ const ApplyPassForm = () => {
 
   return (
     <>
-      <ApplyNotApproveList
-        fold={isFold}
-        setFold={setIsFold}
-        notApproveItems={notApprovedPasses}
-        loadNotApprovedItem={loadNotApprovedPass}
-        deleteNotApprovedItem={deleteNotApprovedPass}
-      />
+     
       <S.ApplyPassFormContainer isFold={isFold}>
         {!isFold && notApprovedPasses.length === 0 ? (
           <>수정할 외출 정보가 없습니다.</>
