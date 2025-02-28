@@ -14,15 +14,17 @@ const ScheduleItem = ({ data }: Props) => {
 
   // 오늘 날짜 구하기 (YYYY-MM-DD)
   const today = new Date().toISOString().split("T")[0];
+  
 
   // 일정 시작일과 종료일
   const [startDate, endDate] = data.date;
   
+  console.log(startDate, endDate, today);
   const isSingleDate = startDate === endDate;
 
 
   // 날짜 출력
-  const displayDate = isSingleDate ? startDate : today > startDate ? today : startDate;
+  const displayDate = isSingleDate ? startDate :  endDate > today && today > startDate ? today : startDate;
 
   return (
     <S.ScheduleItemContainer>
