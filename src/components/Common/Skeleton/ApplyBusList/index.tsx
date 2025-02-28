@@ -17,15 +17,12 @@ const ApplyBusListFallbackLoader = () => {
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  padding: 10px 0px;
   display: flex;
   flex-direction: column;
-  row-gap: 5px;
 `;
 const ItemBox = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
   width: 100%;
   height: 40px;
 `

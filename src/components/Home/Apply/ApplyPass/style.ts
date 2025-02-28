@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DodamColor, DodamShadow, DodamShape, DodamTypography } from "@b1nd/dds-web";
+import { DodamShadow, DodamShape, DodamTypography } from "@b1nd/dds-web";
 
 export const ApplyPassContainer = styled.div`
   width: 100%;
@@ -40,28 +40,7 @@ export const ApplyPassFormInputWrap = styled.div`
   justify-content: flex-end;
 `;
 
-export const ApplyPassFormDatePickerWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-`;
 
-export const ApplyPassFormDatePickerIcon = styled.label`
-  font-size: 24px;
-  color: ${({ theme }) => theme.labelNormal};
-  position: absolute;
-  top: 50%;
-  transform: translate(0%, -50%);
-  right: 0px;
-  padding: 12px;
-  border-radius: 100%;
-  cursor: pointer;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.04);
-  }
-`;
 
 export const ApplyPassFormTimeInputWrap = styled.div`
   width: 105px;
@@ -100,12 +79,3 @@ export const ApplyPassFormTimeInputTilde = styled.span`
   color: ${({ theme }) => theme.lineNormal};
   margin: 0px 5px;
 `;
-
-export const ApplyPassFormNoticeText = styled.p`
-  ${DodamTypography.Caption2.Medium};
-  color: ${DodamColor.red50};
-`;
-
-
-
-

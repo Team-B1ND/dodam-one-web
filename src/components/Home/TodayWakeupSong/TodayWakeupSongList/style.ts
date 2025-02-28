@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DodamTypography } from "@b1nd/dds-web";
 
 export const TodayWakeupSongListContainer = styled.div`
   width: 100%;
@@ -10,7 +11,7 @@ export const TodayWakeupSongListContainer = styled.div`
 `;
 
 export const TodayWakeupSongListVoidText = styled.p`
-  font-size: 14px;
-  color: ${({ theme }) => theme.contrast};
+  ${DodamTypography.Body1.Medium}
+  color: ${({ theme }) => theme.labelNormal};
   margin: auto 0px;
 `;

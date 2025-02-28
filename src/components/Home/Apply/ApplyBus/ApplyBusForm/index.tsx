@@ -29,9 +29,6 @@ const ApplyBusForm = () => {
                 />
               ))}
             </S.ApplyBusFormItemWrap>
-          {/* <DodamFilledButton onClick={submitMyBus}size="Large" >
-                신청
-          </DodamFilledButton> */}
         </>
       ) : (
         <S.ApplyBusFormVoidText>버스 정보가 없습니다.</S.ApplyBusFormVoidText>

@@ -10,7 +10,7 @@ export const ScheduleListContainer = styled.div`
 `;
 
 export const ScheduleListVoidText = styled.p`
-  ${DodamTypography.Body1.Bold}
+  ${DodamTypography.Body1.Medium};
   width: 100%;
   text-align: center;
   color: ${({ theme }) => theme.labelNormal};
