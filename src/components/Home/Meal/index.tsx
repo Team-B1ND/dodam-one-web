@@ -23,13 +23,11 @@ const Meal = () => {
           itemKey="mealDatePicker"
           width={100}
           height={30}
-
+          customStyle={{ border: 0,color:"#0083F0"}}
           onChange={handleMealDate} 
           value={mealDate} 
           title="급식"          
-          // value={mealDate}
-          // splitCharacter={"-"}
-          
+          type="entire"
         />
       </S.MealDatePickerContainer>
       <DodamErrorBoundary text="에러발생" showButton={true}>
