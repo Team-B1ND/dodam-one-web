@@ -30,3 +30,18 @@ export const SideProfile = styled.aside`
     height: 100%;
     padding: 0 32px;
 `
+
+export const DraggableBox = styled.div`
+  outline: none;
+  position: relative;
+`;
+
+export const DragHandle = styled.div`
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 20px;
+  left: 20px;
+  cursor: grab;
+  user-select: none;
+`;
