@@ -16,6 +16,7 @@ const myInfoWakeupSongItem = ({ wakeupSongData }: Props) => {
     <S.MyInfoWakeupSongItemContainer
       onClick={() => window.open(wakeupSongData.videoUrl)}
     >
+    <div style={{display:"flex",gap:"4px"}}>
       <S.MyInfoWakeupSongItemImg
         src={wakeupSongData.thumbnail}
         alt={"myInfoWakeupSongItem/myInfoWakeupSongItemImg"}
@@ -30,7 +31,12 @@ const myInfoWakeupSongItem = ({ wakeupSongData }: Props) => {
           </S.MyInfoWakeupSongItemSubTitle>
         </S.MyInfoWakeupSongItemSubInfoWrap>
       </S.MyInfoWakeupSongItemInfoWrap>
-      <DodamTag text={status=="PENDING" ? "대기" : "완료"} color={status=="PENDING" ? "default" : "blue"}/>
+      </div>
+      <DodamTag 
+       text={status=="PENDING" ? "대기" : "완료"} 
+       color={status=="PENDING" ? "default" : "blue"}
+       customStyle={{minWidth:"50px"}}
+       />
     </S.MyInfoWakeupSongItemContainer>
   );
 };
