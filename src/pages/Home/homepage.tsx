@@ -5,7 +5,7 @@ import Schedule from "src/components/Home/Schedule";
 import TodayWakeupSong from "src/components/Home/TodayWakeupSong";
 import Meal from "src/components/Home/Meal";
 import Apply from "src/components/Home/Apply";
-
+import MyInfo from "src/components/Home/Myinfo";
 const HomePage = ()=>{
     return(
         <S.Main>
@@ -19,7 +19,7 @@ const HomePage = ()=>{
                 </S.MainDataGridBox>
             </S.MainDataVeiw>
             <S.SideProfile>
-                
+                <MyInfo/>
             </S.SideProfile>    
             
         </S.Main>

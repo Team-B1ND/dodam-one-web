@@ -1,5 +1,5 @@
 import styled,{css} from "styled-components";
-import { DodamColor, DodamTypography } from "@b1nd/dds-web";
+import { DodamTypography } from "@b1nd/dds-web";
 
 export const ApplyLeaveContainer = styled.div`
   width: 100%;

@@ -26,4 +26,7 @@ export const MainDataGridBox = styled.div`
 
 export const SideProfile = styled.aside`
     display: flex;
+    width: 30%;
+    height: 100%;
+    padding: 0 32px;
 `

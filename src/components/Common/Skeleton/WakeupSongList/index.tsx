@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import { skeletonAnimtaion } from "@b1nd/b1nd-styled-components-util";
 
-const TodayWakeupSongListFallback = () => {
+interface props{
+  length:number;
+}
+
+const WakeupSongListFallback = ({length=2}:props) => {
   return (
     <Container>
-      {Array.from({ length: 2 }).map((_, idx) => (
+      {Array.from({ length: length }).map((_, idx) => (
         <Item key={idx} />
       ))}
     </Container>
@@ -28,4 +32,4 @@ const Item = styled.div`
   ${skeletonAnimtaion}
 `;
 
-export default TodayWakeupSongListFallback;
+export default WakeupSongListFallback;

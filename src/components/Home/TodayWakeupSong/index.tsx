@@ -1,7 +1,7 @@
 import * as S from "./style";
 import { Suspense } from "react";
 import TodayWakeupSongList from "./TodayWakeupSongList";
-import TodayWakeupSongListFallback from "../../Common/Skeleton/TodayWakeupSongList";
+import WakeupSongListFallback from "../../Common/Skeleton/WakeupSongList";
 import CardTitle from "../../Common/CardTitle";;
 import { DodamErrorBoundary } from "@b1nd/dds-web";
 
@@ -14,7 +14,7 @@ const TodayWakeupSong = () => {
         redirectURL={"http://dodam.b1nd.com/wakesong"}
       />
       <DodamErrorBoundary text="오류가 발생했습니다." showButton={true}>
-        <Suspense fallback={<TodayWakeupSongListFallback />}>
+        <Suspense fallback={<WakeupSongListFallback length={2} />}>
           <TodayWakeupSongList />
         </Suspense>
       </DodamErrorBoundary>
