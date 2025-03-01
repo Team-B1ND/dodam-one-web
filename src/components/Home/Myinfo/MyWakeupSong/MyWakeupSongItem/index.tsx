@@ -10,8 +10,6 @@ interface Props {
 
 const myInfoWakeupSongItem = ({ wakeupSongData }: Props) => {
 
-  const status = wakeupSongData.status
-
   return (
     <S.MyInfoWakeupSongItemContainer
       onClick={() => window.open(wakeupSongData.videoUrl)}
@@ -33,8 +31,8 @@ const myInfoWakeupSongItem = ({ wakeupSongData }: Props) => {
       </S.MyInfoWakeupSongItemInfoWrap>
       </div>
       <DodamTag 
-       text={status=="PENDING" ? "대기" : "완료"} 
-       color={status=="PENDING" ? "default" : "blue"}
+       text="대기"
+       color="default"
        customStyle={{minWidth:"50px"}}
        />
     </S.MyInfoWakeupSongItemContainer>

@@ -1,6 +1,7 @@
 import { useGetMyWakeupSongsQuery } from "src/queries/WakeupSong/wakeupSong.query";
 import dataCheck from "src/utils/Check/dataCheck";
 import MyWakeupSongItem from "../MyWakeupSongItem";
+import { SongNullBox } from "../style";
 
 const MyInfoWakeupSongList = () => {
   const { data: serverMyWakeupSongData } = useGetMyWakeupSongsQuery({
@@ -13,10 +14,10 @@ const MyInfoWakeupSongList = () => {
     <>
       {serverMyWakeupSongData &&
       dataCheck.voidCheck(serverMyWakeupSongData.data) ? (
-        <div>
+        <SongNullBox>
           <span>기상송 신청내역이 없습니다.</span>
           <span>신청하시면 생활이 윤택해질 거에요!</span>
-          </div>
+          </SongNullBox>
       ) : (
         <>
           {serverMyWakeupSongData?.data

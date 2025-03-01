@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { DodamColor } from "@b1nd/dds-web";
 export const BannerContainer = styled.div`
+position: fixed;
   height: 110px;
   /* background-color: ${({ theme }) => theme.backgroundColor3}; */
   position: relative;
