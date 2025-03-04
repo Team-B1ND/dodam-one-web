@@ -4,6 +4,13 @@ export const Main = styled.div`
     display: flex;
     height: 100vh;
     padding: 58px 0px 58px 32px ;
+    @media (max-width: 1068px) {
+      padding: 28px 0px 58px 32px ;
+      }
+    @media (max-width: 797px) {
+      width: 100%;
+      padding: 28px 28px 58px 32px ;
+    }
 `
 
 
@@ -11,6 +18,9 @@ export const MainDataVeiw = styled.div`
     display: flex;
     flex-direction: column;
     width: 70%;
+    @media (max-width: 797px) {
+      width: 100%;
+    }
 `
 
 export const MainDataGridBox = styled.div`
@@ -29,6 +39,14 @@ export const SideProfile = styled.aside`
     width: 30%;
     height: 100%;
     padding: 0 32px;
+    @media (max-width: 797px) {
+      display: none;
+      
+      }
+
+      @media (max-width: 900px) {
+      padding: 0 5%; 
+    }
 `
 
 export const DraggableBox = styled.div`

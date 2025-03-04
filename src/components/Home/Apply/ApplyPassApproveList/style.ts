@@ -23,7 +23,6 @@ export const ApplyNotApproveListContainer = styled.div`
   height: 170px;
   overflow: hidden;
   color: ${({theme})=>theme.labelNormal};
-
 `;
 
 export const ApplyNotApproveListWrap = styled.div`
@@ -32,6 +31,7 @@ export const ApplyNotApproveListWrap = styled.div`
   width: 100%;
   height: 100%;
   padding: 0 5px;
+
 `;
 
 export const ApplyNotApproveListFoldIcon = styled.div`

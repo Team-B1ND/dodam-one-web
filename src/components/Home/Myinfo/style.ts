@@ -11,6 +11,9 @@ export const MyInfoBox = styled.div`
     gap: 16px;
     ${DodamShape.Large};
     background-color: ${({theme})=>theme.backgroundNormal};
+    @media (max-width: 1068px) {
+      padding: 8px;
+    }
 `
 export const MyInfoProfile = styled.div`
     display: flex;

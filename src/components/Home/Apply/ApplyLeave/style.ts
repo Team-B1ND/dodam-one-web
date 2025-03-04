@@ -1,4 +1,4 @@
-import styled,{css} from "styled-components";
+import styled from "styled-components";
 import { DodamTypography } from "@b1nd/dds-web";
 
 export const ApplyLeaveContainer = styled.div`
@@ -8,7 +8,7 @@ export const ApplyLeaveContainer = styled.div`
   flex-direction: column;
 `;
 
-export const ApplyLeaveFormContainer = styled.div<{ isFold: boolean }>`
+export const ApplyLeaveFormContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -16,14 +16,7 @@ export const ApplyLeaveFormContainer = styled.div<{ isFold: boolean }>`
   align-items: center;
   justify-content: center;
   color: ${({ theme }) => theme.labelNormal};
-  ${({ isFold }) =>
-    isFold
-      ? css`
-          left: 84px;
-        `
-      : css`
-          left: 144px;
-        `};
+
 `;
 
 export const ApplyLeaveFormColumnWrap = styled.div`

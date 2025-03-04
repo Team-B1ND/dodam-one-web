@@ -10,8 +10,13 @@ const ApplyBusForm = () => {
     busList,
     wasCheckedIdx,
     handleBusData,
+    isNotApplicant,
     // submitMyBus,
   } = useApplyBus();
+
+  if (isNotApplicant) {
+    return <S.ApplyBusFormVoidText>버스 신청자가 아닙니다.</S.ApplyBusFormVoidText>;
+  }
 
   return (
     <S.ApplyBusFormItemContainer>

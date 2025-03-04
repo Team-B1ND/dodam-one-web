@@ -1,7 +1,6 @@
 import React,{useState, Dispatch, SetStateAction} from "react";
 import { Bus, DoorOpen } from "@b1nd/dds-web";
 import * as S from "./style";
-import ApplyBus from "./ApplyBus";
 import ApplyLeave from "./ApplyLeave";
 import ApplyPass from "./ApplyPass";
 import { PageIndicator } from "@b1nd/dds-web";
@@ -26,7 +25,6 @@ const Apply = () => {
           caseBy={{
             외출: <ApplyPass setSection={setSection}/>,
             외박: <ApplyLeave setSection={setSection}/>,
-            버스: <ApplyBus setSection={setSection}/>,
           }} buttonSize="Large"
           customStyle={{marginTop:"5%"}}
           />

@@ -14,15 +14,15 @@ interface Props {
   deleteNotApprovedItem: (idx: number) => void;
 }
 
-const ApplyNotApproveList = ({
+const ApplyPassApproveList = ({
   notApproveItems,
   loadNotApprovedItem,
   deleteNotApprovedItem,
 }: Props) => {
   return (
-    <S.ApplyNotApproveListContainer>
+    <S.ApplyNotApproveListContainer >
       {notApproveItems && notApproveItems.length === 0 ? (
-        <>수정할 외박 정보가 없습니다.</>
+        <>수정할 외출 정보가 없습니다.</>
       ) : (
         <S.ApplyNotApproveListWrap>
           {dataCheck.undefinedCheck(notApproveItems) ||
@@ -48,4 +48,4 @@ const ApplyNotApproveList = ({
   );
 };
 
-export default React.memo(ApplyNotApproveList);
+export default React.memo(ApplyPassApproveList);

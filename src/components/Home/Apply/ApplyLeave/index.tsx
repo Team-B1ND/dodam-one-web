@@ -26,7 +26,7 @@ const ApplyLeave = ({setSection}:Props) => {
     <S.ApplyLeaveContainer>
       <DodamErrorBoundary text="에러발생">
       
-      <S.ApplyLeaveFormContainer isFold={isFold}>
+      <S.ApplyLeaveFormContainer >
         {!isFold ? (
           <ApplyNotApproveList
           fold={isFold}
@@ -68,12 +68,12 @@ const ApplyLeave = ({setSection}:Props) => {
             </S.ApplyLeaveFormColumnWrap>
             <TextAreaWrap
               placeholder="사유를 입력해주세요"
+              value={leaveData.reason}
               onChange={handleLeaveDataReason}
             />
           </>
         )}
       </S.ApplyLeaveFormContainer>
-      {!(notApprovedLeaves?.length === 0 && !isFold) && (
        <ButtonContainer>
                <DodamFilledButton
                width={100}
@@ -83,16 +83,18 @@ const ApplyLeave = ({setSection}:Props) => {
                >
                  {isFold ? "수정하기" : "돌아가기"}
                </DodamFilledButton>
+               {isFold ? 
              <DodamFilledButton
                  width={84}
                  size="Medium"
                  onClick={submitLeaveData}
                  textTheme="staticWhite"
                >
-                 {isFold ? "신청" : "수정"}
+                 신청
                </DodamFilledButton>
+                : ""}
           </ButtonContainer>
-      )}
+      
       </DodamErrorBoundary>
     </S.ApplyLeaveContainer>
   );

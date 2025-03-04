@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import { DodamColor } from "@b1nd/dds-web";
 export const BannerContainer = styled.div`
-position: fixed;
+width: 100%;
+  position: fixed;
   height: 110px;
   /* background-color: ${({ theme }) => theme.backgroundColor3}; */
   position: relative;
   overflow: hidden;
   display: flex;
   border-radius: 18px;
+  
+ 
 
   .slick-initialized {
     width: 100%;

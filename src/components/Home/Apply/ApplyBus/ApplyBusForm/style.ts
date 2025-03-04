@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const ApplyBusFormItemContainer = styled.div`
   width: 100%;
-  height: 200px;
+  height: 215px;
   padding: 0px 3px;
 `;
 

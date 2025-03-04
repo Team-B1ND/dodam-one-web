@@ -1,6 +1,7 @@
 import { useGetMyMemberQuery } from "src/queries/Member/member.query";
 import { ProfileBox, ProfileImg, ProfileText } from "./style";
 import dataTransform from "src/utils/Transform/dataTransform";
+import { Avatar } from "@b1nd/dds-web";
 
 const Profile = () =>{
         const { data: serverMyMemberData } = useGetMyMemberQuery({
@@ -11,7 +12,10 @@ const Profile = () =>{
     
     return(
         <ProfileBox>
+          { serverMyMemberData?.data.profileImage ? 
            <ProfileImg src={serverMyMemberData?.data.profileImage!}/>
+          : <Avatar size="extraLarge"/>
+          }
            <ProfileText>
             <span>{serverMyMemberData?.data.name}</span>
             <span> {dataTransform.schoolInfoTransform(

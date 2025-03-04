@@ -4,6 +4,7 @@ import { ButtonContainer, TextAreaWrap } from "../style";
 import useApplyPass from "src/hooks/Pass/useApplyPass";
 import ApplyPassModal from "./ApplyPassModal";
 import { Props } from "..";
+import ApplyPassApproveList from "../ApplyPassApproveList";
 
 
 
@@ -16,8 +17,14 @@ const ApplyPass = ({setSection}:Props) => {
     <S.ApplyPassContainer>
       <DodamErrorBoundary text="에러발생">
       <S.ApplyPassFormContainer >
-        {!Pass.isFold && Pass.notApprovedPasses.length === 0 ? (
-          <div style={{height:"20vh"}}>수정할 외출 정보가 없습니다.</div>
+        {!Pass.isFold ?(
+          <ApplyPassApproveList
+          fold={Pass.isFold}
+          setFold={Pass.setIsFold}
+          notApproveItems={Pass.notApprovedPasses}
+          loadNotApprovedItem={Pass.loadNotApprovedPass}
+          deleteNotApprovedItem={Pass.deleteNotApprovedPass}
+          />
         ) : (
           <>
             <S.ApplyPassFormColumnWrap>
@@ -71,13 +78,14 @@ const ApplyPass = ({setSection}:Props) => {
             </S.ApplyPassFormColumnWrap>
             <TextAreaWrap
               placeholder="사유를 입력해주세요"
+              value={Pass.passData.reason}
               onChange={Pass.handlePassDataReason}
             />
           </>
         )}
       </S.ApplyPassFormContainer>
         
-        
+ 
       <ButtonContainer>
         <DodamFilledButton
         width={100}
@@ -87,6 +95,7 @@ const ApplyPass = ({setSection}:Props) => {
         >
           {Pass.isFold ? "수정하기" : "돌아가기"}
         </DodamFilledButton>
+        {Pass.isFold ? 
       <DodamFilledButton
           width={84}
           size="Medium"
@@ -94,9 +103,11 @@ const ApplyPass = ({setSection}:Props) => {
           textTheme="staticWhite"
           
         >
-          {Pass.isFold ? "신청" : "수정"}
+           신청
         </DodamFilledButton>
+        : ""}
       </ButtonContainer>
+      
        <ApplyPassModal
         width="500px"
         height="300px"

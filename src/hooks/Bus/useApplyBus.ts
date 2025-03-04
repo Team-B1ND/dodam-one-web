@@ -17,7 +17,10 @@ const useApplyBus = () => {
   const queryClient = useQueryClient();
 
   const { data: busesData, isLoading: busesDataIsLoading } = useGetBusesQuery();
-  const { data: myBusData, isLoading: myBusDataIsLoading } = useGetMyBusQuery({
+  const { 
+    data: myBusData, 
+    isLoading: myBusDataIsLoading,
+  } = useGetMyBusQuery({
     suspense: true,
     staleTime: 1000 * 30,
     cacheTime: 1000 * 60,
@@ -36,6 +39,20 @@ const useApplyBus = () => {
   const [wasCheckedIdx, setWasCheckedIdx] = useState<number>(-1);
   const [isChange, setIsChange] = useState<boolean>(false);
 
+  const [isNotApplicant, setIsNotApplicant] = useState<boolean>(false); // 403 여부 상태 추가
+
+useEffect(() => {
+  if (myBusData && !myBusDataIsLoading) {
+    // 🔹 message가 있으면 버스 신청이 안 된 상태
+    if ("message" in myBusData) {
+      setIsNotApplicant(true);
+      return;
+    }
+    
+  }
+}, [myBusData]);
+
+
   useEffect(() => {
     if (!busesDataIsLoading) {
       if (busesData?.data.length! > 0) {
@@ -46,16 +63,6 @@ const useApplyBus = () => {
     }
   }, [busesData, busesDataIsLoading]);
 
-  useEffect(() => {
-    if (myBusData && !myBusDataIsLoading) {
-      if (myBusData.data) {
-        const recentMyBusData = myBusData?.data;
-
-        setSelectBusIdx(recentMyBusData!.id);
-        setWasCheckedIdx(recentMyBusData!.id);
-      }
-    }
-  }, [myBusData, myBusDataIsLoading]);
 
   useEffect(() => {
     if (selectBusIdx !== wasCheckedIdx) {
@@ -135,6 +142,7 @@ const useApplyBus = () => {
     handleBusData,
     submitMyBus,
     isChange,
+    isNotApplicant,
   };
 };
 

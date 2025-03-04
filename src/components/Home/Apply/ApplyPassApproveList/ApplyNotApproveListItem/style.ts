@@ -42,6 +42,8 @@ export const ApplyNotApproveListContnent = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  text-overflow:ellipsis 
   span{
     ${DodamTypography.Caption1.Medium}
     color: ${({theme})=>theme.labelAssistive};
