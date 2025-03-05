@@ -37,9 +37,11 @@ const HomePage = () => {
           <SortableContext items={items}>
             <S.MainDataGridBox>
               {items.map((id) => (
+                <S.MainBox>
                 <SortableItem key={id} id={id}>
                   {componentsMap[id]}
                 </SortableItem>
+                </S.MainBox>
               ))}
             </S.MainDataGridBox>
           </SortableContext>

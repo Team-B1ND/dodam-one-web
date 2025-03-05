@@ -27,12 +27,20 @@ export const MainDataGridBox = styled.div`
   width: 100%;
   height: 100%;
   padding-top: 20px;
-  display: grid;
-  grid-template-rows: repeat(2, auto);
-  grid-template-columns: 1fr 1fr ;
+  display: flex;
+  flex-wrap: wrap; /* 요소들이 넘칠 경우 다음 줄로 배치 */
   gap: 20px;
-`
+`;
 
+export const MainBox = styled.div`
+  display: flex;
+  flex-direction: column; /* 내부 요소들을 세로 배치 */
+  width: calc(50% - 10px); /* 두 개씩 배치되도록 설정 (gap 고려) */
+  
+  @media (max-width: 797px) {
+    width: 100%; /* 모바일에서는 한 줄로 정렬 */
+  }
+`;
 
 export const SideProfile = styled.aside`
     display: flex;

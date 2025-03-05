@@ -26,7 +26,7 @@ export const ScheduleItemTargetWrap = styled.div`
   height: 16px;
   display: flex;
   align-items: center;
-  font-size: 12px;
+  gap: 5px;
 `;
 
 export const ScheduleItemTargetCategory = styled.span`

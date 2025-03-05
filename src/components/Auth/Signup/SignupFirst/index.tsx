@@ -41,6 +41,7 @@ const SignUpFirst = ({
     const handleClose = (type:string)=>{
         setModal((prev) => ({ ...prev, [type]: false })); 
     }
+    console.log(signupData.studentInformation);
     
     return(
         <>
@@ -67,7 +68,6 @@ const SignUpFirst = ({
                 onChange={handleSignupData}
                 onKeyDown={submitSignupDataFirst}         
                 />
-
                 <DodamTextField 
                 id="studentInformation"
                 name="studentInformation"
@@ -76,7 +76,7 @@ const SignUpFirst = ({
                 label="학생정보" 
                 isError={false} 
                 onChange={handleSignupData}
-                onKeyDown={submitSignupDataFirst}         
+                onKeyDown={submitSignupDataFirst}          
                 />
 
                  <DodamTextField 

@@ -8,4 +8,7 @@ export const BannerItemContainer = styled.img`
   border-radius: ${DodamShape.Large};
   cursor: pointer;
 
+  img{
+    width: 100% !important;
+  }
 `;

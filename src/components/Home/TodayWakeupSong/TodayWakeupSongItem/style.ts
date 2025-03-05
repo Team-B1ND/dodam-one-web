@@ -5,10 +5,14 @@ export const TodayWakeupSongItemContainer = styled.div`
   width: 100%;
   height: 50%;
   display: flex;
+  padding-left: 5px;
   align-items: center;
-  justify-content: space-between;
   gap: 10px;
   cursor: pointer;
+  ${DodamShape.Medium};
+  &:hover{
+    background-color: ${({theme})=>theme.fillNormal};
+  }
 `;
 
 export const TodayWakeupSongItemBackgroundWrap = styled.div`

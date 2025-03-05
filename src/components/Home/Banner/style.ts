@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import { DodamColor } from "@b1nd/dds-web";
 export const BannerContainer = styled.div`
-width: 100%;
+  width: 100%;
   position: fixed;
   height: 110px;
-  /* background-color: ${({ theme }) => theme.backgroundColor3}; */
   position: relative;
   overflow: hidden;
   display: flex;
@@ -14,10 +13,6 @@ width: 100%;
 
   .slick-initialized {
     width: 100%;
-  }
-
-  .slick-slide {
-    width: 800px !important;
   }
 
   .slick-track {

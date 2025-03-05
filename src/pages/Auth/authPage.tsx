@@ -3,14 +3,17 @@ import * as S from "./style";
 import AuthLogo from "src/assets/logo/Auth_Logo.svg";
 import SignIn from "src/components/Auth/Signin";
 import SignUp from "src/components/Auth/Signup";
+import PasswordReset from "src/components/Auth/PwReset";
 
 const AuthPage = ()=>{
     const [isLogin, setIsLogin] = useState(true);
+    const [isPwReset, setPwReset] = useState(false);
+    
 return(
     <S.Main>
         <S.SignBox>
             <img src={AuthLogo} alt="auth" />
-            {isLogin ? <SignIn /> : <SignUp/> }
+            {isLogin ? isPwReset ? <PasswordReset setPwReset={setPwReset}/> : <SignIn/> : <SignUp/> }
             
         </S.SignBox>
         {isLogin ? 

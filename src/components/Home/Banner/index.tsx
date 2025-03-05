@@ -18,6 +18,7 @@ const Banner = () => {
       autoplay: true,
       autoplaySpeed: 4000,
       pauseOnHover: true,
+      adaptiveHeight: true,
       appendDots: (dots: any) => (
         <div
           style={{

@@ -37,10 +37,12 @@ export const useSignIn = () => {
     [setLoginData]
   );
 
+  let loginLoading = false;
+
   const submitLoginData = useCallback(
     async (e: FormEvent) => {
       e.preventDefault();
-
+      loginLoading = true;
       if (loginData.id === "") {
         B1ndToast.showInfo("아이디를 입력해주세요");
         return;
@@ -60,7 +62,7 @@ export const useSignIn = () => {
 
       try {
         const { data } = await authRepository.login(validLoginData);
-
+        
         token.setToken(ACCESS_TOKEN_KEY, data.accessToken);
         token.setToken(REFRESH_TOKEN_KEY, data.refreshToken);
         B1ndToast.showSuccess("로그인 성공");
@@ -69,6 +71,7 @@ export const useSignIn = () => {
         queryClient.invalidateQueries(QUERY_KEYS.wakeupSong.getMy);
         queryClient.invalidateQueries(QUERY_KEYS.point.getMy(type));
         navigate("/");
+        loginLoading=false
       } catch (error) {
         const errorCode = error as AxiosError;
         B1ndToast.showError(
@@ -82,6 +85,7 @@ export const useSignIn = () => {
 
   return {
     loginData,
+    loginLoading,
     handleLoginData,
     submitLoginData,
   };

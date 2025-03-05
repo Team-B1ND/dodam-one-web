@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const ScheduleContainer = styled.div`
   display: flex;
-  height: 200px;
+  min-height: 230px;
   padding: 20px;
   flex-direction: column;
   align-items: flex-start;
