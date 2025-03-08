@@ -17,7 +17,6 @@ const useApplyPass = () => {
   const queryClient = useQueryClient();
 
   const appliedPasses = useGetMyPassesQuery({
-    suspense: true,
     staleTime: 1000 * 30,
     cacheTime: 1000 * 60,
   }).data?.data;

@@ -1,39 +1,77 @@
+import { DodamShape } from "@b1nd/dds-web";
 import styled from "styled-components";
 
-export const main = styled.div`
+export const Main = styled.div`
     display: flex;
     height: 100vh;
     padding: 58px 0px 58px 32px ;
+    @media (max-width: 1068px) {
+      padding: 28px 0px 58px 32px ;
+      }
+    @media (max-width: 797px) {
+      width: 100%;
+      padding: 28px 28px 58px 32px ;
+    }
+`
+export const BannerBox = styled.div`
+  overflow: hidden;
+  ${DodamShape.Large};
 `
 
-
-export const mainDataVeiw = styled.div`
+export const MainDataView = styled.div`
     display: flex;
     flex-direction: column;
     width: 70%;
+    @media (max-width: 797px) {
+      width: 100%;
+    }
 `
 
-export const mainDataGridBox = styled.div`
-  width:100%;
-  height:100%;
-  display:grid;
-  grid-template-columns: 200px 200px;
-  grid-row: auto auto;
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-`
-export const mainBox = styled.div`
-    background-color:#333;  
-    padding:20px;
-    border-radius:10px;
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:40px;
-    font-family:sans-serif;
-`
+export const MainDataGridBox = styled.div`
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap; /* 요소들이 넘칠 경우 다음 줄로 배치 */
+  gap: 20px;
+`;
 
-export const sideProfile = styled.aside`
+export const MainBox = styled.div`
+  display: flex;
+  flex-direction: column; /* 내부 요소들을 세로 배치 */
+  width: calc(50% - 10px); /* 두 개씩 배치되도록 설정 (gap 고려) */
+  
+  @media (max-width: 797px) {
+    width: 100%; /* 모바일에서는 한 줄로 정렬 */
+  }
+`;
+
+export const SideProfile = styled.aside`
     display: flex;
+    width: 30%;
+    height: 100%;
+    padding: 0 32px;
+    @media (max-width: 797px) {
+      display: none;
+      
+      }
+
+      @media (max-width: 900px) {
+      padding: 0 5%; 
+    }
 `
+
+export const DraggableBox = styled.div`
+  outline: none;
+  position: relative;
+`;
+
+export const DragHandle = styled.div`
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 20px;
+  left: 20px;
+  cursor: grab;
+  user-select: none;
+`;

@@ -3,11 +3,10 @@ export interface Schedule {
   name: string;
   place: string;
   type: "ACADEMIC" | "HOLIDAY";
-  startDate: string;
-  endDate: string;
+  date: string[];
   targetGrades: string[];
 }
 
-export interface TodayScheduleResponse extends Response {
+export interface ScheduleResponse extends Response {
   data: Schedule[];
 }

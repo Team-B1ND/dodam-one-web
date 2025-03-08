@@ -8,10 +8,18 @@ class BusRepository {
     return data;
   }
 
-  public async getMyBus(): Promise<MyBusResponse> {
-    const { data } = await dodamAxios.get<MyBusResponse>("/bus/apply");
-    return data;
+  public async getMyBus(): Promise<MyBusResponse | { message: string }> {
+    try {
+      const { data } = await dodamAxios.get<MyBusResponse>("/bus/apply");
+      return data;
+    } catch (error: any) {
+      if (error.response?.status === 403) {
+        return { message: "버스 신청가 아닙니다" };
+      }
+      throw error; 
+    }
   }
+  
 
   public async postMyBus({ idx }: postMyBusParam): Promise<void> {
     await dodamAxios.post(`/bus/apply/${idx}`);
@@ -19,6 +27,10 @@ class BusRepository {
 
   public async patchMyBus({ idx }: patchMyBusParam): Promise<void> {
     await dodamAxios.patch(`/bus/apply/${idx}`);
+  }
+  
+  public async deleteMyBus({ idx }: patchMyBusParam): Promise<void> {
+    await dodamAxios.delete(`/bus/apply/${idx}`);
   }
 }
 

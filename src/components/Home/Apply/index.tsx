@@ -1,11 +1,13 @@
-import { useState } from "react";
-import { APPLY_ITEMS } from "src/constants/Apply/apply.constant";
-import ApplyBus from "./ApplyBus";
+import React,{useState, Dispatch, SetStateAction} from "react";
+import { Bus, DoorOpen } from "@b1nd/dds-web";
+import * as S from "./style";
 import ApplyLeave from "./ApplyLeave";
 import ApplyPass from "./ApplyPass";
-import * as S from "./style";
 import { PageIndicator } from "@b1nd/dds-web";
 
+export interface Props {
+  setSection: Dispatch<SetStateAction<string>>;
+}
 
 const Apply = () => {
   const [section, setSection] = useState("외출");
@@ -13,27 +15,19 @@ const Apply = () => {
   return (
     <S.ApplyContainer>
       <S.ApplyTitleWrap>
-        {/* <S.ApplyTitleIcon src={ApplyMemo} /> */}
-        <S.ApplyTitleText>신청</S.ApplyTitleText>
-        <S.ApplyTitleItemWrap>
-          {APPLY_ITEMS.map((item) => (
-            <S.ApplyTitleItem
-              isSelect={section === item}
-              onClick={() => setSection(item)}
-              key={`applyTitleItem ${item}`}
-            >
-              <span>{item}</span>
-            </S.ApplyTitleItem>
-          ))}
-        </S.ApplyTitleItemWrap>
+        {section=="버스"? <Bus color="labelNormal"/>
+        :<DoorOpen color="labelNormal"/>
+        }
+        <S.ApplyTitleText>{section}</S.ApplyTitleText>
       </S.ApplyTitleWrap>
       <S.ApplyFormWrap>
         <PageIndicator
           caseBy={{
-            외출: <ApplyPass />,
-            외박: <ApplyLeave />,
-            버스: <ApplyBus />,
-          }} buttonSize={"Small"}        />
+            외출: <ApplyPass setSection={setSection}/>,
+            외박: <ApplyLeave setSection={setSection}/>,
+          }} buttonSize="Large"
+          customStyle={{marginTop:"5%"}}
+          />
       </S.ApplyFormWrap>
     </S.ApplyContainer>
   );

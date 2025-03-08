@@ -9,7 +9,7 @@ export const Main = styled.div`
     justify-content: center;
     align-items: center;
     background-color: ${({theme})=>theme.backgroundAlternative};
-    @media (max-width: 729px) {
+    @media (max-width: 767px) {
     padding: 0 20px 0 20px;
     }
     /* @media (max-width:426px) {
@@ -23,7 +23,7 @@ export const SignBox = styled.div`
     height: 461px;
     background-color: ${({theme})=>theme.backgroundNormal};
     ${DodamShape.Medium}
-    @media (max-width: 729px) {
+    @media (max-width: 767px) {
         width: 400px;
     img{
         display: none;

@@ -36,7 +36,7 @@ export const QUERY_KEYS = {
     getMy: (type: PointType) => ["point/getMyPoint", type],
   },
   schedule: {
-    getToday: "schedule/getTodaySchedule",
+    get: "schedule/getSchedule",
   },
   studyRooms: {
     getMy: "studyRoom/getMyStudyRooms",

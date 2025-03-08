@@ -16,7 +16,6 @@ const useApplyLeave = () => {
   const queryClient = useQueryClient();
 
   const appliedLeaves = useGetMyLeavesQuery({
-    suspense: true,
     staleTime: 1000 * 30,
     cacheTime: 1000 * 60,
   }).data?.data;

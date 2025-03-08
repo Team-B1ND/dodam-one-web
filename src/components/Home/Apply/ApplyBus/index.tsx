@@ -1,17 +1,19 @@
-import { ErrorBoundary } from "react-error-boundary";
 import { Suspense } from "react";
 import ApplyBusForm from "./ApplyBusForm";
+import ApplyBusListFallbackLoader from "src/components/Common/Skeleton/ApplyBusList";
 import * as S from "./style";
-import { LoadingText } from "../style";
+import { DodamErrorBoundary } from "@b1nd/dds-web";
+import { Props } from "..";
 
-const ApplyBus = () => {
+const ApplyBus = ({setSection}:Props) => {
+  setSection("버스");
   return (
     <S.ApplyBusContainer>
-      <ErrorBoundary fallback={<>에러발생</>}>
-        <Suspense fallback={<LoadingText>로딩중...</LoadingText>}>
+      <DodamErrorBoundary text="에러발생" showButton={true}>
+        <Suspense fallback={<ApplyBusListFallbackLoader/>}>
           <ApplyBusForm />
         </Suspense>
-      </ErrorBoundary>
+      </DodamErrorBoundary>
     </S.ApplyBusContainer>
   );
 };

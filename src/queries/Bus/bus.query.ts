@@ -15,10 +15,15 @@ export const useGetBusesQuery = (
 ): UseQueryResult<BusesResponse, AxiosError> =>
   useQuery(QUERY_KEYS.bus.get, () => busrepository.getBuses(), options);
 
-export const useGetMyBusQuery = (
-  options?: UseQueryOptions<MyBusResponse, AxiosError, MyBusResponse, string>
-): UseQueryResult<MyBusResponse, AxiosError> =>
-  useQuery(QUERY_KEYS.bus.getMy, () => busrepository.getMyBus(), options);
+  export const useGetMyBusQuery = (
+    options?: UseQueryOptions<MyBusResponse | { message: string }, AxiosError>
+  ): UseQueryResult<MyBusResponse | { message: string }, AxiosError> =>
+    useQuery<MyBusResponse | { message: string }, AxiosError>(
+      QUERY_KEYS.bus.getMy, 
+      () => busrepository.getMyBus(), 
+      options
+    );
+  
 
 export const usePostMyBusMutation = () => {
   const mutation = useMutation((idx: postMyBusParam) =>
@@ -33,3 +38,10 @@ export const usePatchMyBusMutation = () => {
   );
   return mutation;
 };
+
+export const useDeleteMyBusMutatuin = () => {
+  const mutation = useMutation(({ idx }: patchMyBusParam) =>
+    busrepository.deleteMyBus({ idx })
+  );
+  return mutation;
+}

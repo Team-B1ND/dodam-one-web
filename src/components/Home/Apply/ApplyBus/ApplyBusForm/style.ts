@@ -1,31 +1,27 @@
 import { customScrollBar } from "src/styles/libStyle";
 import styled from "styled-components";
 
-export const ApplyBusFormDate = styled.span`
-  margin: 16px 0px;
-  font-size: 16px;
-  color: ${({ theme }) => theme.contrast};
-`;
-
 export const ApplyBusFormItemContainer = styled.div`
   width: 100%;
-  height: 191px;
+  height: 215px;
   padding: 0px 3px;
 `;
 
 export const ApplyBusFormItemWrap = styled.div`
   width: 100%;
-  height: 191px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: scroll;
-
+  gap: 5px;
   ${customScrollBar}
 `;
 
 export const ApplyBusFormVoidText = styled.p`
-  font-size: 16px;
-  color: ${({ theme }) => theme.contrast};
-  margin: auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${({ theme }) => theme.labelNormal};
 `;

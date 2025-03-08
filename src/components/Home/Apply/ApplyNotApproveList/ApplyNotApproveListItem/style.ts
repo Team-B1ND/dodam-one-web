@@ -1,16 +1,18 @@
+import { DodamTypography } from "@b1nd/dds-web";
 import styled from "styled-components";
 
 export const ApplyNotApproveListItemContainer = styled.div`
   width: 100%;
-  height: 24px;
+  padding: 10px 0;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   cursor: pointer;
 `;
 
 export const ApplyNotApproveListItemText = styled.span`
-  font-size: 12px;
-  color: ${({ theme }) => theme.contrast};
+  ${DodamTypography.Body2.Medium};
+  color: ${({ theme }) => theme.labelNormal};
 `;
 
 export const ApplyNotApproveListItemDeleteButton = styled.button`
@@ -19,8 +21,6 @@ export const ApplyNotApproveListItemDeleteButton = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
-  display: none;
-  margin: 0px auto;
   border: 0px;
   background: none;
   outline: none;
@@ -31,10 +31,19 @@ export const ApplyNotApproveListItemDeleteButton = styled.button`
 `;
 
 export const ApplyNotApproveListItemDeleteIcon = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
 `;
+
+
+export const ApplyNotApproveListContnent = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  span{
+    ${DodamTypography.Caption1.Medium}
+    color: ${({theme})=>theme.labelAssistive};
+  }
+`

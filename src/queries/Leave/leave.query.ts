@@ -9,9 +9,9 @@ import {
   deleteMyLeaveParam,
   postApplyLeaveParam,
   putMyLeaveParam,
-} from "@src/repositories/Leave/leave.param";
-import leaveApi from "@src/repositories/Leave/leave.repository";
-import { MyLeavesResponse } from "@src/types/Leave/leave.type";
+} from "src/repositories/Leave/leave.param";
+import leaveApi from "src/repositories/Leave/leave.repository";
+import { MyLeavesResponse } from "src/types/Leave/leave.type";
 import { QUERY_KEYS } from "../queryKey";
 
 export const useGetMyLeavesQuery = (

@@ -15,40 +15,35 @@ interface Props {
 }
 
 const ApplyNotApproveList = ({
-  fold,
-  setFold,
   notApproveItems,
   loadNotApprovedItem,
   deleteNotApprovedItem,
 }: Props) => {
   return (
-    <S.ApplyNotApproveListContainer fold={fold}>
-      <S.ApplyNotApproveListWrap>
-        {dataCheck.undefinedCheck(notApproveItems) ||
-        dataCheck.voidCheck(notApproveItems!) ? (
-          <S.ApplyNotApproveListVoidWrap>
-            <S.ApplyNotApproveListVoidIcon>
-              {/* <AiOutlineFolderOpen /> */}
-            </S.ApplyNotApproveListVoidIcon>
-          </S.ApplyNotApproveListVoidWrap>
-        ) : (
-          <>
-            {notApproveItems?.map((notApproveItem) => (
-              <ApplyNotApproveListItem
-                notApproveItemData={notApproveItem}
-                loadNotApprovedItem={loadNotApprovedItem}
-                deleteNotApprovedItem={deleteNotApprovedItem}
-                key={notApproveItem.id}
-              />
-            ))}
-          </>
-        )}
-      </S.ApplyNotApproveListWrap>
-      <S.ApplyNotApproveListFoldButton onClick={() => setFold((prev) => !prev)}>
-        <S.ApplyNotApproveListFoldIcon>
-          {/* <IoOptionsOutline /> */}
-        </S.ApplyNotApproveListFoldIcon>
-      </S.ApplyNotApproveListFoldButton>
+    <S.ApplyNotApproveListContainer>
+      {notApproveItems && notApproveItems.length === 0 ? (
+        <>수정할 외박 정보가 없습니다.</>
+      ) : (
+        <S.ApplyNotApproveListWrap>
+          {dataCheck.undefinedCheck(notApproveItems) ||
+          dataCheck.voidCheck(notApproveItems!) ? (
+            <S.ApplyNotApproveListVoidWrap>
+              <S.ApplyNotApproveListVoidIcon />
+            </S.ApplyNotApproveListVoidWrap>
+          ) : (
+            <>
+              {notApproveItems?.map((notApproveItem) => (
+                <ApplyNotApproveListItem
+                  notApproveItemData={notApproveItem}
+                  loadNotApprovedItem={loadNotApprovedItem}
+                  deleteNotApprovedItem={deleteNotApprovedItem}
+                  key={notApproveItem.id}
+                />
+              ))}
+            </>
+          )}
+        </S.ApplyNotApproveListWrap>
+      )}
     </S.ApplyNotApproveListContainer>
   );
 };

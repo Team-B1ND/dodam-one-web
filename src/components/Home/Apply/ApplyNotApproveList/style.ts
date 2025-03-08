@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { DodamColor } from "@b1nd/dds-web";
 
 export const ApplyNotApproveListFoldButton = styled.button`
@@ -15,33 +15,23 @@ export const ApplyNotApproveListFoldButton = styled.button`
   outline: none;
 `;
 
-export const ApplyNotApproveListContainer = styled.div<{ fold: boolean }>`
-  top: 0px;
-  position: absolute;
+export const ApplyNotApproveListContainer = styled.div`
   display: flex;
-  transition: left 0.3s ease 0s;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 170px;
+  overflow: hidden;
+  color: ${({theme})=>theme.labelNormal};
 
-  ${({ fold }) =>
-    fold
-      ? css`
-          left: -124px;
-
-          ${ApplyNotApproveListFoldButton}:hover & {
-            left: -116px;
-          }
-        `
-      : css`
-          left: 1px;
-        `}
 `;
 
 export const ApplyNotApproveListWrap = styled.div`
   display: flex;
   flex-direction: column;
-  width: 124px;
-  height: 265px;
-  border-right: 1px solid ${({ theme }) => theme.borderColor};
-  background-color: ${({ theme }) => theme.backgroundColor3};
+  width: 100%;
+  height: 100%;
+  padding: 0 5px;
 `;
 
 export const ApplyNotApproveListFoldIcon = styled.div`

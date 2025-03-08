@@ -5,6 +5,7 @@ import MemberRepository from "src/repositories/Member/member.repository";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
 import token from "src/libs/Token/token";
 import { QUERY_KEYS } from "../queryKey";
+import {Signup} from "src/types/Signup/signup.type";
 
 export const useGetMyMemberQuery = (
   options?: UseQueryOptions<
@@ -36,5 +37,12 @@ export const useSendAuthCode = () => {
   const mutation = useMutation((AuthCodeSend:AuthCodeSendProps) => 
     MemberRepository.authCodeVerify(AuthCodeSend)
   )
+  return mutation;
+}
+
+export const useMemberSignUp = () => {
+  const mutation = useMutation((signupData: Signup)=>
+    MemberRepository.postMemberSignUp(signupData)
+  ) 
   return mutation;
 }
