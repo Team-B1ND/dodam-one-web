@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/images/dodam_logo.svg" width="25%" alt="dodamdodam" />
+  <img src="./assets/dodam_logo.svg" width="25%" alt="dodamdodam" />
 </p>
 <h4 align="center">학생들을 위한, 학생들이 만든, 스마트스쿨 플랫폼</h4>
 
