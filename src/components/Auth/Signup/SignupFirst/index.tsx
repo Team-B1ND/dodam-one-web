@@ -19,6 +19,7 @@ interface Props {
     phoneVerification: () => void;
     sendLoading:boolean;
     reqLoading:boolean;
+    clearSignupField:(field: keyof Signup) => void;
 }
 
 const SignUpFirst = ({
@@ -35,13 +36,13 @@ const SignUpFirst = ({
     emailVerification,
     phoneVerification,
     setModal,
-
+    clearSignupField
   }: Props) => {
 
     const handleClose = (type:string)=>{
         setModal((prev) => ({ ...prev, [type]: false })); 
     }
-    console.log(signupData.studentInformation);
+    
     
     return(
         <>
@@ -55,7 +56,8 @@ const SignUpFirst = ({
                 label="이메일" 
                 isError={false} 
                 onChange={handleSignupData}
-                onKeyDown={submitSignupDataFirst}         
+                onKeyDown={submitSignupDataFirst}    
+                onRemoveClick={()=>clearSignupField("email")}     
                 />
 
                 <DodamTextField 
@@ -66,7 +68,8 @@ const SignUpFirst = ({
                 label="전화번호" 
                 isError={false} 
                 onChange={handleSignupData}
-                onKeyDown={submitSignupDataFirst}         
+                onKeyDown={submitSignupDataFirst}      
+                onRemoveClick={()=>clearSignupField("phone")}        
                 />
                 <DodamTextField 
                 id="studentInformation"
@@ -76,7 +79,8 @@ const SignUpFirst = ({
                 label="학생정보" 
                 isError={false} 
                 onChange={handleSignupData}
-                onKeyDown={submitSignupDataFirst}          
+                onKeyDown={submitSignupDataFirst}
+                onRemoveClick={()=>clearSignupField("studentInformation")}            
                 />
 
                  <DodamTextField 
@@ -87,7 +91,9 @@ const SignUpFirst = ({
                 label="이름" 
                 isError={false} 
                 onChange={handleSignupData}
-                onKeyDown={submitSignupDataFirst}         
+                onKeyDown={submitSignupDataFirst} 
+                onRemoveClick={()=>clearSignupField("name")}            
+        
                 />
             </S.InputBox> 
                 <DodamFilledButton 
@@ -99,11 +105,10 @@ const SignUpFirst = ({
                 >
                   {isEmailVerified && isPhoneVerified
                     ? "다음"
-                    : !isEmailVerified
-                    ? "이메일 인증"
-                    : !isPhoneVerified
-                    ? "전화번호 인증"
-                    : ""}
+                    : isEmailVerified
+                    ?   isPhoneVerified
+                    ?  "다음": "전화번호 인증"    :"이메일 인증"
+                    }
                 </DodamFilledButton>
                 {isModal.email && (
                 <VerifieModal 

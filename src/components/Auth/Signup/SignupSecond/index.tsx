@@ -13,6 +13,8 @@ interface Props {
     agrees: SignupAgree;
     handleSignupAgree: (agree: string) => void;
     submitSignupDataSecond: () => void;
+    sinupLodaing:boolean;
+    clearSignupField:(field: keyof Signup) => void;
   }
 
 const SignUpSecond = ({
@@ -23,6 +25,8 @@ const SignUpSecond = ({
     handleSignupData,
     handleSignupAgree,
     submitSignupDataSecond,
+    sinupLodaing,
+    clearSignupField,
   }: Props) => {
     const agreesList = useMemo(() => {
         const { first, second } = agrees;
@@ -43,6 +47,7 @@ const SignUpSecond = ({
                 customStyle={{
                     marginBottom:"10px"
                 }}
+                onRemoveClick={()=>clearSignupField("id")}
             />
             <DodamTextField
                 id="pw"
@@ -102,7 +107,7 @@ const SignUpSecond = ({
             enabled={true} 
             typography={["Body1","Bold"]}
             textTheme="staticWhite">
-                회원가입
+                {sinupLodaing ? "로딩중.." :"회원가입" }
             </DodamFilledButton>
             </S.ButtonBox>
         </>

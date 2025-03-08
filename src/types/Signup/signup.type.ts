@@ -7,11 +7,11 @@ export interface Signup{
   name: string;
   phone: string;
   position?: string;
-  role: "STUDENT" | "TEACHER";
+  role?: "STUDENT" | "TEACHER";
   grade: number;
   room: number;
   number: number;
-  studentInformation?:string;
+  studentInformation?:string; //서버로 보내지 않는 값
 }
 export interface SignupAgree {
   first: boolean;

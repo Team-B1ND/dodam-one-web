@@ -1,7 +1,6 @@
 import React, { FormEvent, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import authRepository from "src/repositories/Auth/auth.repository";
-import { Login } from "src/types/Login/login.type";
+import { Login, LoginResponse } from "src/types/Login/login.type";
 import token from "src/libs/Token/token";
 import {
   ACCESS_TOKEN_KEY,
@@ -15,6 +14,7 @@ import { AxiosError } from "axios";
 import ErrorHandler from "src/utils/Error/ErrorHandler";
 import { useRecoilValue } from "recoil";
 import { pointViewTypeAtom } from "src/store/Point/pointStore";
+import { useSignin } from "src/queries/Auth/auth.query";
 // import { PasswordParm } from "src/types/login/login.type";
 
 export const useSignIn = () => {
@@ -22,12 +22,18 @@ export const useSignIn = () => {
   const navigate = useNavigate();
   const type = useRecoilValue(pointViewTypeAtom);
 
+  const {mutate:signinMutate, isLoading} = useSignin();
+
   const [loginData, setLoginData] = useState<Login>({
     id: "",
     pw: "",
   });
 
+  const [openModal, setModal] = useState(false);
 
+  const handleClose = () => {
+    setModal(false);
+  }
 
   const handleLoginData = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -37,12 +43,14 @@ export const useSignIn = () => {
     [setLoginData]
   );
 
-  let loginLoading = false;
+  const clearLoginField = (field: "id" | "pw") => {
+    setLoginData((prev) => ({ ...prev, [field]: "" }));
+  };
 
   const submitLoginData = useCallback(
     async (e: FormEvent) => {
       e.preventDefault();
-      loginLoading = true;
+
       if (loginData.id === "") {
         B1ndToast.showInfo("아이디를 입력해주세요");
         return;
@@ -60,32 +68,41 @@ export const useSignIn = () => {
         pw,
       };
 
-      try {
-        const { data } = await authRepository.login(validLoginData);
-        
-        token.setToken(ACCESS_TOKEN_KEY, data.accessToken);
-        token.setToken(REFRESH_TOKEN_KEY, data.refreshToken);
-        B1ndToast.showSuccess("로그인 성공");
+      
+        signinMutate(validLoginData,{
+          onSuccess:(data:LoginResponse)=>{
+            token.setToken(ACCESS_TOKEN_KEY, data.data.accessToken);
+            token.setToken(REFRESH_TOKEN_KEY, data.data.accessToken);
 
-        queryClient.invalidateQueries(QUERY_KEYS.member.getMy);
-        queryClient.invalidateQueries(QUERY_KEYS.wakeupSong.getMy);
-        queryClient.invalidateQueries(QUERY_KEYS.point.getMy(type));
-        navigate("/");
-        loginLoading=false
-      } catch (error) {
-        const errorCode = error as AxiosError;
-        B1ndToast.showError(
-          ErrorHandler.loginError(errorCode.response?.status!),
-          );
+            B1ndToast.showSuccess("로그인 성공");
+            queryClient.invalidateQueries(QUERY_KEYS.member.getMy);
+            queryClient.invalidateQueries(QUERY_KEYS.wakeupSong.getMy);
+            queryClient.invalidateQueries(QUERY_KEYS.point.getMy(type));
+            navigate("/");
+          },
+          onError:(error: unknown)=>{
+            const errorCode = error as AxiosError;
+            if(errorCode.status === 403 ){
+              setModal(true);
+              return;
+            }
+            B1ndToast.showError(
+              ErrorHandler.loginError(errorCode.response?.status!),
+              );
+          }
+        })  
         // Sentry.captureException(`이러한 문제로 로그인 실패 ${error}`);
-      }
+      
     },
     [loginData, navigate]
   );
 
   return {
+    clearLoginField,
+    isLoading,
+    openModal,
     loginData,
-    loginLoading,
+    handleClose,
     handleLoginData,
     submitLoginData,
   };

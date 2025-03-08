@@ -3,10 +3,9 @@ import { B1ndToast } from "@b1nd/b1nd-toastify";
 import { Signup, SignupAgree, SignUpModal } from "src/types/Signup/signup.type";
 import patternCheck from "src/utils/Check/patternCheck";
 // import * as Sentry from "sentry/react"
-import memberRepository from "src/repositories/Member/member.repository";
+import { useMemberSignUp } from "src/queries/Members/member.query";
 import ErrorHandler from "src/utils/Error/ErrorHandler";
-import { AxiosError } from "axios";
-import { DodamDialog } from "@b1nd/dds-web";
+import axios from "axios";
 import { useReqAuthCode,useSendAuthCode } from "src/queries/Member/member.query";
 
 const useSignup = () => {
@@ -16,6 +15,7 @@ const useSignup = () => {
   const [section, setSection] = useState("first");
   const {mutate:reqAuthCode,isLoading:reqLoading} = useReqAuthCode(); //인증 코드를 요청
   const {mutate:sendAuthCode, isLoading:sendLoading} = useSendAuthCode(); //인증코드를 보냄
+  const {mutate:signupMutate, isLoading:sinupLodaing} = useMemberSignUp();
   const [isEmailVerified,setIsEmailVerified ] = useState(false);
   const [isPhoneVerified, setIsPhoneVerified] = useState(false);
   const [isAuthCode,setAuthCode] = useState<string>("");
@@ -33,6 +33,12 @@ const useSignup = () => {
     number: 0,
     studentInformation:"",
   });
+
+  const clearSignupField = (field: keyof Signup) => {
+    setSignupData((prev) => ({ ...prev, [field]: "" }));
+  };
+  
+  
 
 
   const [agrees, setAgrees] = useState<SignupAgree>({
@@ -98,7 +104,11 @@ const useSignup = () => {
           setModal((prev) => ({ ...prev, email: false })); 
           B1ndToast.showSuccess("인증이 완료 되었습니다.");
           setAuthCode("");
-        },
+          setTimeout(() => {
+            console.log("Updated isEmailVerified:", isEmailVerified);
+          }, 0);
+        }
+        ,
         onError:()=>{
           B1ndToast.showError("이메일 인증에 실패했습니다.");
         }
@@ -119,6 +129,7 @@ const useSignup = () => {
           setModal((prev) => ({ ...prev, phone: false })); 
           B1ndToast.showSuccess("인증이 완료 되었습니다.;");
           setAuthCode("");
+                    
         },
         onError:()=>{
           B1ndToast.showError("이메일 인증에 실패했습니다.");
@@ -133,7 +144,8 @@ const useSignup = () => {
       const { value, name } = e.target;
   
       if (name === "studentInformation") {
-        const formattedValue = value.replace(/\D/g, "").slice(0, 4); // 숫자만 입력 가능, 최대 4자리
+        // 숫자만 입력받고 최대 7자리까지 처리
+        const formattedValue = value.replace(/\D/g, "").slice(0, 7); 
         let data = "";
   
         if (formattedValue.length >= 1) {
@@ -164,16 +176,13 @@ const useSignup = () => {
 
   const submitSignupDataFirst = useCallback(async () => {
     const { email, phone, grade, room, number, name } = signupData;
-    console.log(isEmailVerified);
     
-    if(isEmailVerified == false){
+    if (!isEmailVerified) {
       sendEmailVerification();
-      return
-    }
-    
-    if(isPhoneVerified == false){
-     sendPhoneVerification();
-     return 
+      return;
+    } else if (!isPhoneVerified) {
+      sendPhoneVerification();
+      return;
     }
 
     if (email === "" || phone === "" || grade === 0 || room === 0 || number === 0 || name === "") {
@@ -197,7 +206,7 @@ const useSignup = () => {
     }
    
     setSection("second");
-  }, [signupData]);
+  }, [signupData, isEmailVerified, isPhoneVerified]);
 
   const handleSignupAgree = useCallback(
     (agree: string) =>
@@ -208,8 +217,10 @@ const useSignup = () => {
     []
   );
 
+  
+
   const submitSignupDataSecond = useCallback(async () => {
-    const { id, pw, grade, room, number } = signupData;
+    const { id, pw, grade, room, number} = signupData;
     const { first, second } = agrees;
 
     if (id === "" || pw === "" ) {
@@ -237,24 +248,35 @@ const useSignup = () => {
       B1ndToast.showInfo("개인정보취급방침에 동의해주세요");
       return;
     }
+   
 
+    const { studentInformation, checkPw, role, ...signupDataWithoutStudentInfo } = signupData;
 
-    const validSignupData = {
-      ...signupData,
+    const validSignupData: Signup = {
+      ...signupDataWithoutStudentInfo,
       grade: Number(grade),
       room: Number(room),
       number: Number(number),
     };
 
-    try {
-      await memberRepository.postMemberSignUp(validSignupData);
-      DodamDialog.alert("회원가입에 성공했습니다.(관리자 승인을 기다려주세요!)");
-      window.location.reload();
-    } catch (error) {
-      const errorCode = error as AxiosError;
-      B1ndToast.showError(ErrorHandler.signupError(errorCode.response?.status!));
-      // Sentry.captureException(`이러한 문제로 회원가입 실패 ${error}`);
-    }
+    signupMutate(validSignupData, {
+      onSuccess: () => {
+        alert("회원가입에 성공했습니다.(관리자 승인을 기다려주세요!)");
+        window.location.reload();
+      },
+      onError: (error: unknown) => {
+        if (axios.isAxiosError(error)) {
+          return B1ndToast.showError(ErrorHandler.signupError(error.response?.status!));
+        }
+    
+        // 예상치 못한 오류 처리
+        B1ndToast.showError("예기치 않은 오류가 발생했습니다.");
+      }
+    });
+
+   
+
+    
   }, [agrees, signupData]);
 
 
@@ -283,6 +305,8 @@ const useSignup = () => {
     emailVerification,
     phoneVerification,
     setModal,
+    sinupLodaing,
+    clearSignupField,
   };
 };
 

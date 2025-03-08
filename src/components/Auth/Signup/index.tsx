@@ -22,6 +22,7 @@ const SignUp = () => {
             phoneVerification={SignUp.phoneVerification}
             sendLoading={SignUp.sendLoading}
             reqLoading={SignUp.reqLoading}
+            clearSignupField={SignUp.clearSignupField}
         />,
         <SignUpSecond
             checkAllRequired={SignUp.checkAllRequired}
@@ -31,6 +32,8 @@ const SignUp = () => {
             agrees={SignUp.agrees}
             handleSignupAgree={SignUp.handleSignupAgree}
             submitSignupDataSecond={SignUp.submitSignupDataSecond} 
+            sinupLodaing={SignUp.sinupLodaing}
+            clearSignupField={SignUp.clearSignupField}
             />
     ]
     return(
