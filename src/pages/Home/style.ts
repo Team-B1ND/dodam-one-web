@@ -18,7 +18,7 @@ export const BannerBox = styled.div`
   ${DodamShape.Large};
 `
 
-export const MainDataVeiw = styled.div`
+export const MainDataView = styled.div`
     display: flex;
     flex-direction: column;
     width: 70%;

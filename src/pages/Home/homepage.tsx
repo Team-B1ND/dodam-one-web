@@ -32,7 +32,7 @@ const HomePage = () => {
   return (
     <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
       <S.Main>
-        <S.MainDataVeiw>
+        <S.MainDataView>
           <S.BannerBox>
               <Banner />
           </S.BannerBox>
@@ -47,7 +47,7 @@ const HomePage = () => {
               ))}
             </S.MainDataGridBox>
           </SortableContext>
-        </S.MainDataVeiw>
+        </S.MainDataView>
         <S.SideProfile>
           <MyInfo />
         </S.SideProfile>
