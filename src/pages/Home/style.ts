@@ -1,3 +1,4 @@
+import { DodamShape } from "@b1nd/dds-web";
 import styled from "styled-components";
 
 export const Main = styled.div`
@@ -12,7 +13,10 @@ export const Main = styled.div`
       padding: 28px 28px 58px 32px ;
     }
 `
-
+export const BannerBox = styled.div`
+  overflow: hidden;
+  ${DodamShape.Large};
+`
 
 export const MainDataVeiw = styled.div`
     display: flex;

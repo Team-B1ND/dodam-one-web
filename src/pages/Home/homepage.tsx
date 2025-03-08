@@ -33,7 +33,9 @@ const HomePage = () => {
     <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
       <S.Main>
         <S.MainDataVeiw>
-          <Banner />
+          <S.BannerBox>
+              <Banner />
+          </S.BannerBox>
           <SortableContext items={items}>
             <S.MainDataGridBox>
               {items.map((id) => (

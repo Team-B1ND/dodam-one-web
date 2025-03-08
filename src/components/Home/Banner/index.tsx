@@ -32,19 +32,23 @@ const Banner = () => {
     }),
     []
   );
-
+  const  nullBanner = approveBanners.length > 0
   return (
-    <S.BannerContainer>
-      <Slider {...bannerSetting}>
-        {approveBanners.map((banner) => (
-          <BannerItem
-            title={banner.title}
-            imgSrc={banner.imageUrl}
-            redirectURL={banner.redirectUrl}
-            key={banner.id}
-          />
-        ))}
-      </Slider>
+    <S.BannerContainer nullBanner={nullBanner}>
+      {nullBanner ? (
+        <Slider {...bannerSetting}>
+          {approveBanners.map((banner) => (
+            <BannerItem
+              title={banner.title}
+              imgSrc={banner.imageUrl}
+              redirectURL={banner.redirectUrl}
+              key={banner.id}
+            />
+          ))}
+        </Slider>
+      ) : (
+        <span>배너가 없습니다.</span>
+      )}
     </S.BannerContainer>
   );
 };
