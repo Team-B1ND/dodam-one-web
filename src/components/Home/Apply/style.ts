@@ -4,7 +4,7 @@ import { DodamColor, DodamShape, DodamTypography } from "@b1nd/dds-web";
 
 
 export const ApplyContainer = styled.div`
-  height: 320px;
+  height: min-content;
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.backgroundNormal};
