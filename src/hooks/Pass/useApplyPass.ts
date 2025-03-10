@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import {
   useDeleteMyPassMutation,
-  useGetMyPassesQuery,
   usePostApplyPassMutation,
   usePutApplyPassMutation,
 } from "src/queries/Pass/pass.query";
@@ -16,10 +15,7 @@ import {B1ndToast} from "@b1nd/b1nd-toastify";
 const useApplyPass = () => {
   const queryClient = useQueryClient();
 
-  const appliedPasses = useGetMyPassesQuery({
-    staleTime: 1000 * 30,
-    cacheTime: 1000 * 60,
-  }).data?.data;
+ 
 
   const [passData, setPassData] = useState<ApplyPass>({
     startTimeHour: "",
@@ -41,17 +37,17 @@ const useApplyPass = () => {
     dateTransform.hyphen()
   );
 
-  const [notApprovedPasses, setNotApprovedPasses] = useState<AppliedPass[]>([]);
+  const [notApprovedPasses, ] = useState<AppliedPass[]>([]);
   
   //승인되지 않은 외출들을 담아주는 부분
-  useEffect(() => {
-    if (appliedPasses) {
-      const validNotApprovedPasses = appliedPasses?.filter(
-        (pass) => pass.status === "PENDING"
-      );
-      setNotApprovedPasses(validNotApprovedPasses);
-    }
-  }, [appliedPasses]);
+  // useEffect(() => {
+  //   if (appliedPasses) {
+  //     const validNotApprovedPasses = appliedPasses?.filter(
+  //       (pass) => pass.status === "PENDING"
+  //     );
+  //     setNotApprovedPasses(validNotApprovedPasses);
+  //   }
+  // }, [appliedPasses]);
 
   const transformNotApprovedPass = (
     notApprovedPass: AppliedPass
@@ -90,36 +86,34 @@ const useApplyPass = () => {
     } else {
       if (notApprovedPasses?.length !== 0) {
         const { startAt } = notApprovedPasses![0];
-
         const passDate = dateTransform.fullDate(startAt).slice(0, 10);
-
         setPassData({
           ...transformNotApprovedPass(notApprovedPasses![0]),
           ...notApprovedPasses![0],
         });
-
         setPassDataDate(passDate);
       }
     }
   }, [isFold, notApprovedPasses]);
+  
 
   //외출 리스트에서 외출을 눌렀을때 인풋에 담기는 함수
-  const loadNotApprovedPass = useCallback(
-    (idx: number) => {
-      const notApprovePass: AppliedPass = appliedPasses?.find(
-        (pass) => pass.id === idx
-      )!;
+  // const loadNotApprovedPass = useCallback(
+  //   (idx: number) => {
+  //     const notApprovePass: AppliedPass = appliedPasses?.find(
+  //       (pass) => pass.id === idx
+  //     )!;
 
-      const { startAt } = notApprovePass;
-      const passDate = dateTransform.fullDate(startAt).slice(0, 10);
-      setPassData({
-        ...transformNotApprovedPass(notApprovePass),
-        ...notApprovePass,
-      });
-      setPassDataDate(passDate);
-    },
-    [appliedPasses]
-  );
+  //     const { startAt } = notApprovePass;
+  //     const passDate = dateTransform.fullDate(startAt).slice(0, 10);
+  //     setPassData({
+  //       ...transformNotApprovedPass(notApprovePass),
+  //       ...notApprovePass,
+  //     });
+  //     setPassDataDate(passDate);
+  //   },
+  //   [appliedPasses]
+  // );
 
   //외출 리스트에서 외출 삭제하는 함수
   const deleteNotApprovedPass = useCallback(
@@ -304,8 +298,8 @@ const useApplyPass = () => {
     isFold,
     setIsFold,
     notApprovedPasses,
-    appliedPasses,
-    loadNotApprovedPass,
+    // appliedPasses,
+    // loadNotApprovedPass,
     deleteNotApprovedPass,
     passData,
     handlePassData,

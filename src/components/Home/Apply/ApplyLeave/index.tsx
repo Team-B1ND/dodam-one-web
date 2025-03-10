@@ -11,12 +11,10 @@ const ApplyLeave = ({setSection}:Props) => {
   const {
     isFold,
     setIsFold,
-    notApprovedLeaves,
     leaveData,
     handleLeaveDataReason,
     handleLeaveDataDate,
     submitLeaveData,
-    loadNotApprovedLeave,
     deleteNotApprovedLeave
   } = useApplyLeave();
 
@@ -24,15 +22,12 @@ const ApplyLeave = ({setSection}:Props) => {
   
   return (
     <S.ApplyLeaveContainer>
-      <DodamErrorBoundary text="에러발생">
-      
+      <DodamErrorBoundary text="에러발생" showButton={true} >
       <S.ApplyLeaveFormContainer >
         {!isFold ? (
           <ApplyNotApproveList
           fold={isFold}
           setFold={setIsFold}
-          notApproveItems={notApprovedLeaves}
-          loadNotApprovedItem={loadNotApprovedLeave}
           deleteNotApprovedItem={deleteNotApprovedLeave}
         /> 
         ) : (
