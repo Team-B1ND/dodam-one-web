@@ -1,33 +1,27 @@
 import dayjs from "dayjs";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback,useState } from "react";
 import { useQueryClient } from "react-query";
 import {
   useDeleteApplyLeaveMutation,
-  useGetMyLeavesQuery,
   usePostApplyLeaveMutation,
   usePutApplyLeaveMutation,
 } from "src/queries/Leave/leave.query";
-import { AppliedLeave, ApplyLeave } from "src/types/Leave/leave.type";
+import { ApplyLeave } from "src/types/Leave/leave.type";
 import dateTransform from "src/utils/Transform/dateTransform";
 // import { captureException, withScope } from "@sentry/react";
 
 const useApplyLeave = () => {
   const queryClient = useQueryClient();
 
-  const appliedLeaves = useGetMyLeavesQuery({
-    staleTime: 1000 * 30,
-    cacheTime: 1000 * 60,
-  }).data?.data;
+  
 
   const postApplyLeaveMutation = usePostApplyLeaveMutation();
   const deleteApplyLeaveMutation = useDeleteApplyLeaveMutation();
   const putApplyLeaveMutation = usePutApplyLeaveMutation();
 
   const [isFold, setIsFold] = useState(true);
-  const [notApprovedLeaves, setNotApprovedLeaves] = useState<AppliedLeave[]>(
-    []
-  );
+  
   const [leaveData, setLeaveData] = useState<ApplyLeave>({
     startTimeDate: dateTransform.hyphen(),
     startTimeHour: "",
@@ -39,70 +33,70 @@ const useApplyLeave = () => {
     reason: "",
   });
 
-  useEffect(() => {
-    if (appliedLeaves) {
-      const validNotApprovedLeaves = appliedLeaves.filter(
-        (leave) => leave.status === "PENDING"
-      );
-      setNotApprovedLeaves(validNotApprovedLeaves);
-    }
-  }, [appliedLeaves]);
+  // useEffect(() => {
+  //   if (appliedLeaves) {
+  //     const validNotApprovedLeaves = appliedLeaves.filter(
+  //       (leave) => leave.status === "PENDING"
+  //     );
+  //     setNotApprovedLeaves(validNotApprovedLeaves);
+  //   }
+  // }, [appliedLeaves]);
 
-  const transformNotApproveLeave = (
-    notApproveLeave: AppliedLeave
-  ): ApplyLeave => {
-    const { startAt, endAt, id } = notApproveLeave;
+  // const transformNotApproveLeave = (
+  //   notApproveLeave: AppliedLeave
+  // ): ApplyLeave => {
+  //   const { startAt, endAt, id } = notApproveLeave;
 
-    const validStartDate = dateTransform.fullDate(startAt).slice(0, 10);
-    const validStartTime = dateTransform.fullDate(startAt).slice(10).split(":");
+  //   const validStartDate = dateTransform.fullDate(startAt).slice(0, 10);
+  //   const validStartTime = dateTransform.fullDate(startAt).slice(10).split(":");
 
-    const validEndDate = dateTransform.fullDate(endAt).slice(0, 10);
-    const validEndTime = dateTransform.fullDate(endAt).slice(10).split(":");
+  //   const validEndDate = dateTransform.fullDate(endAt).slice(0, 10);
+  //   const validEndTime = dateTransform.fullDate(endAt).slice(10).split(":");
 
-    return {
-      idx: id,
-      startTimeDate: validStartDate,
-      startTimeHour: validStartTime[0],
-      startTimeMinute: validStartTime[1],
-      endTimeDate: validEndDate,
-      endTimeHour: validEndTime[0],
-      endTimeMinute: validEndTime[1],
-      ...notApproveLeave,
-    };
-  };
+  //   return {
+  //     idx: id,
+  //     startTimeDate: validStartDate,
+  //     startTimeHour: validStartTime[0],
+  //     startTimeMinute: validStartTime[1],
+  //     endTimeDate: validEndDate,
+  //     endTimeHour: validEndTime[0],
+  //     endTimeMinute: validEndTime[1],
+  //     ...notApproveLeave,
+  //   };
+  // };
 
-  useEffect(() => {
-    if (isFold) {
-      setLeaveData({
-        startTimeDate: dateTransform.hyphen(),
-        startTimeHour: "",
-        startTimeMinute: "",
-        endTimeDate: dateTransform.hyphen(),
-        endTimeHour: "",
-        endTimeMinute: "",
-        reason: "",
-        idx: 0,
-      });
-    } else {
-      if (notApprovedLeaves.length !== 0) {
-        loadNotApprovedLeave(notApprovedLeaves[0].id);
-      }
-    }
-  }, [isFold, notApprovedLeaves]);
+  // useEffect(() => {
+  //   if (isFold) {
+  //     setLeaveData({
+  //       startTimeDate: dateTransform.hyphen(),
+  //       startTimeHour: "",
+  //       startTimeMinute: "",
+  //       endTimeDate: dateTransform.hyphen(),
+  //       endTimeHour: "",
+  //       endTimeMinute: "",
+  //       reason: "",
+  //       idx: 0,
+  //     });
+  //   } else {
+  //     if (notApprovedLeaves.length !== 0) {
+  //       loadNotApprovedLeave(notApprovedLeaves[0].id);
+  //     }
+  //   }
+  // }, [isFold, notApprovedLeaves]);
 
-  const loadNotApprovedLeave = useCallback(
-    (idx: number) => {
-      const notApproveLeave: AppliedLeave = appliedLeaves?.find(
-        (leave) => leave.id === idx
-      )!;
+  // const loadNotApprovedLeave = useCallback(
+  //   (idx: number) => {
+  //     const notApproveLeave: AppliedLeave = appliedLeaves?.find(
+  //       (leave) => leave.id === idx
+  //     )!;
 
-      setLeaveData({
-        ...transformNotApproveLeave(notApproveLeave),
-        ...notApproveLeave,
-      });
-    },
-    [appliedLeaves]
-  );
+  //     setLeaveData({
+  //       ...transformNotApproveLeave(notApproveLeave),
+  //       ...notApproveLeave,
+  //     });
+  //   },
+  //   [appliedLeaves]
+  // );
 
   const deleteNotApprovedLeave = useCallback(
     async (idx: number) => {
@@ -111,9 +105,9 @@ const useApplyLeave = () => {
         {
           onSuccess: () => {
             queryClient.invalidateQueries("leave/getMyLeaves");
-            setNotApprovedLeaves((prev) =>
-              prev.filter((notApprovePass) => notApprovePass.id !== idx)
-            );
+            // setNotApprovedLeaves((prev) =>
+            //   prev.filter((notApprovePass) => notApprovePass.id !== idx)
+            // );
             B1ndToast.showSuccess("외박 삭제 성공");
           },
           onError: () => {
@@ -168,7 +162,6 @@ const useApplyLeave = () => {
       reason,
       startTimeDate,
       endTimeDate,
-      idx,
     } = leaveData;
 
     const validApplyLeave = {
@@ -202,11 +195,6 @@ const useApplyLeave = () => {
 
     if (!endTimeIsAfter) {
       B1ndToast.showInfo("도착 일자가 잘못되었습니다!");
-      return;
-    }
-
-    if (notApprovedLeaves?.length > 4) {
-      B1ndToast.showInfo("외박신청은 최대 4개까지 가능해요!");
       return;
     }
     
@@ -254,38 +242,37 @@ const useApplyLeave = () => {
         },
       });
     } else {
-      const leaveIdx = notApprovedLeaves.find(
-        (notApproveLeave) => notApproveLeave.id === idx
-      )?.id;
+      // const leaveIdx = notApprovedLeaves.find(
+      //   (notApproveLeave) => notApproveLeave.id === idx
+      // )?.id;
 
-      putApplyLeaveMutation.mutateAsync(
-        {
-          ...validApplyLeave,
-          outId: leaveIdx!,
-          endAt: "",
-          startAt: "",
-        },
-        {
-          onSuccess: () => {
-            queryClient.invalidateQueries("leave/getMyLeaves");
-            B1ndToast.showSuccess("외박 수정 성공");
-          },
-          onError: () => {
-            B1ndToast.showInfo("외박 수정 실패",);
-            // withScope((scope) => {
-            //   scope.setContext("query", { queryHash: query.reason });
-            //   captureException(
-            //     `${query.reason}한 이유로 신청된 외박이 ${err}이유로 외박 수정 실패`
-            //   );
-            // });
-          },
-        }
-      );
+      // putApplyLeaveMutation.mutateAsync(
+      //   {
+      //     ...validApplyLeave,
+      //     outId: leaveIdx!,
+      //     endAt: "",
+      //     startAt: "",
+      //   },
+      //   {
+      //     onSuccess: () => {
+      //       queryClient.invalidateQueries("leave/getMyLeaves");
+      //       B1ndToast.showSuccess("외박 수정 성공");
+      //     },
+      //     onError: () => {
+      //       B1ndToast.showInfo("외박 수정 실패",);
+      //       withScope((scope) => {
+      //         scope.setContext("query", { queryHash: query.reason });
+      //         captureException(
+      //           `${query.reason}한 이유로 신청된 외박이 ${err}이유로 외박 수정 실패`
+      //         );
+      //       });
+      //     },
+      //   }
+      // );
     }
   }, [
     isFold,
     leaveData,
-    notApprovedLeaves,
     postApplyLeaveMutation,
     putApplyLeaveMutation,
     queryClient,
@@ -294,8 +281,7 @@ const useApplyLeave = () => {
   return {
     isFold,
     setIsFold,
-    notApprovedLeaves,
-    loadNotApprovedLeave,
+
     deleteNotApprovedLeave,
     leaveData,
     handleLeaveData,

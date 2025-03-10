@@ -7,19 +7,18 @@ import { Trash } from "@b1nd/dds-web";
 
 interface Props {
   notApproveItemData: AppliedPass | AppliedLeave;
-  loadNotApprovedItem: (idx: number) => void;
   deleteNotApprovedItem: (idx: number) => void;
 }
 
 const ApplyNotApproveListItem = ({
   notApproveItemData,
-  loadNotApprovedItem,
+  
   deleteNotApprovedItem,
 }: Props) => {
   const { startAt, id, reason } = notApproveItemData;
 
   return (
-    <S.ApplyNotApproveListItemContainer onClick={() => loadNotApprovedItem(id)}>
+    <S.ApplyNotApproveListItemContainer >
       <div style={{display:"flex",flexDirection:"column"}}>
       <S.ApplyNotApproveListItemText>
         {dateTransform.hyphen(startAt)}

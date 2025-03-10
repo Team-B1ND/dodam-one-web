@@ -2,7 +2,7 @@ import * as S from "./style";
 import Profile from "./Profile";
 import { Suspense } from "react";
 import MyInfoFallbackLoader from "src/components/Common/Skeleton/MyInfo";
-import { DodamDivider, DodamFilledButton,ChevronRight } from "@b1nd/dds-web";
+import { DodamDivider, DodamFilledButton,ChevronRight, DodamErrorBoundary } from "@b1nd/dds-web";
 import Point from "./Point";
 import MyWakeupSong from "./MyWakeupSong";
 
@@ -20,9 +20,11 @@ const MyInfo = () =>{
     return(
         <S.MyInfoBox>
             <S.MyInfoProfile>
-                <Suspense fallback={<MyInfoFallbackLoader/>}>
-                    <Profile/>
-                </Suspense>
+                <DodamErrorBoundary text="에러발생">
+                    <Suspense fallback={<MyInfoFallbackLoader/>}>
+                        <Profile/>
+                    </Suspense>
+                </DodamErrorBoundary>
             </S.MyInfoProfile>
             <DodamFilledButton 
                 size="Medium" 
@@ -37,7 +39,9 @@ const MyInfo = () =>{
                     상벌점 
                     <ChevronRight size={16} color="labelAssistive"/>
                 </S.Title>
-                <Point/>
+                <DodamErrorBoundary text="에러발생" showButton={true}>
+                    <Point/>
+                </DodamErrorBoundary>
             </S.MyPoint>
             <DodamDivider type="Small"/>
             <S.MyWakeupSong>

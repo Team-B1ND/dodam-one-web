@@ -1,11 +1,18 @@
 import { useMemo } from "react";
-import useBanner from "src/hooks/Banner/useBanner";
 import * as S from "./style";
 import Slider from "react-slick";
 import BannerItem from "./BannerItem";
+import { useGetBannersQuery } from "src/queries/Banner/banner.query";
+import BannerFallbackLoader from "src/components/Common/Skeleton/Banner";
 
 const Banner = () => {
-  const { approveBanners } = useBanner();
+  const { data: bannersData, isLoading } = useGetBannersQuery({
+    cacheTime: 1000 * 60 * 60,
+    staleTime: 1000 * 60 * 30,
+  });
+
+  // `bannersData`가 undefined일 경우 빈 배열을 반환
+  const banners = bannersData?.data ?? [];
 
   const bannerSetting = useMemo(
     () => ({
@@ -32,12 +39,16 @@ const Banner = () => {
     }),
     []
   );
-  const  nullBanner = approveBanners.length > 0
+
+  const hasBanners = banners.length > 0;
+
   return (
-    <S.BannerContainer nullBanner={nullBanner}>
-      {nullBanner ? (
+    <S.BannerContainer nullBanner={hasBanners}>
+      {isLoading ? (
+        <BannerFallbackLoader />
+      ) : hasBanners ? (
         <Slider {...bannerSetting}>
-          {approveBanners.map((banner) => (
+          {banners.map((banner) => (
             <BannerItem
               title={banner.title}
               imgSrc={banner.imageUrl}

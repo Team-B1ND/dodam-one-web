@@ -15,14 +15,12 @@ const ApplyPass = ({setSection}:Props) => {
   setSection("외출");
   return (
     <S.ApplyPassContainer>
-      <DodamErrorBoundary text="에러발생">
+      <DodamErrorBoundary text="에러발생" showButton={true}>
       <S.ApplyPassFormContainer >
         {!Pass.isFold ?(
           <ApplyPassApproveList
           fold={Pass.isFold}
           setFold={Pass.setIsFold}
-          notApproveItems={Pass.notApprovedPasses}
-          loadNotApprovedItem={Pass.loadNotApprovedPass}
           deleteNotApprovedItem={Pass.deleteNotApprovedPass}
           />
         ) : (
