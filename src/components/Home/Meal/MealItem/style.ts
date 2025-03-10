@@ -4,7 +4,7 @@ import { DodamTypography } from "@b1nd/dds-web";
 
 export const MealItemContainer = styled.div`
   width: 100%;
-  height: 85px;
+  height: min-content;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -33,17 +33,9 @@ export const MealItemIconLabel = styled.div<{ mealType: EMealType }>`
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 14px;
+  ${DodamTypography.Caption1.Bold};
   background-color: ${({theme})=>theme.primaryNormal};
 
-  /* ${({ mealType }) =>
-    mealType === EMealType.BREAKFAST && "background-color :#fca800"};
-
-  ${({ mealType }) =>
-    mealType === EMealType.LUNCH && "background-color :#3dbde5"};
-
-  ${({ mealType }) =>
-    mealType === EMealType.DINNER && "background-color :#a252e1"}; */
 `;
 
 export const MealItemTextWrap = styled.div`
