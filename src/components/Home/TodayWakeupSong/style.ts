@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { DodamShape } from "@b1nd/dds-web";
 
 export const TodayWakeupSongContainer = styled.div`
-  height: 250px;
+  height: min-content;
+  min-height: 200px;
   padding: 20px;
   background-color: ${({ theme }) => theme.backgroundNormal};
   display: flex;

@@ -22,7 +22,7 @@ export const MealTitleContainer = styled.div`
 `
 
 export const MealContainer = styled.div`
-  height: 326px;
+  height: min-content;
   padding: 20px;
   background-color: ${({ theme }) => theme.backgroundNormal};
   display: flex;

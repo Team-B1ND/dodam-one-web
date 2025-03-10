@@ -7,7 +7,7 @@ export const MealItemContainer = styled.div`
   height: min-content;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  gap: 5px;
 `;
 
 export const MealItemIconWrap = styled.div`
@@ -16,7 +16,9 @@ export const MealItemIconWrap = styled.div`
   flex-direction: column;
   align-items: center;
   row-gap: 5px;
-  
+  span{
+    padding: 2px 0 !important; 
+  }
 `;
 
 export const MealItemIcon = styled.img`
