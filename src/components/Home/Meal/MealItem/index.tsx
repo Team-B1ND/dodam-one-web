@@ -27,7 +27,7 @@ const MealItem = ({ mealData, mealType }: Props) => {
           (meal, idx) => ` ${meal.name.concat(makeCommaIfNotLast(idx))}`
         ) || `${String(mealType)}이 없습니다.`}
       </S.MealItemTextWrap>
-      <span>{mealData?.calorie !== null && mealData?.calorie !== undefined ? mealData.calorie : ""}</span>
+      <S.KcalTextWrap>{mealData?.calorie !== null && mealData?.calorie !== undefined ? mealData.calorie+"Kcal" : ""}</S.KcalTextWrap>
     </S.MealItemContainer>
   );
 };

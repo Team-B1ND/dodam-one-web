@@ -4,7 +4,7 @@ import { DodamTypography } from "@b1nd/dds-web";
 
 export const MealItemContainer = styled.div`
   width: 100%;
-  height: 75px;
+  height: 85px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -48,9 +48,15 @@ export const MealItemIconLabel = styled.div<{ mealType: EMealType }>`
 
 export const MealItemTextWrap = styled.div`
   width: 100%;
-  margin-right: 5px;
+  margin-left: 5px;
   color: ${({ theme }) => theme.labelNormal};
   display: flex;
   flex-wrap: wrap;
-  ${DodamTypography.Body2.Medium};
+  ${DodamTypography.Caption1.Medium};
 `;
+
+
+export const KcalTextWrap = styled.span`
+  ${DodamTypography.Caption2.Medium};
+  color: ${({theme})=>theme.labelAssistive};
+`
