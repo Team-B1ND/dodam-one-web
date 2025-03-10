@@ -23,8 +23,8 @@ const Apply = () => {
       <S.ApplyFormWrap>
         <PageIndicator
           caseBy={{
-            외출: <ApplyPass setSection={setSection}/>,
             외박: <ApplyLeave setSection={setSection}/>,
+            외출: <ApplyPass setSection={setSection}/>,
           }} buttonSize="Large"
           customStyle={{marginTop:"5%"}}
           />
