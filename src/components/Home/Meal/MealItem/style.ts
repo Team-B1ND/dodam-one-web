@@ -16,6 +16,9 @@ export const MealItemIconWrap = styled.div`
   flex-direction: column;
   align-items: center;
   row-gap: 5px;
+  span{
+    padding: 2px 0 !important; 
+  }
 `;
 
 export const MealItemIcon = styled.img`
