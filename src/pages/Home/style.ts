@@ -32,15 +32,17 @@ export const MainDataGridBox = styled.div`
   height: 100%;
   padding-top: 20px;
   display: flex;
-  flex-wrap: wrap; /* 요소들이 넘칠 경우 다음 줄로 배치 */
-  gap: 20px;
+  flex-wrap: wrap;
+  column-gap: 5px;
+  gap: 10px;
+  justify-content: center;
 `;
 
 export const MainBox = styled.div`
   display: flex;
   flex-direction: column; /* 내부 요소들을 세로 배치 */
   width: calc(50% - 10px); /* 두 개씩 배치되도록 설정 (gap 고려) */
-  
+  height: min-content;
   @media (max-width: 797px) {
     width: 100%; /* 모바일에서는 한 줄로 정렬 */
   }
@@ -64,6 +66,7 @@ export const SideProfile = styled.aside`
 export const DraggableBox = styled.div`
   outline: none;
   position: relative;
+  height: min-content;
 `;
 
 export const DragHandle = styled.div`

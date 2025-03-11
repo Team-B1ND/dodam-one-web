@@ -10,8 +10,16 @@ const Point = () => {
     const [isDormitoryPointView, setIsDormitoryPointView] =
     useRecoilState(pointViewTypeAtom);
 
-    const { data: serverMyPointData, isLoading } = useGetMyPointQuery(
-        { type: isDormitoryPointView as PointType });
+    const { data, isLoading } = useGetMyPointQuery(
+        { type: isDormitoryPointView as PointType },
+        {
+          cacheTime: 1000 * 60 * 5,
+          staleTime: 1000 * 60 * 60,
+          retry:1,
+        }
+      );
+
+    const pointData = data?.data ?? { bonus: 0, minus: 0 };
 
     const onChangeView = () => {
         setIsDormitoryPointView((prev) =>
@@ -26,11 +34,11 @@ const Point = () => {
                  <>
                  <S.PointTextBox type="상점">
                     <span>상점</span>
-                    <span>{serverMyPointData?.data.bonus}점</span>
+                    <span>{pointData?.bonus}점</span>
                 </S.PointTextBox>
                 <S.PointTextBox type="벌점">
                     <span>벌점</span>
-                    <span>{serverMyPointData?.data.minus}점</span>
+                    <span>{pointData?.minus}점</span>
                 </S.PointTextBox>
                 </>
             )}

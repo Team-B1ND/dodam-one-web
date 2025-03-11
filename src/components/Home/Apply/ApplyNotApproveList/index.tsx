@@ -1,41 +1,46 @@
 import { Dispatch, SetStateAction } from "react";
-import { AppliedLeave } from "src/types/Leave/leave.type";
-import { AppliedPass } from "src/types/Pass/pass.type";
 import dataCheck from "src/utils/Check/dataCheck";
 import ApplyNotApproveListItem from "./ApplyNotApproveListItem";
 import * as S from "./style";
 import React from "react";
+import { useGetMyLeavesQuery } from "src/queries/Leave/leave.query";
+import ApplyNotApproveListFallbackLoader from "src/components/Common/Skeleton/ApplyNotList";
 
 interface Props {
   fold: boolean;
   setFold: Dispatch<SetStateAction<boolean>>;
-  notApproveItems: AppliedLeave[] | AppliedPass[] | undefined;
-  loadNotApprovedItem: (idx: number) => void;
   deleteNotApprovedItem: (idx: number) => void;
 }
 
 const ApplyNotApproveList = ({
-  notApproveItems,
-  loadNotApprovedItem,
   deleteNotApprovedItem,
 }: Props) => {
+  const {data:appliedLeaves, isLoading } = useGetMyLeavesQuery({
+      staleTime: 1000 * 30,
+      cacheTime: 1000 * 60,
+      retry:1
+    });
+
+    if(isLoading){
+      return <ApplyNotApproveListFallbackLoader/>
+    }
+
   return (
     <S.ApplyNotApproveListContainer>
-      {notApproveItems && notApproveItems.length === 0 ? (
+      {appliedLeaves && appliedLeaves.data.length === 0 ? (
         <>수정할 외박 정보가 없습니다.</>
       ) : (
         <S.ApplyNotApproveListWrap>
-          {dataCheck.undefinedCheck(notApproveItems) ||
-          dataCheck.voidCheck(notApproveItems!) ? (
+          {dataCheck.undefinedCheck(appliedLeaves?.data!) ||
+          dataCheck.voidCheck(appliedLeaves?.data!) ? (
             <S.ApplyNotApproveListVoidWrap>
               <S.ApplyNotApproveListVoidIcon />
             </S.ApplyNotApproveListVoidWrap>
           ) : (
             <>
-              {notApproveItems?.map((notApproveItem) => (
+              {appliedLeaves?.data.map((notApproveItem) => (
                 <ApplyNotApproveListItem
                   notApproveItemData={notApproveItem}
-                  loadNotApprovedItem={loadNotApprovedItem}
                   deleteNotApprovedItem={deleteNotApprovedItem}
                   key={notApproveItem.id}
                 />
