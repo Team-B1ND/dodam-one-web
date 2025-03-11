@@ -13,6 +13,7 @@ import {
 import leaveApi from "src/repositories/Leave/leave.repository";
 import { MyLeavesResponse } from "src/types/Leave/leave.type";
 import { QUERY_KEYS } from "../queryKey";
+import { B1ndToast } from "@b1nd/b1nd-toastify";
 
 export const useGetMyLeavesQuery = (
   options?: UseQueryOptions<
@@ -25,7 +26,19 @@ export const useGetMyLeavesQuery = (
   useQuery(
     QUERY_KEYS.leave.getMy,
     () => leaveApi.getMyLeaves(),
-    options
+      {
+        
+        staleTime: 1000 * 30,
+        cacheTime: 1000 * 60,
+          ...options,
+           onError: (error:AxiosError) => {
+                  if(error.status == 500){
+                    B1ndToast.showError("서버 에러발생");
+                    return;
+                  }
+                  window.location.reload();
+                },
+        }
   );
 
 export const usePostApplyLeaveMutation = () => {

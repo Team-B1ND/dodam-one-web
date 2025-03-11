@@ -11,12 +11,7 @@ const Point = () => {
     useRecoilState(pointViewTypeAtom);
 
     const { data: serverMyPointData, isLoading } = useGetMyPointQuery(
-        { type: isDormitoryPointView as PointType },
-        {
-          cacheTime: 1000 * 60 * 5,
-          staleTime: 1000 * 60 * 60,
-        }
-      );
+        { type: isDormitoryPointView as PointType });
 
     const onChangeView = () => {
         setIsDormitoryPointView((prev) =>

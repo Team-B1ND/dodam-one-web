@@ -4,10 +4,7 @@ import { Banner } from "@src/types/Banner/banner.type";
 import { useGetMyMemberQuery } from "src/queries/Member/member.query";
 
 const useBanner = () => {
-  const bannersData = useGetBannersQuery({
-    cacheTime: 1000 * 60 * 60,
-    staleTime: 1000 * 60 * 30,
-  }).data?.data;
+  const bannersData = useGetBannersQuery().data?.data;
 
   const memberData = useGetMyMemberQuery({
     cacheTime: 1000 * 60 * 60 * 24,
