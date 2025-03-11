@@ -11,6 +11,7 @@ export const Main = styled.div`
     @media (max-width: 797px) {
       width: 100%;
       padding: 28px 28px 58px 32px ;
+      overflow-y: scroll;
     }
 `
 export const BannerBox = styled.div`
@@ -24,6 +25,7 @@ export const MainDataView = styled.div`
     width: 70%;
     @media (max-width: 797px) {
       width: 100%;
+      height: 160%;
     }
 `
 
@@ -36,6 +38,12 @@ export const MainDataGridBox = styled.div`
   column-gap: 5px;
   gap: 10px;
   justify-content: center;
+  @media (max-width: 797px) {
+     display: flex;
+     flex-wrap: nowrap;
+     flex-direction: column;
+     justify-content: flex-start;
+    }
 `;
 
 export const MainBox = styled.div`
