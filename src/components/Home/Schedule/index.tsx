@@ -11,7 +11,7 @@ const Schedule = () => {
       <CardTitle
       title="일정"
       titleIcon="Schedule"
-      redirectURL={"http://dodam.b1nd.com/wakesong"}
+      redirectURL={"http://dodam.b1nd.com/schedule"}
       />
       <DodamErrorBoundary text="오류가 발생했습니다." showButton={true}>
         <Suspense fallback={<ScheduleListFallbackLoader />}>

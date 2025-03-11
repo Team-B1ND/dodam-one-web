@@ -6,6 +6,8 @@ import * as S from "./style";
 const ScheduleList = () => {
   const { data: serverTodayScheduleData } = useGetScheduleQuery();
 
+  
+
   return (
     <>
       {serverTodayScheduleData &&

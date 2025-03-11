@@ -14,8 +14,6 @@ import dateTransform from "src/utils/Transform/dateTransform";
 const useApplyLeave = () => {
   const queryClient = useQueryClient();
 
-  
-
   const postApplyLeaveMutation = usePostApplyLeaveMutation();
   const deleteApplyLeaveMutation = useDeleteApplyLeaveMutation();
   const putApplyLeaveMutation = usePutApplyLeaveMutation();

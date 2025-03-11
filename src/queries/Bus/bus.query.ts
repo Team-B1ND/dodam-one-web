@@ -9,6 +9,7 @@ import { postMyBusParam, patchMyBusParam } from "@src/repositories/Bus/bus.param
 import busrepository from "src/repositories/Bus/bus.repository";
 import { BusesResponse, MyBusResponse } from "@src/types/Bus/bus.type";
 import { QUERY_KEYS } from "../queryKey";
+import { B1ndToast } from "@b1nd/b1nd-toastify";
 
 export const useGetBusesQuery = (
   options?: UseQueryOptions<BusesResponse, AxiosError, BusesResponse, string>
@@ -21,7 +22,20 @@ export const useGetBusesQuery = (
     useQuery<MyBusResponse | { message: string }, AxiosError>(
       QUERY_KEYS.bus.getMy, 
       () => busrepository.getMyBus(), 
-      options
+       {
+              
+                suspense: true,
+                staleTime: 1000 * 30,
+                cacheTime: 1000 * 60,
+                ...options,
+                 onError: (error:AxiosError) => {
+                        if(error.status == 500){
+                          B1ndToast.showError("서버 에러발생");
+                          return;
+                        }
+                        window.location.reload();
+                      },
+              }
     );
   
 
