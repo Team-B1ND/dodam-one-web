@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const ModalBox = styled.div`
     display: flex;
     flex-direction: column;
-    width: 320px;
+    min-width: 320px;
     height: 200px;
     padding: 18px;
     gap: 10px;

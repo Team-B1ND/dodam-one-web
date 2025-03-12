@@ -3,6 +3,7 @@ import { ModalBox, ButtonBox } from "./style";
 import { Dispatch, SetStateAction } from "react";
 
 interface ModalProps {
+    name: string;
     isOpen: boolean;
     handleClose: () => void;
     isAuthCode: string;
@@ -12,8 +13,9 @@ interface ModalProps {
     reqLoading:boolean;
 }
 
-const VerifieModal = (
-    { isOpen, 
+const VerifieModal = ({ 
+    name,
+    isOpen, 
     handleClose,
     isAuthCode, 
     setAuthCode,
@@ -29,7 +31,7 @@ const VerifieModal = (
     return (
         <DodamModal isOpen={isOpen} background={true}>
             <ModalBox>
-                <p>인증코드를 입력해주세요</p>
+                <p>{name} 인증코드를 입력해주세요</p>
                 <DodamFilledTextField
                     type="text"
                     label="인증코드"
