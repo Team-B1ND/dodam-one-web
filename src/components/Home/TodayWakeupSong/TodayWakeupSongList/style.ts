@@ -6,6 +6,7 @@ export const TodayWakeupSongListContainer = styled.div`
   height: 100%;
   padding: 5px 0px;
   display: flex;
+  gap: 5px;
   flex-direction: column;
   justify-content: space-between;
 `;

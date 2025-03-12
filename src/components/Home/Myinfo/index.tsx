@@ -3,7 +3,6 @@ import Profile from "./Profile";
 import { Suspense } from "react";
 import MyInfoFallbackLoader from "src/components/Common/Skeleton/MyInfo";
 import { DodamDivider, DodamFilledButton,ChevronRight, DodamErrorBoundary } from "@b1nd/dds-web";
-import Point from "./Point";
 import MyWakeupSong from "./MyWakeupSong";
 
 const MyInfo = () =>{
@@ -34,16 +33,18 @@ const MyInfo = () =>{
                 onClick={()=>redirect("myinfo")}
                 />
             <DodamDivider type="Small"/>
-            <S.MyPoint>
+            {/* <S.MyPoint>
                 <S.Title onClick={()=>redirect("myinfo")}>
                     상벌점 
                     <ChevronRight size={16} color="labelAssistive"/>
                 </S.Title>
                 <DodamErrorBoundary text="에러발생" showButton={true}>
-                    <Point/>
+                    <Suspense>
+                        <Point/>
+                    </Suspense>
                 </DodamErrorBoundary>
-            </S.MyPoint>
-            <DodamDivider type="Small"/>
+            </S.MyPoint> */}
+            {/* <DodamDivider type="Small"/> */}
             <S.MyWakeupSong>
                 <S.Title onClick={()=>redirect("wakeup")}>
                     기상송 신청내역 
