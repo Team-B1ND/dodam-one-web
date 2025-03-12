@@ -112,6 +112,7 @@ const SignUpFirst = ({
                 </DodamFilledButton>
                 {isModal.email && (
                 <VerifieModal 
+                    name="이메일"
                     isOpen={isModal.email}
                     handleClose={() => handleClose("email")}                   
                     isAuthCode={isAuthCode}
@@ -124,6 +125,7 @@ const SignUpFirst = ({
 
                 {isModal.phone && (
                     <VerifieModal 
+                        name="전화번호"
                         isOpen={isModal.phone} 
                         handleClose={() => handleClose("phone")}   
                         isAuthCode={isAuthCode}
