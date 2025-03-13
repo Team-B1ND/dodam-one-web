@@ -25,6 +25,14 @@ const Routes = () => {
         path="/detailed-information/service-policy"
         element={<ServicePolicyPage />}
       />
+      <Route
+        path="/detailed-information/personal-information-copy"
+        element={<PersonalInformationPage />}
+      />
+      <Route
+        path="/detailed-information/service-policy-copy"
+        element={<ServicePolicyPage />}
+      />
     </Switch>
   );
 };
