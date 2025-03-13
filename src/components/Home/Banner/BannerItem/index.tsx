@@ -10,9 +10,6 @@ interface Props {
 
 
 const BannerItem = ({ imgSrc, redirectURL, title, width}: Props) => {
-  
-  
-  
 
   const redirect = () => {
     window.open(redirectURL);

@@ -39,16 +39,32 @@ const HomePage = () => {
               <Banner bannerWidth={bannerWidth} /> 
           </S.BannerBox>
           <SortableContext items={items}>
-            <S.MainDataGridBox>
-              {items.map((id) => (
-                <S.MainBox>
-                <SortableItem key={id} id={id}>
-                  {componentsMap[id]}
-                </SortableItem>
-                </S.MainBox>
-              ))}
-            </S.MainDataGridBox>
-          </SortableContext>
+          <S.MainDataGridBox>
+            
+            <S.MainDataWidthBox>
+              {items
+                .filter((id) => ["schedule", "todayWakeupSong"].includes(id))
+                .map((id) => (
+                  <SortableItem key={id} id={id}>
+                    {componentsMap[id]}
+                  </SortableItem>
+                ))}
+            </S.MainDataWidthBox>
+
+            
+            <S.MainDataWidthBox>
+              {items
+                .filter((id) => ["meal", "apply"].includes(id))
+                .map((id) => (
+                  <SortableItem key={id} id={id}>
+                    {componentsMap[id]}
+                  </SortableItem>
+                ))}
+            </S.MainDataWidthBox>
+          </S.MainDataGridBox>
+        </SortableContext>
+
+
         </S.MainDataView>
         <S.SideProfile>
           <MyInfo />
