@@ -5,7 +5,11 @@ import BannerItem from "./BannerItem";
 import { useGetBannersQuery } from "src/queries/Banner/banner.query";
 import BannerFallbackLoader from "src/components/Common/Skeleton/Banner";
 
-const Banner = () => {
+interface BannerProps {
+  bannerWidth : number;
+}
+
+const Banner = ({bannerWidth}:BannerProps) => {
   const { data: bannersData, isLoading } = useGetBannersQuery({
     cacheTime: 1000 * 60 * 60,
     staleTime: 1000 * 60 * 30,
@@ -52,6 +56,7 @@ const Banner = () => {
             <BannerItem
               title={banner.title}
               imgSrc={banner.imageUrl}
+              width={bannerWidth}
               redirectURL={banner.redirectUrl}
               key={banner.id}
             />

@@ -13,6 +13,9 @@ export const Main = styled.div`
       padding: 28px 28px 58px 32px ;
       overflow-y: scroll;
     }
+    &::-webkit-scrollbar {
+    display: none;
+  }
 `
 export const BannerBox = styled.div`
   overflow: hidden;

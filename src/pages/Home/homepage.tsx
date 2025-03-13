@@ -8,6 +8,7 @@ import TodayWakeupSong from "src/components/Home/TodayWakeupSong";
 import Meal from "src/components/Home/Meal";
 import Apply from "src/components/Home/Apply";
 import MyInfo from "src/components/Home/Myinfo";
+import { useBannerWidth } from "src/utils/Screen/useScreenWidth";
 
 const componentsMap: Record<string, JSX.Element> = {
   schedule: <Schedule />,
@@ -18,6 +19,7 @@ const componentsMap: Record<string, JSX.Element> = {
 
 const HomePage = () => {
   const [items, setItems] = useState<string[]>(["schedule", "todayWakeupSong", "meal", "apply"]);
+  const { bannerBoxRef,bannerWidth } = useBannerWidth();
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -33,8 +35,8 @@ const HomePage = () => {
     <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
       <S.Main>
         <S.MainDataView>
-          <S.BannerBox>
-              <Banner />
+          <S.BannerBox ref={bannerBoxRef}>
+              <Banner bannerWidth={bannerWidth} /> 
           </S.BannerBox>
           <SortableContext items={items}>
             <S.MainDataGridBox>
