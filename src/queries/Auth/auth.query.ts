@@ -1,6 +1,6 @@
-import { LoginParam } from "src/repositories/Auth/auth.param"
+import { LoginParam } from "repositories/Auth/auth.param"
 import { useMutation } from "react-query"
-import authRepository from "src/repositories/Auth/auth.repository"
+import authRepository from "repositories/Auth/auth.repository"
 
 export const useSignin = () => {
     const mutation = useMutation((signinData:LoginParam)=>

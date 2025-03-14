@@ -1,11 +1,11 @@
 import { AxiosError } from "axios";
 import { useQuery, UseQueryOptions, UseQueryResult, useMutation } from "react-query";
-import { MyMemberResponse,AuthCodeReqProps,AuthCodeSendProps } from "src/types/Member/member.type";
-import MemberRepository from "src/repositories/Member/member.repository";
+import { MyMemberResponse,AuthCodeReqProps,AuthCodeSendProps } from "types/Member/member.type";
+import MemberRepository from "repositories/Member/member.repository";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
-import token from "src/libs/Token/token";
+import token from "libs/Token/token";
 import { QUERY_KEYS } from "../queryKey";
-import { Signup } from "src/types/Signup/signup.type";
+import { Signup } from "types/Signup/signup.type";
 
 export const useGetMyMemberQuery = (
   options?: UseQueryOptions<

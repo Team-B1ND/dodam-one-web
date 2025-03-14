@@ -1,8 +1,8 @@
 import { DodamTag } from "@b1nd/dds-web";
 import { useRecoilState } from "recoil";
-import { pointViewTypeAtom } from "src/store/Point/pointStore";
-import { useGetMyPointQuery } from "src/queries/Point/point.query";
-import { PointType } from "src/repositories/Point/point.param";
+import { pointViewTypeAtom } from "store/Point/pointStore";
+import { useGetMyPointQuery } from "queries/Point/point.query";
+import { PointType } from "repositories/Point/point.param";
 import * as S from "./style";
 
 

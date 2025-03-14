@@ -3,11 +3,11 @@ import {
   useDeleteMyPassMutation,
   usePostApplyPassMutation,
   usePutApplyPassMutation,
-} from "src/queries/Pass/pass.query";
-import { AppliedPass, ApplyPass } from "src/types/Pass/pass.type";
-import dateTransform from "src/utils/Transform/dateTransform";
+} from "queries/Pass/pass.query";
+import { AppliedPass, ApplyPass } from "types/Pass/pass.type";
+import dateTransform from "utils/Transform/dateTransform";
 import dayjs from "dayjs";
-import dataCheck from "src/utils/Check/dataCheck";
+import dataCheck from "utils/Check/dataCheck";
 import { useQueryClient } from "react-query";
 import {B1ndToast} from "@b1nd/b1nd-toastify";
 // import { captureException, withScope } from "sentry/react";

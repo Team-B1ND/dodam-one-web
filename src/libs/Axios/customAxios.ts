@@ -1,9 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
-import config from "src/config/config.json";
+import config from "config/config.json";
 import {
   ACCESS_TOKEN_KEY,
   REQUEST_TOKEN_KEY,
-} from "src/constants/Token/token.constant";
+} from "constants/Token/token.constant";
 import token from "../Token/token";
 import errorResponseHandler from "./errorResponseHandler";
 import requestHandler from "./requestHandler";

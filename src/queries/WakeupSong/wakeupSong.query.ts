@@ -1,12 +1,12 @@
 import { AxiosError } from "axios";
 import { useQuery, UseQueryOptions, UseQueryResult } from "react-query";
-import { getTodayAllowedWakeupSongParam } from "src/repositories/WakeupSong/wakeupSong.param";
+import { getTodayAllowedWakeupSongParam } from "repositories/WakeupSong/wakeupSong.param";
 
-import wakeupSongRepository from "src/repositories/WakeupSong/wakeupSong.repository";
+import wakeupSongRepository from "repositories/WakeupSong/wakeupSong.repository";
 import {
   MyWakeupSongsResponse,
   TodayAllowedWakeupSongsResponse,
-} from "src/types/WakeupSong/wakeupSong.type";
+} from "types/WakeupSong/wakeupSong.type";
 import { QUERY_KEYS } from "../queryKey";
 
 export const useGetMyWakeupSongsQuery = (

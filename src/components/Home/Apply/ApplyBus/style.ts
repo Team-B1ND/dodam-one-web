@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { customScrollBar } from "src/styles/libStyle";
+import { customScrollBar } from "styles/libStyle";
 
 export const ApplyBusContainer = styled.div`
   width: 100%;

@@ -9,9 +9,9 @@ import {
   deleteMyLeaveParam,
   postApplyLeaveParam,
   putMyLeaveParam,
-} from "src/repositories/Leave/leave.param";
-import leaveApi from "src/repositories/Leave/leave.repository";
-import { MyLeavesResponse } from "src/types/Leave/leave.type";
+} from "repositories/Leave/leave.param";
+import leaveApi from "repositories/Leave/leave.repository";
+import { MyLeavesResponse } from "types/Leave/leave.type";
 import { QUERY_KEYS } from "../queryKey";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
 

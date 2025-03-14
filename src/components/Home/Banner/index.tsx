@@ -2,8 +2,8 @@ import { useMemo } from "react";
 import * as S from "./style";
 import Slider from "react-slick";
 import BannerItem from "./BannerItem";
-import { useGetBannersQuery } from "src/queries/Banner/banner.query";
-import BannerFallbackLoader from "src/components/Common/Skeleton/Banner";
+import { useGetBannersQuery } from "queries/Banner/banner.query";
+import BannerFallbackLoader from "components/Common/Skeleton/Banner";
 
 interface BannerProps {
   bannerWidth : number;

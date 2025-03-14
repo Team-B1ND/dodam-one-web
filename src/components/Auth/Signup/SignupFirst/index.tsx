@@ -1,8 +1,8 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { DodamFilledButton, DodamTextField } from "@b1nd/dds-web";
 import * as S from "../style";
-import { Signup } from "@src/types/Signup/signup.type";
-import { SignUpModal } from "@src/types/Signup/signup.type";
+import { Signup } from "types/Signup/signup.type";
+import { SignUpModal } from "types/Signup/signup.type";
 import VerifieModal from "../../SignModal/verifyModal";
 
 interface Props {    

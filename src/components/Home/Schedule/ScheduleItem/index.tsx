@@ -1,4 +1,4 @@
-import { Schedule } from "src/types/Schedule/schedule.type";
+import { Schedule } from "types/Schedule/schedule.type";
 import * as S from "./style";
 
 interface Props {

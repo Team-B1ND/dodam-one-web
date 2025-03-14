@@ -1,6 +1,6 @@
 import * as S from "./style";
 import { Suspense } from "react";
-import WakeupSongListFallback from "src/components/Common/Skeleton/WakeupSongList";
+import WakeupSongListFallback from "components/Common/Skeleton/WakeupSongList";
 import MyInfoWakeupSongList from "./MyWakeupSongList";
 import { DodamErrorBoundary } from "@b1nd/dds-web";
 

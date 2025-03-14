@@ -1,4 +1,4 @@
-import { WakeupSong } from "src/types/WakeupSong/wakeupSong.type";
+import { WakeupSong } from "types/WakeupSong/wakeupSong.type";
 import * as S from "./style";
 
 interface Props {

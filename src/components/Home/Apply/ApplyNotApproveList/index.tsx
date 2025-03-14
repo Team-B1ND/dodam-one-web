@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
-import dataCheck from "src/utils/Check/dataCheck";
+import dataCheck from "utils/Check/dataCheck";
 import ApplyNotApproveListItem from "./ApplyNotApproveListItem";
 import * as S from "./style";
 import React from "react";
-import { useGetMyLeavesQuery } from "src/queries/Leave/leave.query";
-import ApplyNotApproveListFallbackLoader from "src/components/Common/Skeleton/ApplyNotList";
+import { useGetMyLeavesQuery } from "queries/Leave/leave.query";
+import ApplyNotApproveListFallbackLoader from "components/Common/Skeleton/ApplyNotList";
 
 interface Props {
   fold: boolean;

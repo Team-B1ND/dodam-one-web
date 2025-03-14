@@ -1,7 +1,7 @@
 import React from "react";
-import { EMealType } from "src/enum/Meal/meal.enum";
+import { EMealType } from "enum/Meal/meal.enum";
 import * as S from "./style";
-import { MealData } from "src/types/Meal/meal.type";
+import { MealData } from "types/Meal/meal.type";
 import { DodamTag } from "@b1nd/dds-web";
 
 interface Props {

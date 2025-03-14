@@ -1,6 +1,6 @@
 import { DragEndEvent } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
-import { STORAGE_KEY } from "src/constants/Home/home.constants";
+import { STORAGE_KEY } from "constants/Home/home.constants";
 import { useEffect, useState } from "react";
 
 export const useHome = () =>{

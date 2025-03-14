@@ -1,12 +1,12 @@
 import React, { useCallback, useState } from "react";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
-import { Signup, SignupAgree, SignUpModal } from "src/types/Signup/signup.type";
-import patternCheck from "src/utils/Check/patternCheck";
+import { Signup, SignupAgree, SignUpModal } from "types/Signup/signup.type";
+import patternCheck from "utils/Check/patternCheck";
 // import * as Sentry from "sentry/react"
-import { useMemberSignUp } from "src/queries/Member/member.query";
-import ErrorHandler from "src/utils/Error/ErrorHandler";
+import { useMemberSignUp } from "queries/Member/member.query";
+import ErrorHandler from "utils/Error/ErrorHandler";
 import axios from "axios";
-import { useReqAuthCode,useSendAuthCode } from "src/queries/Member/member.query";
+import { useReqAuthCode,useSendAuthCode } from "queries/Member/member.query";
 
 const useSignup = () => {
   //내디바이스 종류 

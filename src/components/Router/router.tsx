@@ -1,11 +1,10 @@
-import React from "react";
 import { Route, Routes as Switch } from "react-router-dom";
 import PageTemplate from "../Common/PageTemplate";
-import HomePage from "src/pages/Home/homepage";
-import AuthPage from "src/pages/Auth/authPage";
-import { NightStudyPage } from "src/pages/pages";
-import PersonalInformationPage from "src/pages/Term/PersonalInformationPage";
-import ServicePolicyPage from "src/pages/Term/ServicePolicy";
+import HomePage from "pages/Home/homepage";
+import AuthPage from "pages/Auth/authPage";
+import { NightStudyPage } from "pages/pages";
+import PersonalInformationPage from "pages/Term/PersonalInformationPage";
+import ServicePolicyPage from "pages/Term/ServicePolicy";
 
 const Routes = () => {
 

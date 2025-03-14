@@ -1,5 +1,5 @@
-import { MyLeavesResponse } from "src/types/Leave/leave.type";
-import { dodamAxios } from "src/libs/Axios/customAxios";
+import { MyLeavesResponse } from "types/Leave/leave.type";
+import { dodamAxios } from "libs/Axios/customAxios";
 import {
   deleteMyLeaveParam,
   postApplyLeaveParam,

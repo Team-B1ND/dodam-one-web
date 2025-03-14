@@ -2,7 +2,7 @@ import cookie from "../Cookie/cookie";
 import {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
-} from "src/constants/Token/token.constant";
+} from "constants/Token/token.constant";
 
 class Token {
   public getToken(key: string): string | undefined {

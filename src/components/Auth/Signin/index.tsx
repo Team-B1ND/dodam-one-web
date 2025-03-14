@@ -1,12 +1,8 @@
 import { DodamFilledButton, DodamTextField } from "@b1nd/dds-web";
 import * as S from "./style";
 import NullAccountModal from "../NullAccountModal/nullAccountModal";
-import {useSignIn} from "src/hooks/Auth/useSignIn";
-// import { Dispatch, SetStateAction } from "react";
+import {useSignIn} from "hooks/Auth/useSignIn";
 
-// interface Props {
-//     setPwReset:Dispatch<SetStateAction<boolean>>;
-// }
 
 const SignIn = () => {
     const {...Sign} = useSignIn();

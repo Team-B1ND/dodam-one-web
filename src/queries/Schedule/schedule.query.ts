@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { useQuery, UseQueryOptions, UseQueryResult } from "react-query";
-import scheduleRepository from "src/repositories/Schedule/schedule.repository";
-import { ScheduleResponse } from "src/types/Schedule/schedule.type";
+import scheduleRepository from "repositories/Schedule/schedule.repository";
+import { ScheduleResponse } from "types/Schedule/schedule.type";
 import { QUERY_KEYS } from "../queryKey";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
 

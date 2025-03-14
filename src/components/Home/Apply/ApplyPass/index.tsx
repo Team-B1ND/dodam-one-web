@@ -1,7 +1,7 @@
 import { DodamErrorBoundary , DodamDatePicker , DodamFilledButton } from "@b1nd/dds-web";
 import * as S from "./style";
 import { ButtonContainer, TextAreaWrap } from "../style";
-import useApplyPass from "src/hooks/Pass/useApplyPass";
+import useApplyPass from "hooks/Pass/useApplyPass";
 import ApplyPassModal from "./ApplyPassModal";
 import { Props } from "..";
 import ApplyPassApproveList from "../ApplyPassApproveList";

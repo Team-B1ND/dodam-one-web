@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { EMealType } from "src/enum/Meal/meal.enum";
+import { EMealType } from "enum/Meal/meal.enum";
 import { DodamTypography } from "@b1nd/dds-web";
 
 export const MealItemContainer = styled.div`

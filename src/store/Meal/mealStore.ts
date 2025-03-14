@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import dateTransform from "src/utils/Transform/dateTransform";
+import dateTransform from "utils/Transform/dateTransform";
 
 export const mealDateAtom = atom({
   key: "meal/mealDateAtom",

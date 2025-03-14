@@ -1,7 +1,7 @@
 import * as S from "./style";
 import Profile from "./Profile";
 import { Suspense } from "react";
-import MyInfoFallbackLoader from "src/components/Common/Skeleton/MyInfo";
+import MyInfoFallbackLoader from "components/Common/Skeleton/MyInfo";
 import { DodamDivider, DodamFilledButton,ChevronRight, DodamErrorBoundary } from "@b1nd/dds-web";
 import MyWakeupSong from "./MyWakeupSong";
 

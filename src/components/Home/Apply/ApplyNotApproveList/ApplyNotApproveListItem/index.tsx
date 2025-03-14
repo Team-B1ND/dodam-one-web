@@ -1,7 +1,7 @@
-import { AppliedPass } from "src/types/Pass/pass.type";
-import { AppliedLeave } from "src/types/Leave/leave.type";
+import { AppliedPass } from "types/Pass/pass.type";
+import { AppliedLeave } from "types/Leave/leave.type";
 import * as S from "./style";
-import dateTransform from "src/utils/Transform/dateTransform";
+import dateTransform from "utils/Transform/dateTransform";
 import React from "react";
 import { Trash } from "@b1nd/dds-web";
 

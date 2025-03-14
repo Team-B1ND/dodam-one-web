@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 import * as S from "./style";
-import useSignup from "src/hooks/Auth/useSignup";
+import useSignup from "hooks/Auth/useSignup";
 import SignUpFirst from "./SignupFirst";
 import SignUpSecond from "./SignupSecond";
-import { SIGNUP_SECTION_NAME } from "src/constants/Auth/signup.constant";
+import { SIGNUP_SECTION_NAME } from "constants/Auth/signup.constant";
 
 const SignUp = () => {
     const {...SignUp} = useSignup();

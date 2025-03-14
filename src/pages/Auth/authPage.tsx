@@ -1,9 +1,9 @@
-import React,{useState} from "react";
+import {useState} from "react";
 import * as S from "./style";
-import AuthLogo from "src/assets/logo/Auth_Logo.svg";
-import SignIn from "src/components/Auth/Signin";
-import SignUp from "src/components/Auth/Signup";
-import PasswordReset from "src/components/Auth/PwReset";
+import AuthLogo from "assets/logo/Auth_Logo.svg";
+import SignIn from "components/Auth/Signin";
+import SignUp from "components/Auth/Signup";
+import PasswordReset from "components/Auth/PwReset";
 
 const AuthPage = ()=>{
     const [isLogin, setIsLogin] = useState(true);

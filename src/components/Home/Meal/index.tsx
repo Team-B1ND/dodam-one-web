@@ -1,8 +1,8 @@
 import { useRecoilValue } from "recoil";
-import { mealDateAtom } from "src/store/Meal/mealStore";
+import { mealDateAtom } from "store/Meal/mealStore";
 import * as S from "./style";
 import { DodamErrorBoundary,DodamDatePicker, CookedRice } from "@b1nd/dds-web";
-import useHandleMealDate from "src/hooks/Meal/useHandleMealDate";
+import useHandleMealDate from "hooks/Meal/useHandleMealDate";
 import { Suspense } from "react";
 import MealList from "./MealList";
 

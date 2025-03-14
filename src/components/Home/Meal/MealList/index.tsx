@@ -1,9 +1,9 @@
 import dayjs from "dayjs";
-import { EMealType } from "src/enum/Meal/meal.enum";
-import useMeal from "src/hooks/Meal/useMeal";
+import { EMealType } from "enum/Meal/meal.enum";
+import useMeal from "hooks/Meal/useMeal";
 import { useRecoilValue } from "recoil";
-import { mealDateAtom } from "src/store/Meal/mealStore";
-import dateTransform from "src/utils/Transform/dateTransform";
+import { mealDateAtom } from "store/Meal/mealStore";
+import dateTransform from "utils/Transform/dateTransform";
 import MealItem from "../MealItem";
 import { MealListContainer } from "./style";
 
