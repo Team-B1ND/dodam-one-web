@@ -4,7 +4,7 @@ import { DodamDatePicker,DodamErrorBoundary,DodamFilledButton } from "@b1nd/dds-
 import useApplyLeave from "hooks/Leave/useApplyLeave";
 import ApplyNotApproveList from "../ApplyNotApproveList";
 import { Props } from "..";
-
+import { DatePickerBox } from "../style";
 
 
 const ApplyLeave = ({setSection}:Props) => {
@@ -36,30 +36,36 @@ const ApplyLeave = ({setSection}:Props) => {
               <S.ApplyLeaveFormColumnTitle>
                 출발 일자
               </S.ApplyLeaveFormColumnTitle>
+              <DatePickerBox>
                   <DodamDatePicker
                       itemKey="startDatePicker"
-                      width={100}
                       height={32}
                       color="primaryNormal"
                       onChange={(e) => handleLeaveDataDate(e, "start")}
                       value={leaveData.startTimeDate} 
                       title={"출발일자"} 
+                      dateType="MonthDay"
+                      customStyle={{borderBottom:"1px solid #0083F0"}}
             
                   />
+                  </DatePickerBox>
             </S.ApplyLeaveFormColumnWrap>
             <S.ApplyLeaveFormColumnWrap >
               <S.ApplyLeaveFormColumnTitle>
                 도착 일자
               </S.ApplyLeaveFormColumnTitle>
+              <DatePickerBox>
                   <DodamDatePicker
                       itemKey="endDatePicker"
-                      width={100}
                       height={32}
                       color="primaryNormal"
                       onChange={(e) => handleLeaveDataDate(e, "end")}
                       value={leaveData.endTimeDate} 
-                      title={"도착일자"}     
+                      title={"도착일자"}    
+                      dateType="MonthDay" 
+                      customStyle={{borderBottom:"1px solid #0083F0"}}
                   />
+              </DatePickerBox>
             </S.ApplyLeaveFormColumnWrap>
             <TextAreaWrap
               placeholder="사유를 입력해주세요"

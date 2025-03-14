@@ -9,6 +9,7 @@ export const MealDatePickerContainer = styled.div`
   align-items: center;
 `;
 
+
 export const MealTitleContainer = styled.div`
   display: flex;
   align-items: center;
@@ -30,3 +31,10 @@ export const MealContainer = styled.div`
   align-items: center;
   ${DodamShape.Large};
 `;
+
+export const DatePickerBox = styled.div`
+margin:0 10%;
+div{
+  /* min-width: 90px; */
+}
+`

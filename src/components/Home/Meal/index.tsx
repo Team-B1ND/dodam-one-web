@@ -18,17 +18,18 @@ const Meal = () => {
           <CookedRice/>
           <span>급식</span>
         </S.MealTitleContainer>
-      
-      <DodamDatePicker
-          itemKey="mealDatePicker"
-          width={100}
-          height={30}
-          customStyle={{ border: 0,color:"#0083F0",margin:"0 auto"}}
-          onChange={handleMealDate} 
-          value={mealDate} 
-          title="급식"          
-          type="entire"
-        />
+      <S.DatePickerBox>
+        <DodamDatePicker
+            itemKey="mealDatePicker"
+            height={30}
+            customStyle={{ border: 0,color:"#0083F0"}}
+            onChange={handleMealDate} 
+            value={mealDate} 
+            title="급식"          
+            type="entire"
+            dateType="MonthDay"
+          />
+        </S.DatePickerBox>
       </S.MealDatePickerContainer>
       <DodamErrorBoundary text="에러발생" showButton={true}>
         <Suspense fallback={<>로딩중...</>}>

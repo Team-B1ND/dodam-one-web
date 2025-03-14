@@ -3,7 +3,7 @@ import { DodamShape } from "@b1nd/dds-web";
 
 export const TodayWakeupSongContainer = styled.div`
   height: min-content;
-  min-height: 250px;
+  min-height: 210px;
   padding: 20px;
   background-color: ${({ theme }) => theme.backgroundNormal};
   display: flex;
