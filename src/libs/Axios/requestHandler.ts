@@ -2,7 +2,7 @@ import {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
   REQUEST_TOKEN_KEY,
-} from "src/constants/Token/token.constant";
+} from "constants/Token/token.constant";
 import { InternalAxiosRequestConfig } from "axios";
 import token from "../Token/token";
 

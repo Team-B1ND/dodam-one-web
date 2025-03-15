@@ -1,5 +1,5 @@
-import { dodamAxios } from "src/libs/Axios/customAxios";
-import { MyPassesResponse, Pass } from "src/types/Pass/pass.type";
+import { dodamAxios } from "libs/Axios/customAxios";
+import { MyPassesResponse, Pass } from "types/Pass/pass.type";
 import {
   deleteMyPassParam,
   putMyPassParam,

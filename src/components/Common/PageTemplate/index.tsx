@@ -1,11 +1,11 @@
 import { LayoutContainer, Layout } from "./style";
 import { DodamNavBar } from "@b1nd/dds-web";
 import { Outlet } from "react-router-dom";
-import useExceptionHandling from "src/utils/ExceptionHandling/exceptionHandling";
+import useExceptionHandling from "utils/ExceptionHandling/exceptionHandling";
 import { useRecoilValue } from "recoil";
-import {useThemes} from "src/hooks/Theme/usetheme";
-import { themeModeAtom } from "src/store/Theme/themeStore";
-import useLogout from "src/hooks/Auth/useLogout";
+import {useThemes} from "hooks/Theme/usetheme";
+import { themeModeAtom } from "store/Theme/themeStore";
+import useLogout from "hooks/Auth/useLogout";
 
 const PageTemplate = () => {
   const exceptionHandling = useExceptionHandling();

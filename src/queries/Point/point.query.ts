@@ -1,8 +1,8 @@
 import { AxiosError } from "axios";
 import { useQuery, UseQueryOptions, UseQueryResult } from "react-query";
-import { getMyPointParam } from "src/repositories/Point/point.param";
-import pointRepository from "src/repositories/Point/point.repository";
-import { MyPointResponse } from "src/types/Point/point.type";
+import { getMyPointParam } from "repositories/Point/point.param";
+import pointRepository from "repositories/Point/point.repository";
+import { MyPointResponse } from "types/Point/point.type";
 import { QUERY_KEYS } from "../queryKey";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
 

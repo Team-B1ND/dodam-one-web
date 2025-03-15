@@ -1,4 +1,4 @@
-import { Member } from "@src/types/Member/member.type";
+import { Member } from "types/Member/member.type";
 
 export interface Login {
   id: string;

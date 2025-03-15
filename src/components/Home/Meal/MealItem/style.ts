@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { EMealType } from "src/enum/Meal/meal.enum";
+import { EMealType } from "enum/Meal/meal.enum";
 import { DodamTypography } from "@b1nd/dds-web";
 
 export const MealItemContainer = styled.div`
@@ -16,8 +16,11 @@ export const MealItemIconWrap = styled.div`
   flex-direction: column;
   align-items: center;
   row-gap: 5px;
+  div{
+    min-height: 25px;
+  }
   span{
-    padding: 2px 0 !important; 
+    padding: 1px 0 !important; 
   }
 `;
 
@@ -42,7 +45,6 @@ export const MealItemIconLabel = styled.div<{ mealType: EMealType }>`
 
 export const MealItemTextWrap = styled.div`
   width: 100%;
-  margin-left: 5px;
   color: ${({ theme }) => theme.labelNormal};
   display: flex;
   flex-wrap: wrap;

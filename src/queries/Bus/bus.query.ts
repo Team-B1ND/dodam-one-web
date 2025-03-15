@@ -5,9 +5,9 @@ import {
   UseQueryOptions,
   UseQueryResult,
 } from "react-query";
-import { postMyBusParam, patchMyBusParam } from "@src/repositories/Bus/bus.param";
-import busrepository from "src/repositories/Bus/bus.repository";
-import { BusesResponse, MyBusResponse } from "@src/types/Bus/bus.type";
+import { postMyBusParam, patchMyBusParam } from "repositories/Bus/bus.param";
+import busrepository from "repositories/Bus/bus.repository";
+import { BusesResponse, MyBusResponse } from "types/Bus/bus.type";
 import { QUERY_KEYS } from "../queryKey";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
 

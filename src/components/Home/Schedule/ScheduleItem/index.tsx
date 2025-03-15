@@ -1,4 +1,4 @@
-import { Schedule } from "src/types/Schedule/schedule.type";
+import { Schedule } from "types/Schedule/schedule.type";
 import * as S from "./style";
 
 interface Props {
@@ -19,7 +19,6 @@ const ScheduleItem = ({ data }: Props) => {
   // 일정 시작일과 종료일
   const [startDate, endDate] = data.date;
   
-  console.log(startDate, endDate, today);
   const isSingleDate = startDate === endDate;
 
 

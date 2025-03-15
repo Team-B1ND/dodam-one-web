@@ -1,21 +1,21 @@
 import React, { FormEvent, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Login, LoginResponse } from "src/types/Login/login.type";
-import token from "src/libs/Token/token";
+import { Login, LoginResponse } from "types/Login/login.type";
+import token from "libs/Token/token";
 import {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
-} from "src/constants/Token/token.constant";
+} from "constants/Token/token.constant";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
 import { useQueryClient } from "react-query";
 // import * as Sentry from "sentry/react";
-import { QUERY_KEYS } from "src/queries/queryKey";
+import { QUERY_KEYS } from "queries/queryKey";
 import { AxiosError } from "axios";
-import ErrorHandler from "src/utils/Error/ErrorHandler";
+import ErrorHandler from "utils/Error/ErrorHandler";
 import { useRecoilValue } from "recoil";
-import { pointViewTypeAtom } from "src/store/Point/pointStore";
-import { useSignin } from "src/queries/Auth/auth.query";
-// import { PasswordParm } from "src/types/login/login.type";
+import { pointViewTypeAtom } from "store/Point/pointStore";
+import { useSignin } from "queries/Auth/auth.query";
+// import { PasswordParm } from "types/login/login.type";
 
 export const useSignIn = () => {
   const queryClient = useQueryClient();

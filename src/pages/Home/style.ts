@@ -13,9 +13,12 @@ export const Main = styled.div`
       padding: 28px 28px 58px 32px ;
       overflow-y: scroll;
     }
+    &::-webkit-scrollbar {
+    display: none;
+  }
 `
 export const BannerBox = styled.div`
-  overflow: hidden;
+  height: 114px;
   ${DodamShape.Large};
 `
 
@@ -33,18 +36,44 @@ export const MainDataGridBox = styled.div`
   width: 100%;
   height: 100%;
   padding-top: 20px;
+
   display: flex;
-  flex-wrap: wrap;
-  column-gap: 5px;
+  flex-direction: column;
   gap: 10px;
-  justify-content: center;
+  
   @media (max-width: 797px) {
      display: flex;
      flex-wrap: nowrap;
      flex-direction: column;
      justify-content: flex-start;
-    }
+  }
 `;
+
+export const MainDataWidthBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 50%;
+  gap: 10px;
+  
+  @media (min-height:807px) {
+    height: auto;
+  }
+
+  @media (max-width: 797px) {
+    &:nth-child(2){
+      
+      flex-direction: column;
+    }
+     
+  }
+  @media (max-width: 597px) {
+    &:nth-child(1){
+      flex-direction: column;
+    }
+     
+  }
+`
 
 export const MainBox = styled.div`
   display: flex;
@@ -75,6 +104,10 @@ export const DraggableBox = styled.div`
   outline: none;
   position: relative;
   height: min-content;
+  width: 50%;
+   @media (max-width: 797px) {
+      width: 100%;
+  }
 `;
 
 export const DragHandle = styled.div`

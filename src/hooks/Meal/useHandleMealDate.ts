@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { useRecoilState } from "recoil";
-import { mealDateAtom } from "src/store/Meal/mealStore";
+import { mealDateAtom } from "store/Meal/mealStore";
 
 
 const useHandleMealDate = () => {

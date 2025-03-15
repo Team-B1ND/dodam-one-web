@@ -1,5 +1,5 @@
-import { dodamAxios } from "src/libs/Axios/customAxios";
-import { ScheduleResponse } from "src/types/Schedule/schedule.type";
+import { dodamAxios } from "libs/Axios/customAxios";
+import { ScheduleResponse } from "types/Schedule/schedule.type";
 import dayjs from "dayjs";
 
 class ScheduleRepository {

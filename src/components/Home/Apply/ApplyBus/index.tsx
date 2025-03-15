@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import ApplyBusForm from "./ApplyBusForm";
-import ApplyBusListFallbackLoader from "src/components/Common/Skeleton/ApplyBusList";
+import ApplyBusListFallbackLoader from "components/Common/Skeleton/ApplyBusList";
 import * as S from "./style";
 import { DodamErrorBoundary } from "@b1nd/dds-web";
 import { Props } from "..";

@@ -99,3 +99,10 @@ export const TextAreaWrap = styled.textarea`
     border: 1px solid ${({ theme }) => theme.primaryNormal};
   }
 `;
+
+
+export const DatePickerBox = styled.div`
+div{
+  min-width: 90px;
+}
+`

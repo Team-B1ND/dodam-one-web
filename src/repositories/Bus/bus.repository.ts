@@ -1,5 +1,5 @@
-import { dodamAxios } from "src/libs/Axios/customAxios";
-import { BusesResponse, MyBusResponse } from "@src/types/Bus/bus.type";
+import { dodamAxios } from "libs/Axios/customAxios";
+import { BusesResponse, MyBusResponse } from "types/Bus/bus.type";
 import { patchMyBusParam, postMyBusParam } from "./bus.param";
 
 class BusRepository {

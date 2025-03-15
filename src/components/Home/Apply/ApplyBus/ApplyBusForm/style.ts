@@ -1,4 +1,4 @@
-import { customScrollBar } from "src/styles/libStyle";
+import { customScrollBar } from "styles/libStyle";
 import styled from "styled-components";
 
 export const ApplyBusFormItemContainer = styled.div`

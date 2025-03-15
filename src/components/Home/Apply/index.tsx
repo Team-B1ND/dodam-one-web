@@ -1,4 +1,4 @@
-import React,{useState, Dispatch, SetStateAction} from "react";
+import {useState, Dispatch, SetStateAction} from "react";
 import { Bus, DoorOpen } from "@b1nd/dds-web";
 import * as S from "./style";
 import ApplyLeave from "./ApplyLeave";

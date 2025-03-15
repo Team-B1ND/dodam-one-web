@@ -1,4 +1,4 @@
-import { PointType } from "src/repositories/Point/point.param";
+import { PointType } from "repositories/Point/point.param";
 import { Response } from "../Util/response.type";
 
 export interface MyPointResponse extends Response {

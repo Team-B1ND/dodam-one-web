@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { useQuery, UseQueryOptions, UseQueryResult } from "react-query";
-import bannerRepository from "src/repositories/Banner/banner.repository";
-import { BannersResponse } from "src/types/Banner/banner.type";
+import bannerRepository from "repositories/Banner/banner.repository";
+import { BannersResponse } from "types/Banner/banner.type";
 import { QUERY_KEYS } from "../queryKey";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
 

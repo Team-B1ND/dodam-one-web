@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useMemo } from "react";
-import { SignupAgree } from "src/types/Signup/signup.type";
-import { SIGNUP_AGREE } from "src/constants/Auth/signup.constant";
-import { Signup } from "src/types/Signup/signup.type";
+import { SignupAgree } from "types/Signup/signup.type";
+import { SIGNUP_AGREE } from "constants/Auth/signup.constant";
+import { Signup } from "types/Signup/signup.type";
 import * as S from "./style";
 import { DodamTextField, DodamFilledButton, Checkmark } from "@b1nd/dds-web";
 

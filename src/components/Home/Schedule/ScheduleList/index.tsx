@@ -1,5 +1,5 @@
-import { useGetScheduleQuery } from "src/queries/Schedule/schedule.query";
-import dataCheck from "src/utils/Check/dataCheck";
+import { useGetScheduleQuery } from "queries/Schedule/schedule.query";
+import dataCheck from "utils/Check/dataCheck";
 import ScheduleItem from "../ScheduleItem";
 import * as S from "./style";
 

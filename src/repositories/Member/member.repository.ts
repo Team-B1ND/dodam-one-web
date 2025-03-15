@@ -1,7 +1,7 @@
-import config from "src/config/config.json";
-import { MyMemberResponse, AuthCodeReqProps,AuthCodeSendProps } from "src/types/Member/member.type";
-import { dodamAxios } from "src/libs/Axios/customAxios";
-import { Signup } from "src/types/Signup/signup.type";
+import config from "config/config.json";
+import { MyMemberResponse, AuthCodeReqProps,AuthCodeSendProps } from "types/Member/member.type";
+import { dodamAxios } from "libs/Axios/customAxios";
+import { Signup } from "types/Signup/signup.type";
 import axios from "axios";
 
 

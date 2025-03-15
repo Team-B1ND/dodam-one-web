@@ -3,7 +3,7 @@ import { DodamColor, DodamShape, DodamTypography } from "@b1nd/dds-web";
 export const BannerContainer = styled.div<{nullBanner:boolean}>`
   width: 100%;
   position: fixed;
-  height: 110px;
+  height: 114px;
   position: relative;
   overflow: hidden;
   display: flex;

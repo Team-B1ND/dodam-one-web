@@ -1,5 +1,5 @@
 import { Checkmark } from "@b1nd/dds-web";
-import { Bus } from "src/types/Bus/bus.type";
+import { Bus } from "types/Bus/bus.type";
 import * as S from "./style";
 
 interface Props {

@@ -1,5 +1,5 @@
-import { useGetMyWakeupSongsQuery } from "src/queries/WakeupSong/wakeupSong.query";
-import dataCheck from "src/utils/Check/dataCheck";
+import { useGetMyWakeupSongsQuery } from "queries/WakeupSong/wakeupSong.query";
+import dataCheck from "utils/Check/dataCheck";
 import MyWakeupSongItem from "../MyWakeupSongItem";
 import { SongNullBox } from "../style";
 

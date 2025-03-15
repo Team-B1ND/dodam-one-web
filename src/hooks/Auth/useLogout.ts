@@ -1,4 +1,4 @@
-import token from "src/libs/Token/token";
+import token from "libs/Token/token";
 import { useNavigate } from "react-router-dom";
 
 const useLogout = () => {

@@ -1,0 +1,1 @@
+export const STORAGE_KEY = "HOME_PAGE_ORDER"; 

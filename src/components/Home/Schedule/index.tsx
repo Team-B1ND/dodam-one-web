@@ -1,8 +1,8 @@
 import * as S from "./style";
 import { Suspense } from "react";
 import ScheduleList from "./ScheduleList";
-import ScheduleListFallbackLoader from "src/components/Common/Skeleton/ScheduleList";
-import CardTitle from "src/components/Common/CardTitle";
+import ScheduleListFallbackLoader from "components/Common/Skeleton/ScheduleList";
+import CardTitle from "components/Common/CardTitle";
 import { DodamErrorBoundary } from "@b1nd/dds-web";
 
 const Schedule = () => {

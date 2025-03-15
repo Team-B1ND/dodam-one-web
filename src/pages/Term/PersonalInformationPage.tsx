@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Logo from "src/assets/logo/dodam_text_logo.svg";
+import Logo from "assets/logo/dodam_text_logo.svg";
 import {
   InformationContainer,
   InformationContent,

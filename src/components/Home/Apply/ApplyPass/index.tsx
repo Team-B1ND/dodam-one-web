@@ -1,7 +1,7 @@
 import { DodamErrorBoundary , DodamDatePicker , DodamFilledButton } from "@b1nd/dds-web";
 import * as S from "./style";
-import { ButtonContainer, TextAreaWrap } from "../style";
-import useApplyPass from "src/hooks/Pass/useApplyPass";
+import { ButtonContainer, DatePickerBox, TextAreaWrap } from "../style";
+import useApplyPass from "hooks/Pass/useApplyPass";
 import ApplyPassModal from "./ApplyPassModal";
 import { Props } from "..";
 import ApplyPassApproveList from "../ApplyPassApproveList";
@@ -27,16 +27,18 @@ const ApplyPass = ({setSection}:Props) => {
           <>
             <S.ApplyPassFormColumnWrap>
               <S.ApplyPassFormColumnTitle>신청 일자</S.ApplyPassFormColumnTitle>
+              <DatePickerBox>
                   <DodamDatePicker
                       itemKey="datePicker"
-                      width={100}
                       height={32}
                       customStyle={{ fontSize: 16,  }}
                       onChange={Pass.handlePassDataDate}
                       value={Pass.passDataDate} 
                       title={"외출일시"} 
                       color="primaryNormal"
+                      dateType="MonthDay"
                       />
+                   </DatePickerBox>
             </S.ApplyPassFormColumnWrap>
             <S.ApplyPassFormColumnWrap >
               <S.ApplyPassFormColumnTitle>외출 시간</S.ApplyPassFormColumnTitle>
