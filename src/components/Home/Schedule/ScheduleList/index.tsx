@@ -17,7 +17,7 @@ const ScheduleList = () => {
         </S.ScheduleListVoidText>
       ) : (
         <S.ScheduleListContainer>
-          {serverTodayScheduleData?.data.map((schedule) => (
+          {serverTodayScheduleData?.data.slice(0,2).map((schedule) => (
             <ScheduleItem data={schedule} key={schedule.id} />
           ))}
         </S.ScheduleListContainer>
