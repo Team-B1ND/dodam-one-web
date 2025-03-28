@@ -72,7 +72,7 @@ export const useSignIn = () => {
         signinMutate(validLoginData,{
           onSuccess:(data:LoginResponse)=>{
             token.setToken(ACCESS_TOKEN_KEY, data.data.accessToken);
-            token.setToken(REFRESH_TOKEN_KEY, data.data.accessToken);
+            token.setToken(REFRESH_TOKEN_KEY, data.data.refreshToken);
 
             B1ndToast.showSuccess("로그인 성공");
             queryClient.invalidateQueries(QUERY_KEYS.member.getMy);
