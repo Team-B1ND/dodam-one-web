@@ -102,7 +102,5 @@ export const TextAreaWrap = styled.textarea`
 
 
 export const DatePickerBox = styled.div`
-div{
-  min-width: 90px;
-}
+
 `

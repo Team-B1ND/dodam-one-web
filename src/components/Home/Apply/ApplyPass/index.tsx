@@ -35,8 +35,7 @@ const ApplyPass = ({setSection}:Props) => {
                       customStyle={{ fontSize: 16,borderBottom:"1px solid #E61E2B" }}
                       onChange={Pass.handlePassDataDate}
                       value={Pass.passDataDate} 
-                      title={"외출일시"} 
-                      
+                      title={"외출일시"}
                       dateType="MonthDay"
                       />
                    </DatePickerBox>
