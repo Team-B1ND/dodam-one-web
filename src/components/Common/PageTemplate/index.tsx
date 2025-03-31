@@ -1,4 +1,4 @@
-import { LayoutContainer, Layout } from "./style";
+import { LayoutContainer, Layout, PageTemplateContainer } from "./style";
 import { DodamNavBar } from "@b1nd/dds-web";
 import { Outlet } from "react-router-dom";
 import useExceptionHandling from "utils/ExceptionHandling/exceptionHandling";
@@ -15,16 +15,20 @@ const PageTemplate = () => {
 
   return (
     <LayoutContainer>
+      <PageTemplateContainer>
       {exceptionHandling && 
+      
         <DodamNavBar 
         location="home" 
         handleTheme={handleTheme} 
         logout={logOut}
         currentTheme={currentTheme}/>
+        
         }
       <Layout>
         <Outlet />
       </Layout>
+      </PageTemplateContainer>
     </LayoutContainer>
   );
 };

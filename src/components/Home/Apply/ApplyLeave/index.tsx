@@ -90,6 +90,7 @@ const ApplyLeave = ({setSection}:Props) => {
                  size="Medium"
                  onClick={submitLeaveData}
                  textTheme="staticWhite"
+                 customStyle={{backgroundColor:"#E61E2B"}}
                >
                  신청
                </DodamFilledButton>

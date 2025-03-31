@@ -31,11 +31,11 @@ const ApplyPass = ({setSection}:Props) => {
                   <DodamDatePicker
                       itemKey="datePicker"
                       height={32}
-                      customStyle={{ fontSize: 16,  }}
+                      customStyle={{ fontSize: 16 }}
                       onChange={Pass.handlePassDataDate}
                       value={Pass.passDataDate} 
                       title={"외출일시"} 
-                      color="primaryNormal"
+                      
                       dateType="MonthDay"
                       />
                    </DatePickerBox>
@@ -101,7 +101,7 @@ const ApplyPass = ({setSection}:Props) => {
           size="Medium"
           onClick={Pass.submitPassData}
           textTheme="staticWhite"
-          
+          customStyle={{backgroundColor:"#E61E2B" }}
         >
            신청
         </DodamFilledButton>

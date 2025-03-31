@@ -19,7 +19,8 @@ const MealItem = ({ mealData, mealType }: Props) => {
       <S.MealItemIconWrap>
        <DodamTag
         text={mealType} 
-        color={"blue"} 
+        color={"blue"}
+        customStyle={{backgroundColor:"#E61E2B" }} 
         />
       </S.MealItemIconWrap>
       <S.MealItemTextWrap>
