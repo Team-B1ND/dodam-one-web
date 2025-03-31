@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { April_Fools_Day_Theme } from "styles/theme";
+
 
 export const LayoutContainer = styled.div`
     height: 100vh;
@@ -25,12 +25,12 @@ export const PageTemplateContainer = styled.div`
   & > div > div {
     // 로고 색 바꾸기
     & > div:nth-child(1) > svg > path {
-      fill: ${April_Fools_Day_Theme.primaryNormal};
+      fill: ${({theme}) =>theme.primaryNormal};
     }
 
     // 선택된거 배경색 변경
     & > div:nth-child(2) > div > a:nth-child(1) {
-      background-color: ${April_Fools_Day_Theme.primaryNormal};
+      background-color: ${({theme}) =>theme.primaryNormal};
     }
   }
 `;

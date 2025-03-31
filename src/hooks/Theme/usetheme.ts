@@ -7,7 +7,7 @@ import { themeModeAtom } from "store/Theme/themeStore";
 /**
  * 다크 모드를 관리하는 커스텀 훅
  */
-export const useThemes = () => {
+export const useTheme = () => {
     const [currentTheme, setCurrentTheme] = useRecoilState<ETheme>(themeModeAtom);
 
     const themeColor = useMemo((): ETheme => {

@@ -22,7 +22,7 @@ const Meal = () => {
         <DodamDatePicker
             itemKey="mealDatePicker"
             height={30}
-            customStyle={{ border: 0,color:"#0083F0"}}
+            customStyle={{ border: 0,color:"#E61E2B"}}
             onChange={handleMealDate} 
             value={mealDate} 
             title="급식"          
