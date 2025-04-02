@@ -45,7 +45,7 @@ const ApplyLeave = ({setSection}:Props) => {
                       value={leaveData.startTimeDate} 
                       title={"출발일자"} 
                       dateType="MonthDay"
-                      customStyle={{borderBottom:"1px solid #E61E2B"}}
+                      customStyle={{borderBottom:"1px solid #0083F0"}}
             
                   />
                   </DatePickerBox>
@@ -63,7 +63,7 @@ const ApplyLeave = ({setSection}:Props) => {
                       value={leaveData.endTimeDate} 
                       title={"도착일자"}    
                       dateType="MonthDay" 
-                      customStyle={{borderBottom:"1px solid #E61E2B"}}
+                      customStyle={{borderBottom:"1px solid #0083F0"}}
                   />
               </DatePickerBox>
             </S.ApplyLeaveFormColumnWrap>

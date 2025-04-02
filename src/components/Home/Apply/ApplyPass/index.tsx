@@ -32,7 +32,7 @@ const ApplyPass = ({setSection}:Props) => {
                       itemKey="datePicker"
                       height={32}
                       color="primaryNormal"
-                      customStyle={{ fontSize: 16,borderBottom:"1px solid #E61E2B" }}
+                      customStyle={{ fontSize: 16,borderBottom:"1px solid #0083F0" }}
                       onChange={Pass.handlePassDataDate}
                       value={Pass.passDataDate} 
                       title={"외출일시"}
