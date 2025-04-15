@@ -1,7 +1,7 @@
 import { useGetMyWakeupSongsQuery } from "queries/WakeupSong/wakeupSong.query";
 import dataCheck from "utils/Check/dataCheck";
 import MyWakeupSongItem from "../MyWakeupSongItem";
-import { SongNullBox } from "../style";
+import { SongNullBox, WrapWakeupsong } from "../style";
 
 const MyInfoWakeupSongList = () => {
   const { data: serverMyWakeupSongData } = useGetMyWakeupSongsQuery({
@@ -17,18 +17,18 @@ const MyInfoWakeupSongList = () => {
         <SongNullBox>
           <span>기상송 신청내역이 없습니다.</span>
           <span>신청하시면 생활이 윤택해질 거에요!</span>
-          </SongNullBox>
+        </SongNullBox>
       ) : (
-        <>
+        <WrapWakeupsong>
           {serverMyWakeupSongData?.data
             .filter((wakeupSong) => wakeupSong.status === "PENDING")
             .map((wakeupSong) => (
-              <MyWakeupSongItem
-                wakeupSongData={wakeupSong}
-                key={wakeupSong.id}
-              />
+                <MyWakeupSongItem
+                  wakeupSongData={wakeupSong}
+                  key={wakeupSong.id}
+                />
             ))}
-        </>
+        </WrapWakeupsong>
       )}
     </>
   );

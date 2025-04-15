@@ -18,3 +18,7 @@ export const SongNullBox = styled.div`
         color: ${({theme})=>theme.labelNormal};
     }
 `
+export const WrapWakeupsong = styled.div`
+  display: flex;
+  flex-direction: column;
+`
