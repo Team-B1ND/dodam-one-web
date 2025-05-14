@@ -8,6 +8,11 @@ export const MealItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
+
+  -webkit-user-select:text;
+  -moz-user-select:text;
+  -ms-user-select:text;
+  user-select:text
 `;
 
 export const MealItemIconWrap = styled.div`

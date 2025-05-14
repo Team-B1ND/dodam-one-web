@@ -43,5 +43,15 @@ export const MyWakeupSong = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 200px;
+    height: min-content;
+    max-height: 485px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+      display: none;
+    }
+
+    scrollbar-width: none;
 `
