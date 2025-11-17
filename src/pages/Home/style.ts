@@ -26,52 +26,53 @@ export const MainDataView = styled.div`
     display: flex;
     flex-direction: column;
     width: 70%;
+    height: 100%;
+    overflow-y: auto;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    
     @media (max-width: 797px) {
       width: 100%;
       height: 160%;
     }
 `
 
-export const MainDataGridBox = styled.div`
+export const MasonryContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: auto;
+  min-height: calc(100vh - 114px - 58px - 20px - 60px); /* 뷰포트 높이 - 배너 - 상단 패딩 - 컨테이너 패딩 - 하단 여백 */
   padding-top: 20px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  padding-bottom: 60px;
+  
+  .masonry-grid {
+    display: flex;
+    margin-left: -10px; /* gutter 크기 */
+    width: auto;
+  }
+  
+  .masonry-grid-column {
+    padding-left: 10px; /* gutter 크기 */
+    background-clip: padding-box;
+    
+    > div {
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media (max-width: 1068px) {
+    min-height: calc(100vh - 114px - 28px - 20px - 60px);
+  }
   
   @media (max-width: 797px) {
-     display: flex;
-     flex-wrap: nowrap;
-     flex-direction: column;
-     justify-content: flex-start;
-  }
-`;
-
-export const MainDataWidthBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 50%;
-  gap: 10px;
-  
-  @media (min-height:807px) {
-    height: auto;
-  }
-
-  @media (max-width: 797px) {
-    &:nth-child(2){
-      
-      flex-direction: column;
+    .masonry-grid {
+      margin-left: 0;
     }
-     
-  }
-  @media (max-width: 597px) {
-    &:nth-child(1){
-      flex-direction: column;
+    
+    .masonry-grid-column {
+      padding-left: 0;
     }
-     
   }
 `
 
@@ -104,10 +105,7 @@ export const DraggableBox = styled.div`
   outline: none;
   position: relative;
   height: min-content;
-  width: 50%;
-   @media (max-width: 797px) {
-      width: 100%;
-  }
+  width: 100%;
 `;
 
 export const DragHandle = styled.div`

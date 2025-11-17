@@ -24,9 +24,16 @@ export const useHome = () =>{
         const newItems = arrayMove(items, oldIndex, newIndex);
         setItems(newItems);
       };
+      
+      // Masonry 브레이크포인트 설정
+      const breakpointColumns = {
+        default: 2,
+        797: 1
+      };
+      
       return{
         handleDragEnd,
         items,
-
+        breakpointColumns,
       }
 }
