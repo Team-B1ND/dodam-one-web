@@ -1,6 +1,7 @@
 import React from "react";
 import { DndContext, closestCorners, UniqueIdentifier } from "@dnd-kit/core";
 import {  SortableContext, useSortable } from "@dnd-kit/sortable";
+import Masonry from "react-masonry-css";
 import * as S from "./style";
 import Banner from "components/Home/Banner";
 import Schedule from "components/Home/Schedule";
@@ -35,23 +36,19 @@ const HomePage = () => {
             <Banner bannerWidth={bannerWidth} />
           </S.BannerBox>
           <SortableContext items={home.items}>
-            <S.MainDataGridBox>
-            <S.MainDataWidthBox>
-              {home.items.slice(0, 2).map((id) => (
-                <SortableItem key={id} id={id}>
-                  {componentsMap[id]}
-                </SortableItem>
-              ))}
-            </S.MainDataWidthBox>
-            <S.MainDataWidthBox>
-              {home.items.slice(2, 4).map((id) => (
-                <SortableItem key={id} id={id}>
-                  {componentsMap[id]}
-                </SortableItem>
-              ))}
-            </S.MainDataWidthBox>
-
-            </S.MainDataGridBox>
+            <S.MasonryContainer>
+              <Masonry
+                breakpointCols={home.breakpointColumns}
+                className="masonry-grid"
+                columnClassName="masonry-grid-column"
+              >
+                {home.items.map((id) => (
+                  <SortableItem key={id} id={id}>
+                    {componentsMap[id]}
+                  </SortableItem>
+                ))}
+              </Masonry>
+            </S.MasonryContainer>
           </SortableContext>
         </S.MainDataView>
         <S.SideProfile>
