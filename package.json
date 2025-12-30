@@ -9,10 +9,8 @@
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",
     "@react-icons/all-files": "^4.1.0",
-    "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
     "@types/node": "^16.18.105",
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
@@ -34,7 +32,8 @@
     "styled-components": "^6.1.13",
     "styled-reset": "^4.5.2",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yallist": "^5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
