@@ -1,7 +1,12 @@
+import { create } from "zustand";
 import { PointType } from "repositories/Point/point.param";
-import { atom } from "recoil";
 
-export const pointViewTypeAtom = atom<PointType>({
-  key: "point/isDormitoryPointView",
-  default: "DORMITORY",
-});
+interface PointState {
+  pointViewType: PointType;
+  setPointViewType: (type: PointType) => void;
+}
+
+export const usePointStore = create<PointState>((set) => ({
+  pointViewType: "DORMITORY",
+  setPointViewType: (type) => set({ pointViewType: type }),
+}));

@@ -1,8 +1,7 @@
 import dayjs from "dayjs";
 import { EMealType } from "enum/Meal/meal.enum";
 import useMeal from "hooks/Meal/useMeal";
-import { useRecoilValue } from "recoil";
-import { mealDateAtom } from "store/Meal/mealStore";
+import { useMealStore } from "store/Meal/mealStore";
 import dateTransform from "utils/Transform/dateTransform";
 import MealItem from "../MealItem";
 import { MealListContainer } from "./style";
@@ -13,7 +12,7 @@ dayjs.extend(isBetween);
 const MealList = () => {
   const { meal } = useMeal();
 
-  const mealDate = useRecoilValue(mealDateAtom);
+  const mealDate = useMealStore((state) => state.mealDate);
 
   const { BREAKFAST, LUNCH, DINNER } = EMealType;
   const currentTime = dateTransform.fullDate().split(" ")[1];

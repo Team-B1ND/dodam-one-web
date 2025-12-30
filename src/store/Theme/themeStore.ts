@@ -1,8 +1,13 @@
-import { atom } from "recoil";
+import { create } from "zustand";
 import { ETheme } from "enum/Theme/theme.enum";
 import { getTheme } from "utils/Theme/getTheme";
 
-export const themeModeAtom = atom<ETheme>({
-  key: "theme/themeModeAtom",
-  default: getTheme(),
-});
+interface ThemeState {
+  themeMode: ETheme;
+  setThemeMode: (theme: ETheme) => void;
+}
+
+export const useThemeStore = create<ThemeState>((set) => ({
+  themeMode: getTheme(),
+  setThemeMode: (theme) => set({ themeMode: theme }),
+}));

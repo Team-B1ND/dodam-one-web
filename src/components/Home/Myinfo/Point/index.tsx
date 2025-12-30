@@ -1,14 +1,12 @@
 import { DodamTag } from "@b1nd/dds-web";
-import { useRecoilState } from "recoil";
-import { pointViewTypeAtom } from "store/Point/pointStore";
+import { usePointStore } from "store/Point/pointStore";
 import { useGetMyPointQuery } from "queries/Point/point.query";
 import { PointType } from "repositories/Point/point.param";
 import * as S from "./style";
 
 
 const Point = () => {
-    const [isDormitoryPointView, setIsDormitoryPointView] =
-    useRecoilState(pointViewTypeAtom);
+    const { pointViewType: isDormitoryPointView, setPointViewType } = usePointStore();
 
     const { data, isPending: isLoading } = useGetMyPointQuery(
         { type: isDormitoryPointView as PointType }
@@ -17,9 +15,7 @@ const Point = () => {
     const pointData = data?.data ?? { bonus: 0, minus: 0 };
 
     const onChangeView = () => {
-        setIsDormitoryPointView((prev) =>
-          prev === "DORMITORY" ? "SCHOOL" : "DORMITORY"
-        );
+        setPointViewType(isDormitoryPointView === "DORMITORY" ? "SCHOOL" : "DORMITORY");
       };
 
     return(

@@ -1,21 +1,20 @@
 import dayjs from "dayjs";
-import { useRecoilState } from "recoil";
-import { mealDateAtom } from "store/Meal/mealStore";
+import { useMealStore } from "store/Meal/mealStore";
 
 
 const useHandleMealDate = () => {
-  const [, setDate] = useRecoilState(mealDateAtom);
+  const { mealDate, setMealDate } = useMealStore();
 
   const handleMealDate = (e: Date) => {
-    setDate(dayjs(e).format("YYYY-MM-DD"));
+    setMealDate(dayjs(e).format("YYYY-MM-DD"));
   };
 
   const prevMealDate = () => {
-    setDate((prev) => dayjs(prev).subtract(1, "day").format("YYYY-MM-DD"));
+    setMealDate(dayjs(mealDate).subtract(1, "day").format("YYYY-MM-DD"));
   };
 
   const nextMealDate = () => {
-    setDate((prev) => dayjs(prev).add(1, "day").format("YYYY-MM-DD"));
+    setMealDate(dayjs(mealDate).add(1, "day").format("YYYY-MM-DD"));
   };
 
   return {

@@ -12,15 +12,14 @@ import { useQueryClient } from "@tanstack/react-query";
 import { QUERY_KEYS } from "queries/queryKey";
 import { AxiosError } from "axios";
 import ErrorHandler from "utils/Error/ErrorHandler";
-import { useRecoilValue } from "recoil";
-import { pointViewTypeAtom } from "store/Point/pointStore";
+import { usePointStore } from "store/Point/pointStore";
 import { useSignin } from "queries/Auth/auth.query";
 // import { PasswordParm } from "types/login/login.type";
 
 export const useSignIn = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  const type = useRecoilValue(pointViewTypeAtom);
+  const type = usePointStore((state) => state.pointViewType);
 
   const {mutate:signinMutate, isPending: isLoading} = useSignin();
 

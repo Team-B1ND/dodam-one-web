@@ -3,7 +3,6 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
-import { RecoilRoot } from "recoil";
 import { BrowserRouter } from "react-router-dom";
 import Routes from './components/Router/router';
 import { ToastContainer } from 'react-toastify';
@@ -21,14 +20,12 @@ function Root() {
   return (
     <StrictMode>
       <QueryClientProvider client={queryClient}>
-        <RecoilRoot>
-          <ThemeProviderContainer>
-            <ToastContainer autoClose={1000} limit={1} />
-              <BrowserRouter>
-                <Routes/>
-              </BrowserRouter>
-            </ThemeProviderContainer>
-          </RecoilRoot>
+        <ThemeProviderContainer>
+          <ToastContainer autoClose={1000} limit={1} />
+            <BrowserRouter>
+              <Routes/>
+            </BrowserRouter>
+          </ThemeProviderContainer>
       </QueryClientProvider>
     </StrictMode>
   );

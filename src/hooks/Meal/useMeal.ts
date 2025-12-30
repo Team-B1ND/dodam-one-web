@@ -1,12 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import { Meal } from "types/Meal/meal.type";
 import mealRepository from "repositories/Meal/meal.repository";
-import { useRecoilValue } from "recoil";
-import { mealDateAtom } from "store/Meal/mealStore";
+import { useMealStore } from "store/Meal/mealStore";
 // import * as Sentry from "sentry/react";
 
 const useMeal = () => {
-  const mealDate = useRecoilValue(mealDateAtom);
+  const mealDate = useMealStore((state) => state.mealDate);
 
   const [meal, setMeal] = useState<Meal>();
 
