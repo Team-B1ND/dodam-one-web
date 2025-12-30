@@ -1,12 +1,8 @@
-import { ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import { DodamThemeProvider,DodamGlobalStyles } from "@b1nd/dds-web";
 import { useTheme } from "hooks/Theme/usetheme";;
 
-type Props = {
-  children: ReactNode;
-};
-
-const ThemeProviderContainer = ({ children }: Props) => {
+const ThemeProviderContainer = ({ children }: PropsWithChildren) => {
   const { themeColor } = useTheme();
   
   return (
