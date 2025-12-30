@@ -1,7 +1,7 @@
 import * as S from "./style";
 import dayjs from "dayjs";
 import { DodamModal,DodamFilledButton} from "@b1nd/dds-web";
-import { useQueryClient } from "react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import {
     usePostApplyPassMutation,
   } from "queries/Pass/pass.query";
@@ -51,7 +51,7 @@ const ApplyPassModal = ({
               }
             postApplyPassMutation.mutateAsync(validApplyPassDinner,{
                 onSuccess:()=>{
-                    queryClient.invalidateQueries("pass/getMyPasses");
+                    queryClient.invalidateQueries({ queryKey: ["pass/getMyPasses"] });
                     B1ndToast.showSuccess("외출 신청 성공");
                     close();
                 },

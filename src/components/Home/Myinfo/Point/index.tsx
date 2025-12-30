@@ -10,12 +10,8 @@ const Point = () => {
     const [isDormitoryPointView, setIsDormitoryPointView] =
     useRecoilState(pointViewTypeAtom);
 
-    const { data, isLoading } = useGetMyPointQuery(
-        { type: isDormitoryPointView as PointType },
-        {
-          cacheTime: 1000 * 60 * 5,
-          staleTime: 1000 * 60 * 60,
-        }
+    const { data, isPending: isLoading } = useGetMyPointQuery(
+        { type: isDormitoryPointView as PointType }
       );
 
     const pointData = data?.data ?? { bonus: 0, minus: 0 };

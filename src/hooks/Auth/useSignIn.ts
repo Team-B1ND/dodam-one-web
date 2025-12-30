@@ -7,7 +7,7 @@ import {
   REFRESH_TOKEN_KEY,
 } from "constants/Token/token.constant";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
-import { useQueryClient } from "react-query";
+import { useQueryClient } from "@tanstack/react-query";
 // import * as Sentry from "sentry/react";
 import { QUERY_KEYS } from "queries/queryKey";
 import { AxiosError } from "axios";
@@ -22,7 +22,7 @@ export const useSignIn = () => {
   const navigate = useNavigate();
   const type = useRecoilValue(pointViewTypeAtom);
 
-  const {mutate:signinMutate, isLoading} = useSignin();
+  const {mutate:signinMutate, isPending: isLoading} = useSignin();
 
   const [loginData, setLoginData] = useState<Login>({
     id: "",
@@ -75,9 +75,9 @@ export const useSignIn = () => {
             token.setToken(REFRESH_TOKEN_KEY, data.data.refreshToken);
 
             B1ndToast.showSuccess("로그인 성공");
-            queryClient.invalidateQueries(QUERY_KEYS.member.getMy);
-            queryClient.invalidateQueries(QUERY_KEYS.wakeupSong.getMy);
-            queryClient.invalidateQueries(QUERY_KEYS.point.getMy(type));
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.member.getMy] });
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.wakeupSong.getMy] });
+            queryClient.invalidateQueries({ queryKey: QUERY_KEYS.point.getMy(type) });
             navigate("/");
           },
           onError:(error: unknown)=>{

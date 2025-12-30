@@ -6,10 +6,7 @@ import { useGetMyMemberQuery } from "queries/Member/member.query";
 const useBanner = () => {
   const bannersData = useGetBannersQuery().data?.data;
 
-  const memberData = useGetMyMemberQuery({
-    cacheTime: 1000 * 60 * 60 * 24,
-    staleTime: 1000 * 60 * 30 * 24,
-  }).data?.data;
+  const memberData = useGetMyMemberQuery().data?.data;
 
   const [approveBanners, setApproveBanners] = useState<Banner[]>([]);
   const [isBannerAuthority, setIsBanneerAuthority] = useState<boolean>(false);

@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { B1ndToast } from "@b1nd/b1nd-toastify";
 import React, { useCallback,useState } from "react";
-import { useQueryClient } from "react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import {
   useDeleteApplyLeaveMutation,
   usePostApplyLeaveMutation,
@@ -102,7 +102,7 @@ const useApplyLeave = () => {
         { id: idx + "" },
         {
           onSuccess: () => {
-            queryClient.invalidateQueries("leave/getMyLeaves");
+            queryClient.invalidateQueries({ queryKey: ["leave/getMyLeaves"] });
             // setNotApprovedLeaves((prev) =>
             //   prev.filter((notApprovePass) => notApprovePass.id !== idx)
             // );
@@ -211,14 +211,14 @@ const useApplyLeave = () => {
       return;
     }
 
-    if (postApplyLeaveMutation.isLoading) {
+    if (postApplyLeaveMutation.isPending) {
       return;
     }
 
     if (isFold) {
       postApplyLeaveMutation.mutateAsync(validApplyLeave, {
         onSuccess: () => {
-          queryClient.invalidateQueries("leave/getMyLeaves");
+          queryClient.invalidateQueries({ queryKey: ["leave/getMyLeaves"] });
           B1ndToast.showSuccess("외박 신청 성공");
           for (let key in leaveData) {
             setLeaveData((prev) => ({ ...prev, [key]: "" }));

@@ -1,10 +1,10 @@
-import { LoginParam } from "repositories/Auth/auth.param"
-import { useMutation } from "react-query"
-import authRepository from "repositories/Auth/auth.repository"
+import { LoginParam } from "repositories/Auth/auth.param";
+import { useMutation } from "@tanstack/react-query";
+import authRepository from "repositories/Auth/auth.repository";
+import { LoginResponse } from "types/Login/login.type";
 
 export const useSignin = () => {
-    const mutation = useMutation((signinData:LoginParam)=>
-    authRepository.login(signinData)
-    )
-    return mutation
-}
+  return useMutation<LoginResponse, Error, LoginParam>({
+    mutationFn: (signinData: LoginParam) => authRepository.login(signinData),
+  });
+};

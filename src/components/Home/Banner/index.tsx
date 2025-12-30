@@ -10,10 +10,7 @@ interface BannerProps {
 }
 
 const Banner = ({bannerWidth}:BannerProps) => {
-  const { data: bannersData, isLoading } = useGetBannersQuery({
-    cacheTime: 1000 * 60 * 60,
-    staleTime: 1000 * 60 * 30,
-  });
+  const { data: bannersData, isPending: isLoading } = useGetBannersQuery();
 
   // `bannersData`가 undefined일 경우 빈 배열을 반환
   const banners = bannersData?.data ?? [];

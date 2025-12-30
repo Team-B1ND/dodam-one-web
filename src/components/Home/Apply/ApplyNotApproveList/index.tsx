@@ -15,11 +15,7 @@ interface Props {
 const ApplyNotApproveList = ({
   deleteNotApprovedItem,
 }: Props) => {
-  const {data:appliedLeaves, isLoading } = useGetMyLeavesQuery({
-      staleTime: 1000 * 30,
-      cacheTime: 1000 * 60,
-      retry:1
-    });
+  const {data:appliedLeaves, isPending: isLoading } = useGetMyLeavesQuery();
 
     if(isLoading){
       return <ApplyNotApproveListFallbackLoader/>

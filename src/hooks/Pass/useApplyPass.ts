@@ -8,7 +8,7 @@ import { AppliedPass, ApplyPass } from "types/Pass/pass.type";
 import dateTransform from "utils/Transform/dateTransform";
 import dayjs from "dayjs";
 import dataCheck from "utils/Check/dataCheck";
-import { useQueryClient } from "react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import {B1ndToast} from "@b1nd/b1nd-toastify";
 // import { captureException, withScope } from "sentry/react";
 
@@ -122,7 +122,7 @@ const useApplyPass = () => {
         { id: idx + "" },
         {
           onSuccess: () => {
-            queryClient.invalidateQueries("pass/getMyPasses");
+            queryClient.invalidateQueries({ queryKey: ["pass/getMyPasses"] });
             B1ndToast.showSuccess("외출 삭제 성공");
           },
           onError: () => {
@@ -202,7 +202,7 @@ const useApplyPass = () => {
       dateTransform.fullDate()
     );
 
-    if (postApplyPassMutation.isLoading) {
+    if (postApplyPassMutation.isPending) {
       return;
     }
 
@@ -252,7 +252,7 @@ const useApplyPass = () => {
     }else{
       postApplyPassMutation.mutateAsync(validApplyPass, {
         onSuccess: () => {
-          queryClient.invalidateQueries("pass/getMyPasses");
+          queryClient.invalidateQueries({ queryKey: ["pass/getMyPasses"] });
           B1ndToast.showSuccess("외출 신청 성공");
           for (let key in passData) {
             setPassData((prev) => ({ ...prev, [key]: "" }));
@@ -275,7 +275,7 @@ const useApplyPass = () => {
         },
         {
           onSuccess: () => {
-            queryClient.invalidateQueries("pass/getMyPasses");
+            queryClient.invalidateQueries({ queryKey: ["pass/getMyPasses"] });
             B1ndToast.showSuccess("외출 수정 성공");
           },
           onError: () => {

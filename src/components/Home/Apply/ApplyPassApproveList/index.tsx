@@ -18,11 +18,7 @@ const ApplyPassApproveList = ({
   deleteNotApprovedItem,
 }: Props) => {
 
-   const {data:notApproveItems, isLoading} = useGetMyPassesQuery({
-      staleTime: 1000 * 30,
-      cacheTime: 1000 * 60,
-      retry:1,
-    })
+   const {data:notApproveItems, isPending: isLoading} = useGetMyPassesQuery()
     if (isLoading) {
       return <ApplyNotApproveListFallbackLoader />;
     }

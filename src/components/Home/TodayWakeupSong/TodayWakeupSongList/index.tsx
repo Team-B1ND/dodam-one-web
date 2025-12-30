@@ -17,11 +17,7 @@ const TodayWakeupSongList = () => {
         month: todayDate[1],
         day: todayDate[2],
       },
-      {
-        suspense: true,
-        cacheTime: 1000 * 60 * 60 * 24,
-        staleTime: 1000 * 60 * 60 * 24,
-      }
+      true
     );
 
   return (

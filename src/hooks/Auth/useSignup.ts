@@ -13,9 +13,9 @@ const useSignup = () => {
   const userAgent = navigator.userAgent;
 
   const [section, setSection] = useState("first");
-  const {mutate:reqAuthCode,isLoading:reqLoading} = useReqAuthCode(); //인증 코드를 요청
-  const {mutate:sendAuthCode, isLoading:sendLoading} = useSendAuthCode(); //인증코드를 보냄
-  const {mutate:signupMutate, isLoading:sinupLodaing} = useMemberSignUp();
+  const {mutate:reqAuthCode,isPending:reqLoading} = useReqAuthCode(); //인증 코드를 요청
+  const {mutate:sendAuthCode, isPending:sendLoading} = useSendAuthCode(); //인증코드를 보냄
+  const {mutate:signupMutate, isPending:sinupLodaing} = useMemberSignUp();
   const [isEmailVerified,setIsEmailVerified ] = useState(false);
   const [isPhoneVerified, setIsPhoneVerified] = useState(false);
   const [isAuthCode,setAuthCode] = useState<string>("");

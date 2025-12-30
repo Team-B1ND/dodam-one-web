@@ -1,10 +1,5 @@
 import { AxiosError } from "axios";
-import {
-  useMutation,
-  useQuery,
-  UseQueryOptions,
-  UseQueryResult,
-} from "react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import {
   deleteMyPassParam,
   putMyPassParam,
@@ -13,36 +8,26 @@ import passRepository from "repositories/Pass/pass.repository";
 import { MyPassesResponse, Pass } from "types/Pass/pass.type";
 import { QUERY_KEYS } from "../queryKey";
 
-export const useGetMyPassesQuery = (
-  options?: UseQueryOptions<
-    MyPassesResponse,
-    AxiosError,
-    MyPassesResponse,
-    string
-  >
-): UseQueryResult<MyPassesResponse, AxiosError> =>
-  useQuery(QUERY_KEYS.pass.getMy, () => passRepository.getMyPasses(), options);
+export const useGetMyPassesQuery = () =>
+  useQuery<MyPassesResponse, AxiosError>({
+    queryKey: [QUERY_KEYS.pass.getMy],
+    queryFn: () => passRepository.getMyPasses(),
+  });
 
 export const usePostApplyPassMutation = () => {
-  const mutation = useMutation((passData: Pass) =>
-    passRepository.postApplyPass(passData)
-  );
-
-  return mutation;
+  return useMutation({
+    mutationFn: (passData: Pass) => passRepository.postApplyPass(passData),
+  });
 };
 
 export const usePutApplyPassMutation = () => {
-  const mutation = useMutation((passData: putMyPassParam) =>
-    passRepository.putMyPass(passData)
-  );
-
-  return mutation;
+  return useMutation({
+    mutationFn: (passData: putMyPassParam) => passRepository.putMyPass(passData),
+  });
 };
 
 export const useDeleteMyPassMutation = () => {
-  const mutation = useMutation((idx: deleteMyPassParam) =>
-    passRepository.deleteMyPass(idx)
-  );
-
-  return mutation;
+  return useMutation({
+    mutationFn: (idx: deleteMyPassParam) => passRepository.deleteMyPass(idx),
+  });
 };

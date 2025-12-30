@@ -4,11 +4,7 @@ import MyWakeupSongItem from "../MyWakeupSongItem";
 import { SongNullBox, WakeupSongWrap } from "../style";
 
 const MyInfoWakeupSongList = () => {
-  const { data: serverMyWakeupSongData } = useGetMyWakeupSongsQuery({
-    suspense: true,
-    staleTime: 1000 * 60,
-    cacheTime: 1000 * 60 * 10,
-  });
+  const { data: serverMyWakeupSongData } = useGetMyWakeupSongsQuery(true);
 
   return (
     <>

@@ -1,6 +1,6 @@
 import { B1ndToast } from "@b1nd/b1nd-toastify";
 import { useEffect, useState } from "react";
-import { useQueryClient } from "react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import {
   useDeleteMyBusMutatuin,
   useGetBusesQuery,
@@ -16,10 +16,10 @@ import ErrorHandler from "utils/Error/ErrorHandler";
 const useApplyBus = () => {
   const queryClient = useQueryClient();
 
-  const { data: busesData, isLoading: busesDataIsLoading } = useGetBusesQuery();
-  const { 
-    data: myBusData, 
-    isLoading: myBusDataIsLoading,
+  const { data: busesData, isPending: busesDataIsLoading } = useGetBusesQuery();
+  const {
+    data: myBusData,
+    isPending: myBusDataIsLoading,
   } = useGetMyBusQuery();
 
   const postMyBusMutation = usePostMyBusMutation();
@@ -80,8 +80,8 @@ useEffect(() => {
           { idx: String(selectBusIdx)  }, 
           {
             onSuccess: () => {
-              queryClient.invalidateQueries("bus/getMyBus");
-              queryClient.invalidateQueries("bus/getBuses");
+              queryClient.invalidateQueries({ queryKey: ["bus/getMyBus"] });
+              queryClient.invalidateQueries({ queryKey: ["bus/getBuses"] });
               setWasCheckedIdx(-1);
               B1ndToast.showSuccess("버스 신청 취소 성공");
             },
@@ -100,8 +100,8 @@ useEffect(() => {
         { idx: String(selectBusIdx) },
         {
           onSuccess: () => {
-            queryClient.invalidateQueries("bus/getMyBus");
-            queryClient.invalidateQueries("bus/getBuses");
+            queryClient.invalidateQueries({ queryKey: ["bus/getMyBus"] });
+            queryClient.invalidateQueries({ queryKey: ["bus/getBuses"] });
             setWasCheckedIdx(selectBusIdx);
             B1ndToast.showSuccess("버스 신청 수정 성공");
           },
@@ -116,8 +116,8 @@ useEffect(() => {
         { idx: String(selectBusIdx) },
         {
           onSuccess: () => {
-            queryClient.invalidateQueries("bus/getMyBus");
-            queryClient.invalidateQueries("bus/getBuses");
+            queryClient.invalidateQueries({ queryKey: ["bus/getMyBus"] });
+            queryClient.invalidateQueries({ queryKey: ["bus/getBuses"] });
             setWasCheckedIdx(selectBusIdx);
             B1ndToast.showSuccess("버스 신청 성공");
           },
