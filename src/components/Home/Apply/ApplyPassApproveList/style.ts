@@ -6,10 +6,10 @@ export const ApplyNotApproveListFoldButton = styled.button`
   height: 28px;
   padding: 5px;
   display: flex;
-  border: 1px solid ${({ theme }) => theme.borderColor};
+  border: 1px solid ${({ theme }) => theme.lineNormal};
   border-left: 0px;
   border-radius: 0 5px 5px 0;
-  background-color: ${({ theme }) => theme.backgroundColor3};
+  background-color: ${({ theme }) => theme.backgroundAlternative};
   margin-top: 12px;
   cursor: pointer;
   outline: none;
@@ -59,5 +59,5 @@ export const ApplyNotApproveListVoidIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.borderColor};
+  color: ${({ theme }) => theme.lineNormal};
 `;

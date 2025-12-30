@@ -29,7 +29,7 @@ const VerifieModal = ({
     };
 
     return (
-        <DodamModal isOpen={isOpen} background={true}>
+        <DodamModal isOpen={isOpen} $background={true}>
             <ModalBox>
                 <p>{name} 인증코드를 입력해주세요</p>
                 <DodamFilledTextField

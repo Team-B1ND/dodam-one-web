@@ -12,7 +12,7 @@ export const customScrollBar = css`
   }
 
   ::-webkit-scrollbar-track {
-    background-color: ${({ theme }) => theme.hoverColor};
+    background-color: ${({ theme }) => theme.fillAssistive};
     border-radius: 2px;
   }
 `;

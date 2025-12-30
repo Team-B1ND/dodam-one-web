@@ -11,7 +11,7 @@ interface ModalProps {
 
 const NullAccountModal = ({title,text,iseOpen,handleClose}:ModalProps) => {
     return(
-        <DodamModal isOpen={iseOpen} close={handleClose} background={true}>
+        <DodamModal isOpen={iseOpen} close={handleClose} $background={true}>
         <Dialog 
         title={title}
         text={text}

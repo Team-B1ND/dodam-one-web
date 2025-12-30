@@ -7,7 +7,7 @@ min-width: 300px;
   height: 24%;
   overflow: auto;
   z-index: 5;
-  background-color: ${({ theme }) => theme.backgroundColor2};
+  background-color: ${({ theme }) => theme.backgroundNeutral};
   position: fixed;
   padding: 1.5rem;
   border-radius: 10px;
@@ -25,7 +25,7 @@ export const Header = styled.header`
     width: 100%;
     height: 10%;
     h1{
-    color: ${({ theme }) => theme.contrast};
+    color: ${({ theme }) => theme.labelNormal};
     font-size: 20px;
     font-weight: bold;
     
@@ -58,7 +58,7 @@ justify-content: space-between;
 width: 100%;
 height: 100%;
 span{
-color: ${({ theme }) => theme.contrast2};
+color: ${({ theme }) => theme.labelNormal};
 font-feature-settings: 'ss10' on;
 font-size: 18px;
 font-weight: 500;
