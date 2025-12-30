@@ -6,7 +6,7 @@ import {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
 } from "constants/Token/token.constant";
-import { B1ndToast } from "@b1nd/b1nd-toastify";
+import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
 // import * as Sentry from "sentry/react";
 import { QUERY_KEYS } from "queries/queryKey";
@@ -52,12 +52,12 @@ export const useSignIn = () => {
       e.preventDefault();
 
       if (loginData.id === "") {
-        B1ndToast.showInfo("아이디를 입력해주세요");
+        toast.info("아이디를 입력해주세요");
         return;
       }
 
       if (loginData.pw === "") {
-        B1ndToast.showInfo("비밀번호를 입력해주세요");
+        toast.info("비밀번호를 입력해주세요");
         return;
       }
 
@@ -74,7 +74,7 @@ export const useSignIn = () => {
             token.setToken(ACCESS_TOKEN_KEY, data.data.accessToken);
             token.setToken(REFRESH_TOKEN_KEY, data.data.refreshToken);
 
-            B1ndToast.showSuccess("로그인 성공");
+            toast.success("로그인 성공");
             queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.member.getMy] });
             queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.wakeupSong.getMy] });
             queryClient.invalidateQueries({ queryKey: QUERY_KEYS.point.getMy(type) });
@@ -86,7 +86,7 @@ export const useSignIn = () => {
               setModal(true);
               return;
             }
-            B1ndToast.showError(
+            toast.error(
               ErrorHandler.loginError(errorCode.response?.status!),
               );
           }

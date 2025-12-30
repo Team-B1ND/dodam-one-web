@@ -6,7 +6,7 @@ import {
     usePostApplyPassMutation,
   } from "queries/Pass/pass.query";
 import  {ApplyPass } from "types/Pass/pass.type";
-import { B1ndToast } from "@b1nd/b1nd-toastify";
+import { toast } from "react-toastify";
 
 interface ApplyPassModalProps {
     width:string;
@@ -52,11 +52,11 @@ const ApplyPassModal = ({
             postApplyPassMutation.mutateAsync(validApplyPassDinner,{
                 onSuccess:()=>{
                     queryClient.invalidateQueries({ queryKey: ["pass/getMyPasses"] });
-                    B1ndToast.showSuccess("외출 신청 성공");
+                    toast.success("외출 신청 성공");
                     close();
                 },
                 onError: () => {
-                    B1ndToast.showError("외출 신청 실패");
+                    toast.error("외출 신청 실패");
                   },
             })
         }

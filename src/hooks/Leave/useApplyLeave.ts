@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { B1ndToast } from "@b1nd/b1nd-toastify";
+import { toast } from "react-toastify";
 import React, { useCallback,useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import {
@@ -106,10 +106,10 @@ const useApplyLeave = () => {
             // setNotApprovedLeaves((prev) =>
             //   prev.filter((notApprovePass) => notApprovePass.id !== idx)
             // );
-            B1ndToast.showSuccess("외박 삭제 성공");
+            toast.success("외박 삭제 성공");
           },
           onError: () => {
-            B1ndToast.showError("외박 삭제 실패");
+            toast.error("외박 삭제 실패");
             // withScope((scope) => {
             //   scope.setContext("query", { queryHash: query.id });
             //   captureException(`${query.id}id  ${err}이유로 외박 삭제 실패`);
@@ -177,37 +177,37 @@ const useApplyLeave = () => {
     );
 
     if (validApplyLeave.reason.trim() === "") {
-      B1ndToast.showInfo("외박 사유를 작성해주세요!");
+      toast.info("외박 사유를 작성해주세요!");
       return;
     }
 
     if (startTimeDate === endTimeDate) {
-      B1ndToast.showInfo("출발일자와 도착일자가 같아요!");
+      toast.info("출발일자와 도착일자가 같아요!");
       return;
     }
 
     if (!startTimeIsAfter) {
-      B1ndToast.showInfo("출발 일자가 잘못되었습니다!");
+      toast.info("출발 일자가 잘못되었습니다!");
       return;
     }
 
     if (!endTimeIsAfter) {
-      B1ndToast.showInfo("도착 일자가 잘못되었습니다!");
+      toast.info("도착 일자가 잘못되었습니다!");
       return;
     }
     
     if(/^[^a-zA-Z0-9가-힣]+$/.test(reason)){
-      B1ndToast.showInfo("특수문자만으로 사유를 작성할 수 없습니다!");
+      toast.info("특수문자만으로 사유를 작성할 수 없습니다!");
     return;
     }
     
     if (!reason || reason.replace(/\s+/g, "").length <= 5){
-      B1ndToast.showInfo("사유의 길이를 5자 이상으로 적어주세요!")
+      toast.info("사유의 길이를 5자 이상으로 적어주세요!")
       return;
     }
 
     if (reason?.length > 50) {
-      B1ndToast.showInfo("사유의 길이를 50자 이내로 적어주세요!");
+      toast.info("사유의 길이를 50자 이내로 적어주세요!");
       return;
     }
 
@@ -219,7 +219,7 @@ const useApplyLeave = () => {
       postApplyLeaveMutation.mutateAsync(validApplyLeave, {
         onSuccess: () => {
           queryClient.invalidateQueries({ queryKey: ["leave/getMyLeaves"] });
-          B1ndToast.showSuccess("외박 신청 성공");
+          toast.success("외박 신청 성공");
           for (let key in leaveData) {
             setLeaveData((prev) => ({ ...prev, [key]: "" }));
           }
@@ -230,7 +230,7 @@ const useApplyLeave = () => {
           }));
         },
         onError: () => {
-          B1ndToast.showError("외박 신청 실패",);
+          toast.error("외박 신청 실패",);
           // withScope((scope) => {
           //   scope.setContext("query", { queryHash: query.reason });
           //   captureException(
@@ -254,10 +254,10 @@ const useApplyLeave = () => {
       //   {
       //     onSuccess: () => {
       //       queryClient.invalidateQueries("leave/getMyLeaves");
-      //       B1ndToast.showSuccess("외박 수정 성공");
+      //       toast.success("외박 수정 성공");
       //     },
       //     onError: () => {
-      //       B1ndToast.showInfo("외박 수정 실패",);
+      //       toast.info("외박 수정 실패",);
       //       withScope((scope) => {
       //         scope.setContext("query", { queryHash: query.reason });
       //         captureException(

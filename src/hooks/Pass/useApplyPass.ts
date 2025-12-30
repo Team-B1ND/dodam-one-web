@@ -9,7 +9,7 @@ import dateTransform from "utils/Transform/dateTransform";
 import dayjs from "dayjs";
 import dataCheck from "utils/Check/dataCheck";
 import { useQueryClient } from "@tanstack/react-query";
-import {B1ndToast} from "@b1nd/b1nd-toastify";
+import { toast } from "react-toastify";
 // import { captureException, withScope } from "sentry/react";
 
 const useApplyPass = () => {
@@ -123,10 +123,10 @@ const useApplyPass = () => {
         {
           onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["pass/getMyPasses"] });
-            B1ndToast.showSuccess("외출 삭제 성공");
+            toast.success("외출 삭제 성공");
           },
           onError: () => {
-            B1ndToast.showError("외출 삭제 실패");
+            toast.error("외출 삭제 실패");
             // withScope((scope) => {
             //   scope.setContext("query", { queryHash: query.id });
             //   captureException(`${query.id}번이 ${err}이유로 외출 삭제 실패`);
@@ -190,7 +190,7 @@ const useApplyPass = () => {
     };
 
     if (validApplyPass.reason.trim() === "") {
-      B1ndToast.showInfo("외출사유를 작성해주세요!");
+      toast.info("외출사유를 작성해주세요!");
       return;
     }
 
@@ -207,7 +207,7 @@ const useApplyPass = () => {
     }
 
     if (notApprovedPasses?.length > 4) {
-      B1ndToast.showInfo("외출신청은 최대 4개까지 가능해요!");
+      toast.info("외출신청은 최대 4개까지 가능해요!");
       return;
     }
 
@@ -215,26 +215,26 @@ const useApplyPass = () => {
       !dataCheck.timeFormatCheck(startTimeHour, startTimeMinute) ||
       !dataCheck.timeFormatCheck(endTimeHour, endTimeMinute)
     ) {
-      B1ndToast.showInfo("올바른 양식을 입력해주세요!");
+      toast.info("올바른 양식을 입력해주세요!");
       return;
     }
 
     if (!startTimeIsAfter || !endTimeIsAfter) {
-      B1ndToast.showInfo("현재 시간 이후로 입력해주세요!");
+      toast.info("현재 시간 이후로 입력해주세요!");
       return;
     }
 
     if (!dayjs(validApplyPass.endAt).isAfter(validApplyPass.startAt)) {
-      B1ndToast.showInfo("복귀시간이 출발시간보다 빨라요!");
+      toast.info("복귀시간이 출발시간보다 빨라요!");
       return;
     }
     
     if (!reason || reason.replace(/\s+/g, "").length <= 5) {
-      B1ndToast.showInfo("사유의 길이를 5자 이상로 적어주세요!");
+      toast.info("사유의 길이를 5자 이상로 적어주세요!");
       return;
     }
     if (reason?.length > 50) {
-      B1ndToast.showInfo("사유의 길이를 50자 이내로 적어주세요!");
+      toast.info("사유의 길이를 50자 이내로 적어주세요!");
       return;
     }
     
@@ -253,13 +253,13 @@ const useApplyPass = () => {
       postApplyPassMutation.mutateAsync(validApplyPass, {
         onSuccess: () => {
           queryClient.invalidateQueries({ queryKey: ["pass/getMyPasses"] });
-          B1ndToast.showSuccess("외출 신청 성공");
+          toast.success("외출 신청 성공");
           for (let key in passData) {
             setPassData((prev) => ({ ...prev, [key]: "" }));
           }
         },
         onError: () => {
-          B1ndToast.showError("외출 신청 실패");
+          toast.error("외출 신청 실패");
         },
       });
 
@@ -276,10 +276,10 @@ const useApplyPass = () => {
         {
           onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["pass/getMyPasses"] });
-            B1ndToast.showSuccess("외출 수정 성공");
+            toast.success("외출 수정 성공");
           },
           onError: () => {
-            B1ndToast.showError("외출 수정 실패");
+            toast.error("외출 수정 실패");
           },
         }
       );

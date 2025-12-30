@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { B1ndToast } from "@b1nd/b1nd-toastify";
+import { toast } from "react-toastify";
 import { Signup, SignupAgree, SignUpModal } from "types/Signup/signup.type";
 import patternCheck from "utils/Check/patternCheck";
 // import * as Sentry from "sentry/react"
@@ -60,10 +60,10 @@ const useSignup = () => {
         AuthType: "EMAIL",
       },{
       onSuccess:()=>{
-      B1ndToast.showInfo("인증 코드가 발송되었습니다.");
+      toast.info("인증 코드가 발송되었습니다.");
       },
       onError:()=>{
-        B1ndToast.showError("이메일 인증 요청에 실패했습니다.");
+        toast.error("이메일 인증 요청에 실패했습니다.");
         setModal((prev) => ({ ...prev, email: false })); 
       }
     }
@@ -79,10 +79,10 @@ const useSignup = () => {
         AuthType: "PHONE",
       },{
       onSuccess:()=>{
-        B1ndToast.showSuccess("인증 코드가 발송되었습니다.");
+        toast.success("인증 코드가 발송되었습니다.");
       },
       onError:()=>{
-        B1ndToast.showError("전화번호 인증 요청에 실패했습니다.");
+        toast.error("전화번호 인증 요청에 실패했습니다.");
         setModal((prev) => ({ ...prev, email: false })); 
       }
     }
@@ -102,7 +102,7 @@ const useSignup = () => {
         onSuccess:()=>{
           setIsEmailVerified(true);
           setModal((prev) => ({ ...prev, email: false })); 
-          B1ndToast.showSuccess("인증이 완료 되었습니다.");
+          toast.success("인증이 완료 되었습니다.");
           setAuthCode("");
           setTimeout(() => {
             console.log("Updated isEmailVerified:", isEmailVerified);
@@ -110,7 +110,7 @@ const useSignup = () => {
         }
         ,
         onError:()=>{
-          B1ndToast.showError("이메일 인증에 실패했습니다.");
+          toast.error("이메일 인증에 실패했습니다.");
         }
       })
    
@@ -127,12 +127,12 @@ const useSignup = () => {
         onSuccess:()=>{
           setIsPhoneVerified(true);
           setModal((prev) => ({ ...prev, phone: false })); 
-          B1ndToast.showSuccess("인증이 완료 되었습니다.;");
+          toast.success("인증이 완료 되었습니다.;");
           setAuthCode("");
                     
         },
         onError:()=>{
-          B1ndToast.showError("이메일 인증에 실패했습니다.");
+          toast.error("이메일 인증에 실패했습니다.");
         }
       })
     
@@ -186,22 +186,22 @@ const useSignup = () => {
     }
 
     if (email === "" || phone === "" || grade === 0 || room === 0 || number === 0 || name === "") {
-      B1ndToast.showInfo("양식이 비어있습니다");
+      toast.info("양식이 비어있습니다");
       return;
     }
 
     if (!patternCheck.emailCheck(email)) {
-      B1ndToast.showInfo("이메일 형식을 지켜주세요");
+      toast.info("이메일 형식을 지켜주세요");
       return;
     }
 
     if (!patternCheck.phoneCheck(phone)) {
-      B1ndToast.showInfo("전화번호 형식을 지켜주세요");
+      toast.info("전화번호 형식을 지켜주세요");
       return;
     }
 
     if (grade > 3 || room > 4 || number > 20) {
-      B1ndToast.showInfo("올바른 학급정보, 기수를 입력해주세요");
+      toast.info("올바른 학급정보, 기수를 입력해주세요");
       return;
     }
    
@@ -224,28 +224,28 @@ const useSignup = () => {
     const { first, second } = agrees;
 
     if (id === "" || pw === "" ) {
-      B1ndToast.showInfo("형식이 비어있습니다");
+      toast.info("형식이 비어있습니다");
       return;
     }
 
     if (!patternCheck.idCheck(id)) {
-      B1ndToast.showInfo("아이디 형식을 지켜주세요");
+      toast.info("아이디 형식을 지켜주세요");
       return;
     }
 
     
     if (!patternCheck.pwCheck(pw)) {
-      B1ndToast.showInfo("비밀번호 형식을 지켜주세요");
+      toast.info("비밀번호 형식을 지켜주세요");
       return;
     }
 
     if (!first) {
-      B1ndToast.showInfo("서비스 이용약관에 동의해주세요");
+      toast.info("서비스 이용약관에 동의해주세요");
       return;
     }
 
     if (!second) {
-      B1ndToast.showInfo("개인정보취급방침에 동의해주세요");
+      toast.info("개인정보취급방침에 동의해주세요");
       return;
     }
    
@@ -266,11 +266,11 @@ const useSignup = () => {
       },
       onError: (error: unknown) => {
         if (axios.isAxiosError(error)) {
-          return B1ndToast.showError(ErrorHandler.signupError(error.response?.status!));
+          return toast.error(ErrorHandler.signupError(error.response?.status!));
         }
     
         // 예상치 못한 오류 처리
-        B1ndToast.showError("예기치 않은 오류가 발생했습니다.");
+        toast.error("예기치 않은 오류가 발생했습니다.");
       }
     });
 

@@ -9,6 +9,9 @@ export default defineConfig({
     open: true,
   },
   build: {
-    outDir: 'build',
+    outDir: "build",
+  },
+  resolve: {
+    dedupe: ["react", "react-dom"],
   },
 });

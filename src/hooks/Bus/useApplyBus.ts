@@ -1,4 +1,4 @@
-import { B1ndToast } from "@b1nd/b1nd-toastify";
+import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import {
@@ -83,10 +83,10 @@ useEffect(() => {
               queryClient.invalidateQueries({ queryKey: ["bus/getMyBus"] });
               queryClient.invalidateQueries({ queryKey: ["bus/getBuses"] });
               setWasCheckedIdx(-1);
-              B1ndToast.showSuccess("버스 신청 취소 성공");
+              toast.success("버스 신청 취소 성공");
             },
             onError: (err) => {
-              B1ndToast.showError(ErrorHandler.busError(err as AxiosError)!);
+              toast.error(ErrorHandler.busError(err as AxiosError)!);
             },
           }
         );
@@ -103,10 +103,10 @@ useEffect(() => {
             queryClient.invalidateQueries({ queryKey: ["bus/getMyBus"] });
             queryClient.invalidateQueries({ queryKey: ["bus/getBuses"] });
             setWasCheckedIdx(selectBusIdx);
-            B1ndToast.showSuccess("버스 신청 수정 성공");
+            toast.success("버스 신청 수정 성공");
           },
           onError: (err) => {
-            B1ndToast.showError(ErrorHandler.busError(err as AxiosError)!);
+            toast.error(ErrorHandler.busError(err as AxiosError)!);
           },
         }
       );
@@ -119,10 +119,10 @@ useEffect(() => {
             queryClient.invalidateQueries({ queryKey: ["bus/getMyBus"] });
             queryClient.invalidateQueries({ queryKey: ["bus/getBuses"] });
             setWasCheckedIdx(selectBusIdx);
-            B1ndToast.showSuccess("버스 신청 성공");
+            toast.success("버스 신청 성공");
           },
           onError: (err) => {
-            B1ndToast.showError(ErrorHandler.busError(err as AxiosError)!);
+            toast.error(ErrorHandler.busError(err as AxiosError)!);
           },
         }
       );

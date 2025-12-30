@@ -6,7 +6,8 @@ import {
 import { RecoilRoot } from "recoil";
 import { BrowserRouter } from "react-router-dom";
 import Routes from './components/Router/router';
-import { B1ndToastContainer } from '@b1nd/b1nd-toastify';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ThemeProviderContainer from './components/Common/ThemeProviderContainer';
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,7 +23,7 @@ function Root() {
       <QueryClientProvider client={queryClient}>
         <RecoilRoot>
           <ThemeProviderContainer>
-            <B1ndToastContainer autoClose={1000} limit={1} />
+            <ToastContainer autoClose={1000} limit={1} />
               <BrowserRouter>
                 <Routes/>
               </BrowserRouter>
